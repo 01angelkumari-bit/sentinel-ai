@@ -1,0 +1,51 @@
+﻿id,supplier_number,company_name,contact_name,email,phone,country,payment_terms_days
+dd3f4a4e-a6b3-5325-9321-7a90c1d4bf3a,SUP-0001,Thomas LLC,Tina Lawrence,vendor1@supplier.example,+1-645-950-0226x553,India,30
+1d56b323-34d1-5e3b-90c8-d1815913a897,SUP-0002,"Sanchez, Jordan and Thomas",Stuart Smith,vendor2@supplier.example,+1-844-369-6866x11925,India,30
+d3229a68-408c-5e1f-a917-2c04eb1a70ae,SUP-0003,"Norton, Wilkinson and Shaw",Dr. Ashlee Porter,vendor3@supplier.example,+1-877-918-4351x420,India,60
+51a809cd-6bb7-5e76-9cc6-bbece8979acf,SUP-0004,Allen-Miller,Michael Lambert,vendor4@supplier.example,(913)249-2242x0702,Canada,45
+a8f14773-125c-5ba4-9191-cd8ebe6c52e6,SUP-0005,"White, Robbins and Jones",Julia Johns,vendor5@supplier.example,+1-722-719-5087x02107,India,30
+99830bd4-f8b5-5368-920c-e2a39553b3fe,SUP-0006,"Herrera, Lambert and Torres",Thomas Tate,vendor6@supplier.example,(618)579-8494x1093,Germany,60
+45225ec9-4065-5144-bd1b-cf0a99a9b7a2,SUP-0007,Taylor Inc,Daniel Lane,vendor7@supplier.example,(375)442-0300x77170,United Kingdom,15
+8d55441e-176f-53dc-bb6f-2735e2993f37,SUP-0008,Fernandez LLC,Aaron Campbell,vendor8@supplier.example,+1-736-746-7839,United Kingdom,45
+da45bf33-73cc-5151-ae56-0e5e3c0bd8b2,SUP-0009,Browning Ltd,Hector Donovan,vendor9@supplier.example,3836796534,United States,60
+4e6fc8a7-85a2-5216-ac33-50b163a39310,SUP-0010,Green-Gomez,Jonathan Malone,vendor10@supplier.example,001-958-973-0409,Germany,60
+82a41729-5415-5557-acfe-42478facce23,SUP-0011,"Abbott, Patel and Washington",Roger Curry,vendor11@supplier.example,+1-379-283-4095x884,United Kingdom,60
+2a95dcfe-d847-52c0-9a5d-a110801039cd,SUP-0012,"Gordon, Fox and Garcia",Jermaine Castro,vendor12@supplier.example,001-903-324-4311x980,Germany,60
+c651b0db-a413-5179-8b03-13c8a6ae4a19,SUP-0013,"Smith, Mcconnell and Thompson",Tracey Turner,vendor13@supplier.example,850-917-9254,Germany,60
+3795a592-055d-5f47-a6e0-6edcee0c8599,SUP-0014,Green LLC,Nicole Jones,vendor14@supplier.example,655-476-3550x783,United Kingdom,60
+2791a9f4-3fb5-5d97-a5ab-cc34241b0083,SUP-0015,"Anderson, Hernandez and Mcdonald",Ernest Mendoza,vendor15@supplier.example,(459)447-9008x75545,Germany,45
+794cba2d-4951-51d0-887e-7f8001a0868f,SUP-0016,Lewis-Miller,Larry Bond,vendor16@supplier.example,(611)941-9365x9087,Germany,30
+d2261a45-fc0e-534d-b1da-185cfb85336f,SUP-0017,"Boone, Holland and Flores",Teresa Lewis,vendor17@supplier.example,527.682.3520x227,India,15
+9d5ef604-b5ec-5a49-8a55-d0458e394151,SUP-0018,Oneal-Brown,Jennifer Turner,vendor18@supplier.example,+1-255-781-0611x21044,India,30
+e8ffe555-b824-5655-af15-c14ae693f22a,SUP-0019,"Neal, Jackson and Kelley",Cheryl Valentine,vendor19@supplier.example,946-695-2532x48820,United States,30
+87e70a47-c3d7-5af4-bc7a-4d1d8d9e3911,SUP-0020,Clark-Taylor,John Norris,vendor20@supplier.example,+1-719-946-8931x658,United States,30
+35943eb7-042f-5e1f-9d26-726878b3d3b0,SUP-0021,Wright Ltd,Steven Williams,vendor21@supplier.example,001-897-647-4453,Canada,30
+b7cd63b2-d250-5417-92d0-d986281cbfc0,SUP-0022,"Kelly, Walker and Powell",David Caldwell,vendor22@supplier.example,794-847-1800x866,United Kingdom,60
+58f6fef5-c4b2-5b93-93de-ec23c8297528,SUP-0023,Salazar Ltd,Nicholas Carter,vendor23@supplier.example,(860)490-0252x4025,India,45
+7286375a-4ed3-50b8-b738-b3996c8a3bee,SUP-0024,Mcguire Inc,Danielle Richards,vendor24@supplier.example,001-997-395-7617x8248,Germany,15
+73266743-ce35-589a-9243-e7c164c15a52,SUP-0025,"Choi, Rowland and Riley",Leah Nguyen,vendor25@supplier.example,(778)431-3372,Germany,60
+8bd0bcf2-c619-58f3-953f-4c7f17c42ee6,SUP-0026,"Smith, Harper and Holloway",Jose Stevens,vendor26@supplier.example,001-576-368-5270x71555,Germany,60
+b349f45f-c411-5d53-ad24-73a5d4a16b03,SUP-0027,"Cobb, Lamb and Garrett",Robert Thompson,vendor27@supplier.example,371.341.0251x34240,Canada,45
+b8d82bf7-98df-55f2-90af-d6edaf467b55,SUP-0028,Haynes-Hill,Nathan Robinson,vendor28@supplier.example,283.403.1564x6249,United Kingdom,45
+c3eb288f-aa48-5608-ae4d-27895afb7ce6,SUP-0029,Perry LLC,Sheila Peters,vendor29@supplier.example,(997)275-5029x917,Canada,30
+ad0f30d8-bee4-5981-ae27-11aeb07094ef,SUP-0030,Oconnor-Sanchez,Randy Klein,vendor30@supplier.example,001-708-301-4605x279,Canada,45
+8a74346a-194f-526b-8765-f2202fdb3c42,SUP-0031,Griffin Inc,Margaret Johnson,vendor31@supplier.example,5384673968,India,30
+e50776ae-986d-5b5d-ad63-398505fcd71a,SUP-0032,Moore Ltd,Teresa Vaughn,vendor32@supplier.example,393-387-0835x2935,Canada,60
+1284ac8c-fae5-5c77-bc35-8f343b661acb,SUP-0033,"Williams, Hamilton and Davis",Kim Hines,vendor33@supplier.example,475-355-1085x9199,United Kingdom,30
+34e0628a-5e1e-5d9f-b4bb-a7eb90ac7ed4,SUP-0034,Haas-Rodriguez,William Reed,vendor34@supplier.example,242.516.7360x7736,United Kingdom,60
+da264dcc-c46a-5cad-afc9-dfabb6d7fb57,SUP-0035,Carpenter-Ross,Jason Cruz,vendor35@supplier.example,(626)409-0253x5415,United States,15
+e7bbd5e6-3dcb-5a1c-93c2-a0d8f4df324a,SUP-0036,Jensen-Figueroa,Christopher Sanders,vendor36@supplier.example,703-223-3820x5122,United Kingdom,60
+99a38318-4361-5d0f-80c1-7c4d37006898,SUP-0037,Sims-Gonzales,Christopher Brown,vendor37@supplier.example,001-739-453-1374x32946,United States,30
+7ca0e407-2370-5762-b9bd-0044d2878589,SUP-0038,"Martinez, Black and Parks",Jocelyn Young,vendor38@supplier.example,732.876.1015,United States,60
+36dca310-70e2-57d2-a46e-2475011a2337,SUP-0039,"Walker, Carey and Brown",Terri Torres,vendor39@supplier.example,605-912-0034,United States,15
+6ce4fdec-6977-5835-9d20-82849182b197,SUP-0040,"Logan, West and Stewart",Richard Oliver,vendor40@supplier.example,001-850-774-0132,United Kingdom,45
+1c126282-57bb-54c2-9b46-c5d44a6424ff,SUP-0041,Edwards PLC,Earl Montes,vendor41@supplier.example,(445)348-5931x634,Canada,60
+0fe7d849-98c0-5f1d-a666-3fabb15b3e03,SUP-0042,Rodriguez-Jackson,Timothy Rose,vendor42@supplier.example,+1-399-330-9627x46125,India,60
+da9c2cc5-bcb7-5d93-a38c-15f706e3de54,SUP-0043,Boyer Group,Shelly Myers,vendor43@supplier.example,(629)651-2900x9477,Canada,15
+c37dd0c8-2719-5826-b027-2a83950a5f4d,SUP-0044,Waters Ltd,Donna Gray,vendor44@supplier.example,(768)272-3572x4235,Canada,45
+ca848b39-d509-59f5-b229-c6dafe072a30,SUP-0045,Martinez-Hunt,Vincent Dougherty,vendor45@supplier.example,001-290-818-6550x836,United States,60
+87d750bd-18bb-5ebf-80ad-e7ebdc6a8fc1,SUP-0046,"Dean, Campos and Lucas",Jim Rodriguez,vendor46@supplier.example,001-413-784-3648,India,15
+e4256b91-7669-5525-813a-f68aa4b9fca8,SUP-0047,"Perez, Holden and Santos",Tommy Black,vendor47@supplier.example,708.303.3195,Germany,45
+11510168-ba93-550e-a816-c448d93c6b42,SUP-0048,"Estes, Mcgee and Smith",Christine Underwood,vendor48@supplier.example,+1-459-787-9751x7046,United States,15
+7ce4882b-897c-5a6f-8f9c-17504d3eb76a,SUP-0049,Ho-Jones,Keith Anderson,vendor49@supplier.example,722.549.8650x349,United Kingdom,30
+6939a2fc-dc0d-59ac-a65b-dde87ee5f658,SUP-0050,"Bennett, White and Soto",Frank Baldwin,vendor50@supplier.example,694-610-1283x57840,Canada,30

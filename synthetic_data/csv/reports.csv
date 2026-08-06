@@ -1,0 +1,25 @@
+﻿id,report_code,created_by_employee_id,name,report_type,schedule,configuration_json,is_active
+8914edbb-15cc-5aa7-9e09-76116661a77c,RPT-0001,41c288ea-d2d9-5ae8-8e37-5c327d0f3bc9,Sales Operational Review,sales,daily,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+7658b018-6a0e-58f0-9c8c-a8d00b3c558c,RPT-0002,29f89627-9934-5916-acef-ed156172909d,Support Trend Analysis,support,,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+3bc53081-56ad-5efe-af12-b09f6867b0b3,RPT-0003,ed04f0ce-6e9d-52fb-a016-192586a445e6,Finance Trend Analysis,finance,,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+626ee123-9340-5c38-9a8a-e3e66a156c73,RPT-0004,3a441458-59e9-58bd-a39b-b02dc5ef98b6,Finance Operational Review,finance,monthly,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+dc66267b-0b66-50ff-bda1-5b606b2dbbca,RPT-0005,4d818b9a-9901-57d6-9735-cfbcc3e72c9a,Sales Operational Review,sales,monthly,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+53c3645e-e233-5e53-8d6f-82f129991e4b,RPT-0006,05970209-0410-562d-a0ac-22a01e4f9690,Sales Forecast,sales,weekly,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+9543806b-b7cd-5159-aa04-a6c59f378279,RPT-0007,c7b1a941-8741-5584-94d8-3bb2fc4b12bb,Support Operational Review,support,,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+1dc80b10-0dde-5453-b5b3-c5f3adaacefd,RPT-0008,7f7576df-6164-5bb1-8491-367bf6607cbe,Workforce Forecast,workforce,,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+3035f104-1ee4-5c07-a5c6-03e20d51334d,RPT-0009,d70f7e32-1347-5ff1-a0b2-01c25a995c5e,Sales Executive Summary,sales,weekly,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+3c95da65-49f8-5f69-869c-35e8c1c51f00,RPT-0010,a425379b-b0c3-5c5e-a2ce-3b4fefdec11b,Finance Forecast,finance,,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",False
+560a0d63-7e31-5c91-9c34-38d904295c9d,RPT-0011,f32f4e9f-001a-5959-addd-973d2c346672,Finance Executive Summary,finance,monthly,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+a5159fd7-cb8d-5835-81de-b27f8258936a,RPT-0012,6b5feb5d-ef37-55d7-96ea-93eb713ebe93,Sales Operational Review,sales,daily,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+b70b2ed6-cb77-5413-a91a-a96e1b0e17d8,RPT-0013,db1d103b-c3af-56cc-8b7e-30905656ea82,Support Forecast,support,,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+7318c600-6a58-5f8f-85a9-3677fe848335,RPT-0014,a4bdf30d-a4d5-5962-af1a-68dc159fa6b4,Sales Operational Review,sales,,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+b4bc589a-6be9-5710-8de4-4483543f9589,RPT-0015,fb2efb56-40d2-5be2-871e-15c7386fc9c5,Finance Trend Analysis,finance,,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",False
+ff88b776-f47e-5bcd-9b73-c3628c86eeb8,RPT-0016,e35ba822-27e1-5a54-9b0a-89a1cde4c322,Workforce Forecast,workforce,daily,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+78923543-2911-5401-bf58-abc779e8b428,RPT-0017,ad434966-8f70-5881-a489-131c6729a455,Support Trend Analysis,support,daily,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",False
+0e524b0b-f450-5b9a-a1cf-1ba3ecde922e,RPT-0018,c3ff0a0a-56af-5e1e-8f58-8b1be0ca2eec,Inventory Trend Analysis,inventory,daily,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+ccf3be73-c37a-5530-8afb-b72f3dd485b2,RPT-0019,a425379b-b0c3-5c5e-a2ce-3b4fefdec11b,Inventory Operational Review,inventory,,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+d2d03d71-8df5-5877-a9c6-7e6044ac5a68,RPT-0020,51d1817d-3013-539a-a404-e93deedc0450,Sales Executive Summary,sales,weekly,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+7ce17052-005c-59f7-8b66-35b09b39776c,RPT-0021,bd33bd7e-3898-541a-b495-194773beb677,Support Operational Review,support,weekly,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+30e9524a-021a-5b27-bcc3-3f5e12fa8122,RPT-0022,86d3dca2-5152-5ad7-ae43-709e43ab3982,Inventory Trend Analysis,inventory,daily,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+7dab243f-0629-57f6-9c0c-072fadde0bb6,RPT-0023,faadaff8-ebd8-56f8-9834-458600e22205,Workforce Executive Summary,workforce,,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True
+208149b6-9fc6-52e3-ab53-a5e61a2dca6b,RPT-0024,c799fbe9-b5a9-5245-a554-b9951dc2e039,Workforce Executive Summary,workforce,monthly,"{""period"":""rolling_12_months"",""currency"":""USD"",""include_variance"":true}",True

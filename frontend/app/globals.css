@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { color-scheme: dark; }
+  * { @apply border-slate-800; }
+  body { @apply min-h-screen bg-[#070b14] text-slate-100 antialiased; }
+  ::selection { @apply bg-cyan-400/30 text-white; }
+}
+@layer utilities {
+  .grid-noise { background-image: linear-gradient(rgba(148,163,184,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.035) 1px, transparent 1px); background-size: 42px 42px; }
+  .panel-glow { box-shadow: 0 24px 80px rgba(0,0,0,.32), inset 0 1px rgba(255,255,255,.035); }
+}

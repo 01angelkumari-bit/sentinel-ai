@@ -1,0 +1,101 @@
+﻿id,sku,category_id,name,description,unit_cost,unit_price,reorder_level,is_active
+1fa2b768-1b9d-5b9c-befa-fac1ccb97563,SNT-01-0001,10d397cd-be20-59ab-afe6-a98afd720c37,Adaptive Console 01,Analytics capability for mid-market and enterprise teams.,335.80,771.34,36,True
+829935ce-9ec7-5afb-a542-873877c9ce31,SNT-02-0002,36984dba-5c9e-5a8b-9855-aa96c6795add,Cloud Console 02,Automation capability for mid-market and enterprise teams.,254.86,378.45,45,True
+0137b3c3-db39-5e56-abf7-8ae43bc349ad,SNT-03-0003,76c04eda-8007-536b-8b18-4381cc71212a,Enterprise Console 03,Collaboration capability for mid-market and enterprise teams.,490.81,1129.31,19,True
+9b6b9203-f582-59b6-b64c-309881607c86,SNT-04-0004,73c5b74f-2c54-5f61-9368-e981da7d3f6e,Insight Console 04,Compliance capability for mid-market and enterprise teams.,410.56,876.23,50,True
+1657c1e2-1668-5957-a5e5-822140c08707,SNT-05-0005,6c4e8c97-75ed-55f4-a44d-a47a6aa67956,Nexus Console 05,Data Infrastructure capability for mid-market and enterprise teams.,542.68,1260.09,41,True
+1760c2e4-563f-5bac-abcd-baf5317434c8,SNT-06-0006,709e0311-24b2-50de-926e-b3505a47b6d7,Precision Console 06,Finance capability for mid-market and enterprise teams.,745.27,1665.26,40,True
+e691a6a3-7dd7-5d95-b97e-997e3af77227,SNT-07-0007,288a9bba-2ad7-5ff3-9ca3-0c3dc3729fb7,Quantum Console 07,Operations capability for mid-market and enterprise teams.,251.47,551.10,22,True
+f78fc905-81d2-5f52-8c77-1cff3a4b42b7,SNT-08-0008,d1f6ee56-d871-5e7e-b8c6-34cfea5d2a60,Secure Console 08,Security capability for mid-market and enterprise teams.,155.84,290.47,11,True
+6469a098-75a3-5b3b-839a-ad075a8e67ad,SNT-09-0009,afa4681b-b69c-5175-a7b7-af9246380130,Unified Console 09,Support capability for mid-market and enterprise teams.,334.44,728.47,29,True
+86eda21c-1dbc-500a-9201-b7d6b0786cc8,SNT-10-0010,c86bca2a-69aa-58fb-9b94-2491f43c9e4c,Velocity Console 10,Workforce capability for mid-market and enterprise teams.,492.45,1060.50,42,True
+39cb20a1-5dca-5b11-90c4-3e96e441ed0c,SNT-01-0011,10d397cd-be20-59ab-afe6-a98afd720c37,Adaptive Engine 11,Analytics capability for mid-market and enterprise teams.,296.26,447.96,34,True
+2f2113cc-589a-55b5-846a-78fddce3a3c9,SNT-02-0012,36984dba-5c9e-5a8b-9855-aa96c6795add,Cloud Engine 12,Automation capability for mid-market and enterprise teams.,407.12,688.27,23,True
+b6464168-fc86-5543-9805-0861ea9c66cc,SNT-03-0013,76c04eda-8007-536b-8b18-4381cc71212a,Enterprise Engine 13,Collaboration capability for mid-market and enterprise teams.,734.86,1065.14,14,True
+c2be7cd9-f7ee-544a-9ceb-7052826da8ce,SNT-04-0014,73c5b74f-2c54-5f61-9368-e981da7d3f6e,Insight Engine 14,Compliance capability for mid-market and enterprise teams.,103.39,183.13,21,True
+4dbc0e6b-ab10-5b67-a928-f87e1ed2bb9a,SNT-05-0015,6c4e8c97-75ed-55f4-a44d-a47a6aa67956,Nexus Engine 15,Data Infrastructure capability for mid-market and enterprise teams.,105.19,233.65,38,True
+0caef625-914f-5fea-8e59-19b212bfbd46,SNT-06-0016,709e0311-24b2-50de-926e-b3505a47b6d7,Precision Engine 16,Finance capability for mid-market and enterprise teams.,836.02,1252.51,48,True
+d37c44df-541b-5bf4-b395-65b41bac88a8,SNT-07-0017,288a9bba-2ad7-5ff3-9ca3-0c3dc3729fb7,Quantum Engine 17,Operations capability for mid-market and enterprise teams.,757.56,1334.93,40,True
+88f79184-2cf9-5f72-8e4a-cedfa68d9d06,SNT-08-0018,d1f6ee56-d871-5e7e-b8c6-34cfea5d2a60,Secure Engine 18,Security capability for mid-market and enterprise teams.,232.36,475.83,36,True
+896e7662-34d0-5631-bb0f-b5ce6b0ad1ba,SNT-09-0019,afa4681b-b69c-5175-a7b7-af9246380130,Unified Engine 19,Support capability for mid-market and enterprise teams.,824.71,1691.47,46,True
+5d79cff2-0e77-58a2-b1bf-c506ed3c98bd,SNT-10-0020,c86bca2a-69aa-58fb-9b94-2491f43c9e4c,Velocity Engine 20,Workforce capability for mid-market and enterprise teams.,459.87,822.40,16,True
+1cc795b2-21b3-5c5e-84f0-8f1fa20a6dd4,SNT-01-0021,10d397cd-be20-59ab-afe6-a98afd720c37,Adaptive Fabric 21,Analytics capability for mid-market and enterprise teams.,377.36,668.78,48,True
+d520aef1-b021-5cf0-a1d3-9e7e6d31aab7,SNT-02-0022,36984dba-5c9e-5a8b-9855-aa96c6795add,Cloud Fabric 22,Automation capability for mid-market and enterprise teams.,381.79,568.52,48,True
+db43f9b2-c956-5785-8950-8287c47db3ae,SNT-03-0023,76c04eda-8007-536b-8b18-4381cc71212a,Enterprise Fabric 23,Collaboration capability for mid-market and enterprise teams.,476.95,894.98,47,True
+599db343-a607-5259-8af1-adde7b1a86ce,SNT-04-0024,73c5b74f-2c54-5f61-9368-e981da7d3f6e,Insight Fabric 24,Compliance capability for mid-market and enterprise teams.,521.76,1047.10,47,True
+3205bb8a-e766-5617-a3d4-78aaa9883bc8,SNT-05-0025,6c4e8c97-75ed-55f4-a44d-a47a6aa67956,Nexus Fabric 25,Data Infrastructure capability for mid-market and enterprise teams.,760.51,1355.84,20,True
+8a195dd5-491c-532c-9a61-886a24d451c0,SNT-06-0026,709e0311-24b2-50de-926e-b3505a47b6d7,Precision Fabric 26,Finance capability for mid-market and enterprise teams.,646.54,1141.76,49,True
+fb4140fc-b3c1-5a6a-8613-9b068fdd2b39,SNT-07-0027,288a9bba-2ad7-5ff3-9ca3-0c3dc3729fb7,Quantum Fabric 27,Operations capability for mid-market and enterprise teams.,517.87,931.77,28,True
+31a97c6b-10cf-54c1-b463-f81683a437cc,SNT-08-0028,d1f6ee56-d871-5e7e-b8c6-34cfea5d2a60,Secure Fabric 28,Security capability for mid-market and enterprise teams.,567.79,1252.58,30,True
+1dd457fd-1d71-5eb5-b684-6f07d43e876c,SNT-09-0029,afa4681b-b69c-5175-a7b7-af9246380130,Unified Fabric 29,Support capability for mid-market and enterprise teams.,664.67,897.97,29,True
+eff08d1d-eb3b-559a-8ca9-60c7b365af52,SNT-10-0030,c86bca2a-69aa-58fb-9b94-2491f43c9e4c,Velocity Fabric 30,Workforce capability for mid-market and enterprise teams.,714.84,1515.93,44,True
+d4214473-2bf7-5b77-bb1f-734e590c4014,SNT-01-0031,10d397cd-be20-59ab-afe6-a98afd720c37,Adaptive Gateway 31,Analytics capability for mid-market and enterprise teams.,733.64,1245.02,44,True
+0f2c8ffe-5a45-5cfc-afbf-417553294a54,SNT-02-0032,36984dba-5c9e-5a8b-9855-aa96c6795add,Cloud Gateway 32,Automation capability for mid-market and enterprise teams.,152.10,237.59,35,True
+b4065918-1c4b-50b6-b69a-d859f24bfe23,SNT-03-0033,76c04eda-8007-536b-8b18-4381cc71212a,Enterprise Gateway 33,Collaboration capability for mid-market and enterprise teams.,497.18,1132.17,49,True
+f65edfe2-43ae-59f6-b37a-f98344e1a998,SNT-04-0034,73c5b74f-2c54-5f61-9368-e981da7d3f6e,Insight Gateway 34,Compliance capability for mid-market and enterprise teams.,708.11,1061.75,49,True
+591abda9-fd16-5958-b0e9-586f0dfa6e54,SNT-05-0035,6c4e8c97-75ed-55f4-a44d-a47a6aa67956,Nexus Gateway 35,Data Infrastructure capability for mid-market and enterprise teams.,379.79,875.54,25,True
+9f7bfd37-85ae-5a17-9b9f-5dafe3ec68ee,SNT-06-0036,709e0311-24b2-50de-926e-b3505a47b6d7,Precision Gateway 36,Finance capability for mid-market and enterprise teams.,546.66,1138.16,10,True
+43d6da55-777b-55ef-8cf5-d4cc7bfa63ad,SNT-07-0037,288a9bba-2ad7-5ff3-9ca3-0c3dc3729fb7,Quantum Gateway 37,Operations capability for mid-market and enterprise teams.,660.66,1159.60,20,True
+cb09f248-037d-5a0d-9970-99cb102c05d8,SNT-08-0038,d1f6ee56-d871-5e7e-b8c6-34cfea5d2a60,Secure Gateway 38,Security capability for mid-market and enterprise teams.,738.70,1006.42,25,True
+db630ac7-839d-5331-93df-dc621d8357b6,SNT-09-0039,afa4681b-b69c-5175-a7b7-af9246380130,Unified Gateway 39,Support capability for mid-market and enterprise teams.,252.00,582.16,35,True
+8b12c834-e054-5502-85aa-99d1eb81eee0,SNT-10-0040,c86bca2a-69aa-58fb-9b94-2491f43c9e4c,Velocity Gateway 40,Workforce capability for mid-market and enterprise teams.,650.08,1393.76,25,True
+12003734-bab7-5410-8c89-f9a8c4967dea,SNT-01-0041,10d397cd-be20-59ab-afe6-a98afd720c37,Adaptive Hub 41,Analytics capability for mid-market and enterprise teams.,642.96,1269.66,29,True
+2e263bcd-bacc-5f51-b35b-70d1674f4dc5,SNT-02-0042,36984dba-5c9e-5a8b-9855-aa96c6795add,Cloud Hub 42,Automation capability for mid-market and enterprise teams.,159.68,370.19,31,True
+b4b5a0e3-641b-562e-8386-bff3564cf295,SNT-03-0043,76c04eda-8007-536b-8b18-4381cc71212a,Enterprise Hub 43,Collaboration capability for mid-market and enterprise teams.,74.76,158.25,33,True
+cd410e43-ec3c-524b-84c6-84482a7b1204,SNT-04-0044,73c5b74f-2c54-5f61-9368-e981da7d3f6e,Insight Hub 44,Compliance capability for mid-market and enterprise teams.,355.76,549.24,45,True
+deaf9542-d65c-5f41-b22e-b1d033baea7a,SNT-05-0045,6c4e8c97-75ed-55f4-a44d-a47a6aa67956,Nexus Hub 45,Data Infrastructure capability for mid-market and enterprise teams.,734.88,1236.17,31,True
+201fb8e4-2c24-5483-b44d-4063694486b2,SNT-06-0046,709e0311-24b2-50de-926e-b3505a47b6d7,Precision Hub 46,Finance capability for mid-market and enterprise teams.,604.70,1026.69,47,True
+13e04507-297b-56af-85d7-75b609d982a1,SNT-07-0047,288a9bba-2ad7-5ff3-9ca3-0c3dc3729fb7,Quantum Hub 47,Operations capability for mid-market and enterprise teams.,347.09,652.61,48,True
+f350d57a-8885-50f1-b76a-29f7a8057a35,SNT-08-0048,d1f6ee56-d871-5e7e-b8c6-34cfea5d2a60,Secure Hub 48,Security capability for mid-market and enterprise teams.,831.76,1251.43,43,True
+b6edaedb-a02c-5fbc-b05c-2b5d8deb20c4,SNT-09-0049,afa4681b-b69c-5175-a7b7-af9246380130,Unified Hub 49,Support capability for mid-market and enterprise teams.,802.52,1512.83,41,True
+fd5d29e1-571f-589d-be31-aa00127c02aa,SNT-10-0050,c86bca2a-69aa-58fb-9b94-2491f43c9e4c,Velocity Hub 50,Workforce capability for mid-market and enterprise teams.,416.92,943.56,24,True
+c3e9c7fb-d6ab-5171-a827-7aad6b6d2342,SNT-01-0051,10d397cd-be20-59ab-afe6-a98afd720c37,Adaptive Monitor 51,Analytics capability for mid-market and enterprise teams.,563.26,1198.11,38,True
+d3739878-986b-5b5f-a096-4452493d6cbb,SNT-02-0052,36984dba-5c9e-5a8b-9855-aa96c6795add,Cloud Monitor 52,Automation capability for mid-market and enterprise teams.,484.01,869.60,37,True
+91bd15e4-105e-5926-abe6-7ceaf8c07375,SNT-03-0053,76c04eda-8007-536b-8b18-4381cc71212a,Enterprise Monitor 53,Collaboration capability for mid-market and enterprise teams.,233.97,393.96,29,True
+b5386670-1687-5260-ad33-97e5d697c425,SNT-04-0054,73c5b74f-2c54-5f61-9368-e981da7d3f6e,Insight Monitor 54,Compliance capability for mid-market and enterprise teams.,508.52,902.07,48,True
+1ac8de35-b264-5704-978e-ce8dc08dd02d,SNT-05-0055,6c4e8c97-75ed-55f4-a44d-a47a6aa67956,Nexus Monitor 55,Data Infrastructure capability for mid-market and enterprise teams.,204.98,452.98,14,True
+d6b2e2d8-f41b-5418-ba12-fcffc0aa6508,SNT-06-0056,709e0311-24b2-50de-926e-b3505a47b6d7,Precision Monitor 56,Finance capability for mid-market and enterprise teams.,838.89,1950.05,49,True
+8ac2c18a-5896-572a-9f44-f5d60109258d,SNT-07-0057,288a9bba-2ad7-5ff3-9ca3-0c3dc3729fb7,Quantum Monitor 57,Operations capability for mid-market and enterprise teams.,185.65,270.85,41,True
+e53c7da2-eb34-5499-8fd8-380dd673ea82,SNT-08-0058,d1f6ee56-d871-5e7e-b8c6-34cfea5d2a60,Secure Monitor 58,Security capability for mid-market and enterprise teams.,674.99,1587.45,11,True
+9a2e8c5f-4d3e-5cb8-ba78-f2bd562ee61b,SNT-09-0059,afa4681b-b69c-5175-a7b7-af9246380130,Unified Monitor 59,Support capability for mid-market and enterprise teams.,301.05,688.27,46,True
+aa67b9d9-b4e2-53f3-9447-ca933b53344f,SNT-10-0060,c86bca2a-69aa-58fb-9b94-2491f43c9e4c,Velocity Monitor 60,Workforce capability for mid-market and enterprise teams.,571.44,1163.44,35,True
+d96da70b-0cb5-58c8-928a-aafb2d90b154,SNT-01-0061,10d397cd-be20-59ab-afe6-a98afd720c37,Adaptive Platform 61,Analytics capability for mid-market and enterprise teams.,846.45,1827.60,38,True
+8dfa6632-930f-5fdc-b7cd-8d5908a33d66,SNT-02-0062,36984dba-5c9e-5a8b-9855-aa96c6795add,Cloud Platform 62,Automation capability for mid-market and enterprise teams.,160.93,271.74,32,True
+0eb49bc4-406e-5d63-a28c-3e5b6ef668e4,SNT-03-0063,76c04eda-8007-536b-8b18-4381cc71212a,Enterprise Platform 63,Collaboration capability for mid-market and enterprise teams.,560.51,1139.13,30,True
+1c3b9a21-09fa-5c21-bdad-35f2eb8a273f,SNT-04-0064,73c5b74f-2c54-5f61-9368-e981da7d3f6e,Insight Platform 64,Compliance capability for mid-market and enterprise teams.,699.98,1126.26,37,True
+75679cf6-5497-5e69-b773-db773bc6a245,SNT-05-0065,6c4e8c97-75ed-55f4-a44d-a47a6aa67956,Nexus Platform 65,Data Infrastructure capability for mid-market and enterprise teams.,759.30,1441.14,46,True
+af3fc15f-c662-5a5e-9e9c-3b2d4e1b6029,SNT-06-0066,709e0311-24b2-50de-926e-b3505a47b6d7,Precision Platform 66,Finance capability for mid-market and enterprise teams.,809.57,1539.94,17,True
+cdea42fb-ee49-5a22-a213-56a8f9fcb148,SNT-07-0067,288a9bba-2ad7-5ff3-9ca3-0c3dc3729fb7,Quantum Platform 67,Operations capability for mid-market and enterprise teams.,677.64,1597.00,47,True
+34baeb4c-81dc-5b29-bc76-0b8fd47cdbed,SNT-08-0068,d1f6ee56-d871-5e7e-b8c6-34cfea5d2a60,Secure Platform 68,Security capability for mid-market and enterprise teams.,174.47,262.62,11,True
+c0bff87f-f764-5151-8aec-dda48ea91847,SNT-09-0069,afa4681b-b69c-5175-a7b7-af9246380130,Unified Platform 69,Support capability for mid-market and enterprise teams.,225.72,437.68,33,True
+228ccd2f-642c-5fdf-abf0-129af98a3568,SNT-10-0070,c86bca2a-69aa-58fb-9b94-2491f43c9e4c,Velocity Platform 70,Workforce capability for mid-market and enterprise teams.,71.85,148.91,23,True
+5d462a8e-32e0-59ad-ae5c-9d66eda72663,SNT-01-0071,10d397cd-be20-59ab-afe6-a98afd720c37,Adaptive Suite 71,Analytics capability for mid-market and enterprise teams.,162.07,326.98,37,True
+851c23cd-3716-5170-b9ac-0c25ddc7c95c,SNT-02-0072,36984dba-5c9e-5a8b-9855-aa96c6795add,Cloud Suite 72,Automation capability for mid-market and enterprise teams.,223.87,497.01,17,True
+f9fe7a6c-9a44-59e2-a4cc-fef69cc2e48e,SNT-03-0073,76c04eda-8007-536b-8b18-4381cc71212a,Enterprise Suite 73,Collaboration capability for mid-market and enterprise teams.,449.22,684.00,20,True
+613ff8f3-9a2b-5f66-8d3e-3e05d5391002,SNT-04-0074,73c5b74f-2c54-5f61-9368-e981da7d3f6e,Insight Suite 74,Compliance capability for mid-market and enterprise teams.,285.24,474.67,40,True
+f218ba8f-81cf-5efd-ad55-5f4ef76110c2,SNT-05-0075,6c4e8c97-75ed-55f4-a44d-a47a6aa67956,Nexus Suite 75,Data Infrastructure capability for mid-market and enterprise teams.,822.40,1484.37,27,True
+a042ed60-9218-5159-876b-6c4dd0e5f934,SNT-06-0076,709e0311-24b2-50de-926e-b3505a47b6d7,Precision Suite 76,Finance capability for mid-market and enterprise teams.,174.16,381.33,11,True
+952e981c-e5c2-53da-984a-78dc5e3b1ad4,SNT-07-0077,288a9bba-2ad7-5ff3-9ca3-0c3dc3729fb7,Quantum Suite 77,Operations capability for mid-market and enterprise teams.,61.82,130.99,18,True
+d68351a2-cf36-5984-a091-28a9f5b6bb7e,SNT-08-0078,d1f6ee56-d871-5e7e-b8c6-34cfea5d2a60,Secure Suite 78,Security capability for mid-market and enterprise teams.,428.47,1017.79,38,True
+e139b0f5-6ca3-5ccb-8610-5a52b4b0eb6c,SNT-09-0079,afa4681b-b69c-5175-a7b7-af9246380130,Unified Suite 79,Support capability for mid-market and enterprise teams.,571.49,1053.19,14,True
+3d307d78-b10f-5539-a951-7bcc9fd17161,SNT-10-0080,c86bca2a-69aa-58fb-9b94-2491f43c9e4c,Velocity Suite 80,Workforce capability for mid-market and enterprise teams.,659.05,1342.24,33,True
+45669348-c1a3-5956-bbf2-d29bd438fbdc,SNT-01-0081,10d397cd-be20-59ab-afe6-a98afd720c37,Adaptive Workspace 81,Analytics capability for mid-market and enterprise teams.,331.67,536.14,37,True
+673811d5-2f11-5108-8b80-c9dd0dc2adda,SNT-02-0082,36984dba-5c9e-5a8b-9855-aa96c6795add,Cloud Workspace 82,Automation capability for mid-market and enterprise teams.,263.68,503.75,37,True
+e3b2c918-6a66-5db3-87f9-e5c71515f2ab,SNT-03-0083,76c04eda-8007-536b-8b18-4381cc71212a,Enterprise Workspace 83,Collaboration capability for mid-market and enterprise teams.,840.19,1297.73,28,True
+241d3cd0-ef2c-56b8-bb75-b039a61b370a,SNT-04-0084,73c5b74f-2c54-5f61-9368-e981da7d3f6e,Insight Workspace 84,Compliance capability for mid-market and enterprise teams.,235.69,378.32,24,True
+e69a7c0b-6875-5a37-a379-abbc430fb47b,SNT-05-0085,6c4e8c97-75ed-55f4-a44d-a47a6aa67956,Nexus Workspace 85,Data Infrastructure capability for mid-market and enterprise teams.,516.35,1211.55,44,True
+7169fcc7-7527-510c-b88d-bdcd257ce105,SNT-06-0086,709e0311-24b2-50de-926e-b3505a47b6d7,Precision Workspace 86,Finance capability for mid-market and enterprise teams.,757.42,1025.31,25,True
+de536700-41fe-55c3-beb9-bfb9849c872b,SNT-07-0087,288a9bba-2ad7-5ff3-9ca3-0c3dc3729fb7,Quantum Workspace 87,Operations capability for mid-market and enterprise teams.,830.17,1685.26,43,True
+8d892cdc-d358-5f2b-a85b-cbecc7e0a664,SNT-08-0088,d1f6ee56-d871-5e7e-b8c6-34cfea5d2a60,Secure Workspace 88,Security capability for mid-market and enterprise teams.,624.97,1003.20,18,True
+1dd10a82-5cdc-539f-af3f-d3f255171973,SNT-09-0089,afa4681b-b69c-5175-a7b7-af9246380130,Unified Workspace 89,Support capability for mid-market and enterprise teams.,46.89,107.50,29,True
+9e165d6f-802f-5694-a25a-20885ba2aa7f,SNT-10-0090,c86bca2a-69aa-58fb-9b94-2491f43c9e4c,Velocity Workspace 90,Workforce capability for mid-market and enterprise teams.,315.90,433.03,44,True
+bab29423-27f9-5732-bd8b-a403c95b1a96,SNT-01-0091,10d397cd-be20-59ab-afe6-a98afd720c37,Adaptive Workbench 91,Analytics capability for mid-market and enterprise teams.,613.24,947.18,14,True
+13ea52a1-6b55-57c7-b84e-acf7fb92f106,SNT-02-0092,36984dba-5c9e-5a8b-9855-aa96c6795add,Cloud Workbench 92,Automation capability for mid-market and enterprise teams.,212.99,368.84,10,True
+559ab41c-d860-5ab1-aaa1-483577af7b67,SNT-03-0093,76c04eda-8007-536b-8b18-4381cc71212a,Enterprise Workbench 93,Collaboration capability for mid-market and enterprise teams.,185.45,305.73,44,True
+ac03c1f7-3948-530e-8de5-80756984ab20,SNT-04-0094,73c5b74f-2c54-5f61-9368-e981da7d3f6e,Insight Workbench 94,Compliance capability for mid-market and enterprise teams.,311.50,564.84,41,True
+01351cb5-bcf4-52ee-88a1-c6442df67004,SNT-05-0095,6c4e8c97-75ed-55f4-a44d-a47a6aa67956,Nexus Workbench 95,Data Infrastructure capability for mid-market and enterprise teams.,628.70,1268.11,16,True
+8d6058a9-d9fb-546e-b841-e6b4a0978311,SNT-06-0096,709e0311-24b2-50de-926e-b3505a47b6d7,Precision Workbench 96,Finance capability for mid-market and enterprise teams.,531.14,1083.86,50,True
+617fd070-2fb8-5ff6-8eaa-308844dc97ac,SNT-07-0097,288a9bba-2ad7-5ff3-9ca3-0c3dc3729fb7,Quantum Workbench 97,Operations capability for mid-market and enterprise teams.,828.11,1871.53,38,True
+508dfc85-5bf2-5709-b1e3-06ff86d5acb8,SNT-08-0098,d1f6ee56-d871-5e7e-b8c6-34cfea5d2a60,Secure Workbench 98,Security capability for mid-market and enterprise teams.,203.43,387.07,34,True
+80450a39-8a90-55da-adf7-0b6a1b84aeeb,SNT-09-0099,afa4681b-b69c-5175-a7b7-af9246380130,Unified Workbench 99,Support capability for mid-market and enterprise teams.,842.92,1385.41,36,True
+dee51c26-0113-56c0-a9c6-edbcfc488df1,SNT-10-0100,c86bca2a-69aa-58fb-9b94-2491f43c9e4c,Velocity Workbench 100,Workforce capability for mid-market and enterprise teams.,35.94,83.53,15,True

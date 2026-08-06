@@ -1,0 +1,501 @@
+﻿id,customer_number,company_name,industry,email,phone,country,region,status
+411954a7-3aa4-5061-a453-0ceb1c8258f7,CUS-00001,Rose Group,Financial Services,procurement1@customer.example,(794)346-3583x7803,United States,Midwest,active
+59404051-6e1f-5c07-92ce-c1b7d5876fc1,CUS-00002,"Hoffman, Rodriguez and Doyle",Telecommunications,procurement2@customer.example,001-311-241-2011x7433,United States,West,active
+a4fe1d50-055c-55b0-865e-a4d94101c9a6,CUS-00003,Jones Group,Financial Services,procurement3@customer.example,948-810-1836x43091,United States,Midwest,active
+4045a68b-1241-5c21-8e3a-549371864bb8,CUS-00004,"Ramsey, Jacobs and Stevens",Retail,procurement4@customer.example,(260)986-3861,United States,West,active
+00d1bcd5-ebf3-50a2-a791-067e9cd2a147,CUS-00005,Barajas Group,Financial Services,procurement5@customer.example,252.282.2236x620,United States,Midwest,active
+038b44e4-f191-5366-b99c-2c5aeddbb13b,CUS-00006,Steele and Sons,Retail,procurement6@customer.example,542.743.1209x26754,United States,West,active
+eace5daf-67c4-5404-840f-64be4f98d51e,CUS-00007,Haas Group,Financial Services,procurement7@customer.example,2614616486,United States,West,active
+74cf633d-26d0-5c3c-9200-656f0fe1bab7,CUS-00008,Chen Group,Healthcare,procurement8@customer.example,001-432-673-3768x675,United States,Northeast,prospect
+d30c325b-2b58-5f3b-a941-2b9af3f064ce,CUS-00009,Ward-Woodward,Technology,procurement9@customer.example,237.747.4078,United States,Northeast,active
+12ebb61a-7a75-5376-aab2-7ceb1eeaaa74,CUS-00010,Wright-Schneider,Transportation,procurement10@customer.example,749.993.8874,United States,Midwest,active
+65020f95-50fa-5b24-a17f-70eb235d9ae1,CUS-00011,Clayton Group,Transportation,procurement11@customer.example,(822)632-6351x233,United States,West,active
+ea6e9bfa-4eb3-55fb-aff4-4401646d50ef,CUS-00012,Berry-Nichols,Financial Services,procurement12@customer.example,5237164182,United States,West,active
+68eb2f5b-2bea-5024-94a5-93b5f4e1218d,CUS-00013,Strickland-Mann,Financial Services,procurement13@customer.example,(797)475-3372x510,United States,West,prospect
+4b4ddf72-a9a0-5739-b72a-501b484a6f70,CUS-00014,"Rodriguez, Jackson and Gonzales",Healthcare,procurement14@customer.example,412-245-7203x140,United States,Southeast,active
+2d768cb8-e8f9-5822-8a73-8e550ffaef36,CUS-00015,Brooks Inc,Technology,procurement15@customer.example,+1-488-505-0810x251,United States,West,active
+320fdc16-d569-5a9b-9ab3-f605ebdf7411,CUS-00016,"Owens, Odom and Marshall",Financial Services,procurement16@customer.example,4657742464,United States,Southeast,prospect
+a88055ea-7157-5cae-8a22-4a16e9df8b14,CUS-00017,Hughes-Solis,Manufacturing,procurement17@customer.example,001-859-205-1956x702,United States,Northeast,active
+c871b9d2-5aba-572d-af22-8b861bacda77,CUS-00018,Martin-Hawkins,Transportation,procurement18@customer.example,8124019252,United States,Southwest,active
+9151b88d-025c-5d8c-b6f6-f1e7d1472395,CUS-00019,Duncan LLC,Financial Services,procurement19@customer.example,001-434-941-0290,United States,Midwest,active
+727345d1-4693-517b-a329-04edd848b658,CUS-00020,Clark Ltd,Healthcare,procurement20@customer.example,707-355-6856x56111,United States,Northeast,active
+9bcd00fc-0f4b-54d1-992f-efd5492c5d04,CUS-00021,"Schmitt, Berg and Schultz",Professional Services,procurement21@customer.example,331-526-5038,United States,Northeast,active
+0b2f3f22-e79e-5501-a57c-833467001154,CUS-00022,"Perry, Marquez and Hooper",Telecommunications,procurement22@customer.example,4357069040,United States,West,active
+415a7e2b-2d6c-58af-929c-f2d3d93d593d,CUS-00023,"Obrien, Campbell and Parker",Professional Services,procurement23@customer.example,001-838-450-5373x9020,United States,Southeast,inactive
+4b7ba232-e074-5665-806c-2804861df655,CUS-00024,"Warner, Jones and Smith",Financial Services,procurement24@customer.example,(940)556-4886x82980,United States,Midwest,active
+ddd5d6f4-4a6d-5157-a994-b4656ff3daf6,CUS-00025,Matthews Group,Telecommunications,procurement25@customer.example,+1-812-834-8380x2920,United States,Southwest,active
+ce0413ce-813a-5b58-badb-103775b6d962,CUS-00026,Byrd-Becker,Retail,procurement26@customer.example,7516310870,United States,Northeast,active
+e67cb05f-774e-56d3-92c5-d1c5b33ddb46,CUS-00027,Griffith-Marsh,Professional Services,procurement27@customer.example,001-890-640-9561x30547,United States,West,active
+fe2f969a-cf60-55d6-bd36-5fcf029e68ab,CUS-00028,Morgan Group,Technology,procurement28@customer.example,641.657.8346,United States,Southeast,active
+5b77eb0f-fbc0-5382-865a-db5941867a32,CUS-00029,"Bell, Watson and Harris",Transportation,procurement29@customer.example,001-929-355-8799,United States,Southeast,active
+5eec2e12-42ee-500b-9664-ed7cef2230f3,CUS-00030,"Padilla, Walker and Kelly",Healthcare,procurement30@customer.example,001-980-324-2856,United States,Midwest,prospect
+da57bf8f-6000-5f3b-92db-f6c8f58424db,CUS-00031,"Martinez, Jones and Silva",Retail,procurement31@customer.example,+1-735-541-0137x3089,United States,Midwest,active
+62a26102-6613-5975-b5a6-f361a51ef984,CUS-00032,Coffey Group,Technology,procurement32@customer.example,5756553227,United States,Midwest,active
+a76466ab-21e2-5a4b-adb9-b0697c29e49b,CUS-00033,"Patel, Rogers and Harrington",Telecommunications,procurement33@customer.example,+1-952-532-9839x097,United States,Midwest,active
+c45e7545-e687-59bc-bfcb-8aa1781a915a,CUS-00034,Price and Sons,Transportation,procurement34@customer.example,+1-998-494-8651,United States,West,prospect
+93284c51-89ec-5b3a-9213-6c86ea224de2,CUS-00035,Wolfe Ltd,Manufacturing,procurement35@customer.example,654.360.6371x842,United States,West,active
+e8a1b9ba-35c1-529a-943b-1259db57e727,CUS-00036,Thomas Group,Professional Services,procurement36@customer.example,700-909-2538x18139,United States,West,active
+030d6a9b-4f25-5c78-aaee-abe5875bec1f,CUS-00037,Richards-Hall,Professional Services,procurement37@customer.example,416-917-5430,United States,Northeast,active
+a6f70166-edcc-569f-adb2-32e1010cdc1e,CUS-00038,Lucero-Soto,Telecommunications,procurement38@customer.example,503.537.6328x220,United States,Southeast,active
+bf320b53-233b-52d0-9acb-443e2fd61e84,CUS-00039,Durham-Byrd,Transportation,procurement39@customer.example,514.366.8282,United States,West,active
+bb4f2014-1d85-5b1a-9334-b4287fc4dd1d,CUS-00040,"Hicks, Chang and Luna",Financial Services,procurement40@customer.example,+1-597-685-4786x6532,United States,Southeast,active
+820f14e9-3ca8-5809-ad98-f704954f8e55,CUS-00041,"Hughes, Rodriguez and Combs",Telecommunications,procurement41@customer.example,001-927-741-0408x79978,United States,Southwest,inactive
+71bffb0b-1248-57ce-bee3-6f5ef54b1bfc,CUS-00042,Wilson LLC,Healthcare,procurement42@customer.example,7275395795,United States,Northeast,active
+8f063b1c-877c-506b-88d7-67009830268c,CUS-00043,Riley Ltd,Retail,procurement43@customer.example,9636165565,United States,Midwest,active
+58fc2c64-d99b-59ae-a357-f14e3c9a8658,CUS-00044,Gallegos-Jones,Healthcare,procurement44@customer.example,001-708-977-0844,United States,Northeast,active
+330fc81d-4b93-5eee-a4c6-c7a662017c96,CUS-00045,"Lee, Mckee and Hill",Healthcare,procurement45@customer.example,771.674.6821,United States,Southeast,active
+f35c94b5-66ed-5ba9-9a85-f01472c4c269,CUS-00046,Bright Ltd,Financial Services,procurement46@customer.example,(716)499-7568,United States,West,prospect
+b46bc77e-022a-5d37-ac07-9ac9b31cc704,CUS-00047,Haynes-Morris,Telecommunications,procurement47@customer.example,4018644366,United States,Southeast,inactive
+d9654a4c-376a-5bc2-92ca-51f4276b990a,CUS-00048,Gill LLC,Transportation,procurement48@customer.example,569.611.4946,United States,Northeast,active
+e45ca602-8e8b-569b-a3d0-0ca587abad08,CUS-00049,Gonzalez LLC,Telecommunications,procurement49@customer.example,(388)371-1456,United States,Midwest,prospect
+39a5c003-4cc5-5083-a9c8-392d8505d3f9,CUS-00050,Perry Ltd,Manufacturing,procurement50@customer.example,+1-652-539-6880,United States,Southeast,active
+38dedefe-ab38-5ff1-b6cc-24a5f4e95f8c,CUS-00051,"Williams, Wilson and Floyd",Technology,procurement51@customer.example,001-895-632-7177x256,United States,West,active
+1ed6801c-2884-5f46-b43a-cafefde74591,CUS-00052,"Rogers, Sims and Phillips",Telecommunications,procurement52@customer.example,620-788-7311,United States,Southeast,active
+02fd1e04-d5ac-5004-a5c4-72fccf654ea6,CUS-00053,Hughes-Lopez,Retail,procurement53@customer.example,001-858-515-8260x1052,United States,West,active
+f65d0b29-8605-52d2-bb1f-457c9ee2abac,CUS-00054,Garza-Perry,Professional Services,procurement54@customer.example,+1-843-341-9832x21842,United States,West,active
+471faf4a-015d-5282-99b0-d8e38ae6afbe,CUS-00055,Bailey-Kelly,Healthcare,procurement55@customer.example,604-242-1141,United States,Southwest,active
+4cb9f885-7dff-525b-bf16-eaf306617430,CUS-00056,Carter-Garcia,Technology,procurement56@customer.example,+1-408-683-9806x3775,United States,West,inactive
+d9533595-0144-5a73-940a-e2b49fda4bcb,CUS-00057,Macias-Hogan,Transportation,procurement57@customer.example,(382)864-6791x869,United States,Midwest,active
+cfc45208-54c6-5988-95af-486062fd7654,CUS-00058,Mckenzie and Sons,Manufacturing,procurement58@customer.example,(295)764-8510,United States,Northeast,active
+eb4cb2d3-d90e-535c-bb9b-a56b8ccf35aa,CUS-00059,"Walker, Adams and Griffin",Professional Services,procurement59@customer.example,613-621-3895x00915,United States,Midwest,active
+24fa888d-84ed-513a-9ee9-a92f4f6ade86,CUS-00060,"Clayton, Bradley and Curtis",Transportation,procurement60@customer.example,237-641-5028,United States,Northeast,prospect
+537c53b7-a6d7-5e3b-bf4c-d9d10b7d265d,CUS-00061,Rogers Inc,Retail,procurement61@customer.example,846.591.1774x511,United States,Southwest,active
+4ecf8661-bfeb-53ad-bb64-08a5b5154e5e,CUS-00062,"Williams, Morton and Mcmillan",Technology,procurement62@customer.example,001-557-294-3917x614,United States,Southeast,active
+d5a937e0-465f-5545-9b29-6adefd29ce71,CUS-00063,Huffman Group,Healthcare,procurement63@customer.example,395.665.7404,United States,Northeast,active
+299dee56-6ce6-5e19-82f2-22a504a2ef83,CUS-00064,"Bowman, Nichols and Odonnell",Transportation,procurement64@customer.example,327-374-9743,United States,Midwest,active
+1191f25c-c545-5e25-8e7a-b2817afc5cf0,CUS-00065,"Rice, Scott and Mejia",Financial Services,procurement65@customer.example,888.567.3297x8210,United States,West,active
+dd7b440f-a0fd-5667-ab77-bdedf999de61,CUS-00066,Moore-York,Telecommunications,procurement66@customer.example,+1-780-268-1019,United States,Southeast,active
+e50f9cce-0ecf-5ff6-a0b0-15205794aa06,CUS-00067,Davis-Berger,Healthcare,procurement67@customer.example,001-767-547-8888x299,United States,Southeast,active
+95bfaafb-a1fc-5609-ad7a-0f6ec343b951,CUS-00068,Smith-Vaughn,Professional Services,procurement68@customer.example,481-423-6455x03144,United States,Southwest,active
+e886f002-0850-544e-bbc7-6a62c8afd4c2,CUS-00069,"Lee, Hudson and Owen",Retail,procurement69@customer.example,+1-375-953-8165x31276,United States,Northeast,active
+5f66cc88-02bc-5518-a0dd-c2d1c09b1585,CUS-00070,Butler-Larson,Healthcare,procurement70@customer.example,001-517-447-9097,United States,Southwest,active
+75acbee6-d99a-5ec5-a2ac-5e5eae838250,CUS-00071,"Miller, May and Garrett",Professional Services,procurement71@customer.example,001-858-380-8256x74016,United States,Midwest,active
+d17126ee-524e-53b1-a028-ff5ab774ccea,CUS-00072,Warren Inc,Retail,procurement72@customer.example,7735650841,United States,Northeast,active
+14197d23-e062-50bc-baa6-3a2c3694a28c,CUS-00073,"Stewart, Nguyen and Padilla",Professional Services,procurement73@customer.example,797-957-4030,United States,Midwest,inactive
+2fcd5fdd-2d0c-5819-a291-64fefad299fd,CUS-00074,Valdez-Knox,Professional Services,procurement74@customer.example,+1-611-629-8049x855,United States,Northeast,active
+170e259d-c209-5ec6-8c12-ce5433ab4e22,CUS-00075,"Castillo, Morgan and Smith",Retail,procurement75@customer.example,626-600-1291x09122,United States,Southwest,active
+7762f614-5a4c-5614-bcff-b3df8edb028f,CUS-00076,Savage Ltd,Manufacturing,procurement76@customer.example,+1-394-862-8124x8280,United States,West,active
+fefa5234-83d9-575b-a0d1-d013bef7d309,CUS-00077,Thompson LLC,Financial Services,procurement77@customer.example,001-753-395-1456x54227,United States,Southeast,active
+4a6aa6c3-8918-55e9-8cf5-39e8142be9c1,CUS-00078,Paul-Mills,Manufacturing,procurement78@customer.example,247-784-3380x264,United States,Southwest,active
+b82dd2d7-8bb8-539a-9e55-e96f4385a6d1,CUS-00079,Cohen Ltd,Technology,procurement79@customer.example,258.211.1481x5675,United States,Southwest,active
+53e40369-8557-5ee4-8257-fdf32d502ce4,CUS-00080,"Patton, Bailey and Hernandez",Manufacturing,procurement80@customer.example,828-751-4512x8469,United States,West,active
+7ec6965c-e831-5848-861c-c35608f0693c,CUS-00081,"Lyons, Sanchez and Cruz",Manufacturing,procurement81@customer.example,(392)963-0916x31333,United States,Southeast,prospect
+b636ccbb-5496-5fc0-a0e8-01a14ef0aea5,CUS-00082,Beltran-Jimenez,Professional Services,procurement82@customer.example,(309)825-9097x51054,United States,West,active
+96ad2989-0a2f-5ef5-9d00-0accbe5bf499,CUS-00083,Shaffer and Sons,Technology,procurement83@customer.example,001-587-617-5198x10410,United States,Southwest,active
+1f48efe8-c8e7-59af-8890-40a5c5019e42,CUS-00084,"Taylor, Castillo and Murillo",Transportation,procurement84@customer.example,328-937-4103x87936,United States,Midwest,active
+0f77fa23-6a98-5f4c-a249-8a889a41687d,CUS-00085,"Oconnell, Lindsey and Reynolds",Manufacturing,procurement85@customer.example,905.646.4004,United States,West,active
+911d2ac5-b705-55b1-b535-20defd046120,CUS-00086,Walker-King,Technology,procurement86@customer.example,327.809.8347x0012,United States,West,active
+6e449027-35da-5d29-a514-1e0b8eb43aa9,CUS-00087,"Mayo, Holmes and Robinson",Healthcare,procurement87@customer.example,375.686.9737x3233,United States,West,inactive
+88e5084f-966c-54ad-ac34-25c62330bc2f,CUS-00088,Jenkins-Leblanc,Manufacturing,procurement88@customer.example,+1-889-460-6932,United States,Southwest,active
+14ed1888-e5c8-56b2-987f-eaadbbd628a8,CUS-00089,Mcdonald-Esparza,Financial Services,procurement89@customer.example,+1-559-554-6642x4463,United States,Midwest,prospect
+5ad01617-30cc-5924-9145-9331df0736c8,CUS-00090,Davis-Buchanan,Professional Services,procurement90@customer.example,514-834-1431x55464,United States,West,active
+d8e5fdba-aacc-51c8-aa52-eecb16013cc4,CUS-00091,"Watson, Hinton and Martinez",Professional Services,procurement91@customer.example,330.812.3569,United States,West,active
+58c7b809-804a-5bc8-b115-97e73d805552,CUS-00092,Williams PLC,Professional Services,procurement92@customer.example,727-849-6975,United States,Midwest,active
+9c99d82d-9768-59b0-bcee-1eb8fa296eb5,CUS-00093,"Williams, Henry and Vasquez",Financial Services,procurement93@customer.example,+1-907-362-4688x90742,United States,Midwest,active
+48fd5b5a-6215-5e05-88fd-ff210cb17a6c,CUS-00094,"Jackson, Morgan and Hall",Manufacturing,procurement94@customer.example,311.489.2224,United States,Southwest,active
+73db0a1c-1e07-5f7a-b389-9bb44e19c3aa,CUS-00095,"Robertson, Taylor and Blackwell",Telecommunications,procurement95@customer.example,4548133047,United States,Southwest,inactive
+3604e062-46b5-5078-94d0-24cd3c642d94,CUS-00096,Walker and Sons,Telecommunications,procurement96@customer.example,(510)233-6944x451,United States,Midwest,active
+14a7eb68-5af3-5176-b3ce-4fd95f98966a,CUS-00097,"Wolfe, Pollard and Evans",Retail,procurement97@customer.example,+1-948-905-2629x4982,United States,Southeast,active
+7a7a6781-a43d-5a44-b8c3-ed9a9393e01d,CUS-00098,Lopez Ltd,Financial Services,procurement98@customer.example,876-430-9646,United States,Southwest,active
+54a27e6d-c7bf-5812-880e-1ed91c4da5a7,CUS-00099,Richards-Newton,Transportation,procurement99@customer.example,001-853-418-2664x930,United States,Midwest,active
+00b4dc72-e96a-58bf-aa4a-9f770c79ebde,CUS-00100,"Evans, Simmons and Smith",Telecommunications,procurement100@customer.example,618-346-2887x15824,United States,Southwest,active
+053e133a-49c6-544b-a07e-cc8c363869bc,CUS-00101,Morris Group,Healthcare,procurement101@customer.example,(980)620-1616x591,United States,West,active
+35019a47-5783-58b9-bbe4-4f79b5ced9cd,CUS-00102,"Braun, Rose and Crane",Professional Services,procurement102@customer.example,996.885.6969x67802,United States,Southwest,active
+a8ec4add-4a24-56bf-b1c9-ca1a2b5df28f,CUS-00103,Barnes-Copeland,Technology,procurement103@customer.example,+1-822-941-6145,United States,Midwest,active
+490bbac0-ac53-5625-b604-7bd1ede4dddb,CUS-00104,"Walker, Vasquez and Haynes",Telecommunications,procurement104@customer.example,+1-633-715-1188x58076,United States,West,active
+3923c549-808a-5dc6-8250-8df33e5e339d,CUS-00105,"Harris, Frazier and Pena",Retail,procurement105@customer.example,484.441.1009x2514,United States,Midwest,prospect
+c8975e3f-60e7-51e3-a745-336d247dea17,CUS-00106,"Moore, Cameron and Clark",Technology,procurement106@customer.example,001-962-983-5323,United States,Southeast,active
+ed735c55-6b10-5d15-b69f-7d806cf3575a,CUS-00107,"Guerra, Miller and Price",Professional Services,procurement107@customer.example,001-546-484-6352x3526,United States,Northeast,active
+c977064b-11eb-59d5-973f-5594f41a3651,CUS-00108,"Christensen, Payne and Carrillo",Transportation,procurement108@customer.example,+1-779-623-8233x395,United States,West,active
+6c7e2291-c37b-5221-adf7-b99f74c62056,CUS-00109,Miller Inc,Telecommunications,procurement109@customer.example,001-692-800-5892x714,United States,West,active
+2c1841c7-6bab-59e0-aef7-bcda2f80dd86,CUS-00110,Lee-Allen,Manufacturing,procurement110@customer.example,(666)255-5319,United States,Northeast,inactive
+ebc4e9d9-750c-5601-83a5-2e8ac97ba602,CUS-00111,"Deleon, Garrett and Adams",Professional Services,procurement111@customer.example,808.746.8751,United States,Midwest,inactive
+6ad6d4cf-225a-5827-8d44-2584bc83022a,CUS-00112,Green Inc,Telecommunications,procurement112@customer.example,738-677-9047x153,United States,Southeast,active
+03369d23-5aef-5f2c-8d18-b3477b5d178a,CUS-00113,Briggs-Bond,Telecommunications,procurement113@customer.example,915-508-7792,United States,Southwest,active
+48253ef0-5cf2-5f70-9b66-93779cab6b3f,CUS-00114,"Miller, Jones and Nichols",Financial Services,procurement114@customer.example,(889)391-4280x64063,United States,Northeast,active
+d25ae150-2144-5ab2-9442-b141c980448c,CUS-00115,Lane PLC,Technology,procurement115@customer.example,667.648.5857x3886,United States,Midwest,active
+165390f8-63ad-5d58-a264-328d0da126cd,CUS-00116,"Camacho, Williams and Atkinson",Transportation,procurement116@customer.example,401-734-8078x046,United States,Southwest,active
+067c5d3a-d876-5d21-8d03-2f032f2b6f4c,CUS-00117,"Wang, Rubio and Brown",Retail,procurement117@customer.example,781-701-9413x770,United States,Midwest,active
+89eeb7f7-e2dd-593f-89e1-c716b7c38fd0,CUS-00118,"Boone, Mcgrath and Galloway",Healthcare,procurement118@customer.example,(574)897-5629,United States,Northeast,active
+7130589f-8f9f-5b9b-bdd0-ddfc15e09956,CUS-00119,Copeland Group,Technology,procurement119@customer.example,001-206-723-5622x5355,United States,Southwest,active
+5923c801-8fac-5b52-af62-bd95546ab309,CUS-00120,"Gibson, Williams and Salazar",Technology,procurement120@customer.example,(851)260-1065x216,United States,Northeast,active
+34aa8995-af09-5745-b268-2e8eb65910e2,CUS-00121,Jenkins-Lopez,Technology,procurement121@customer.example,(214)854-0709x8960,United States,Southeast,active
+3cacb34c-375e-5074-bf40-b4908ec72ccc,CUS-00122,Love-Robertson,Professional Services,procurement122@customer.example,(744)723-4705,United States,Northeast,active
+3e5f5099-ba24-593a-8a19-ef985a01e7bc,CUS-00123,Robinson-Smith,Telecommunications,procurement123@customer.example,644.866.7373x772,United States,Southwest,active
+22f217fd-923a-58e0-87e4-7840e9984351,CUS-00124,Lyons Ltd,Healthcare,procurement124@customer.example,001-679-981-8517x5696,United States,Northeast,active
+36c082a8-15a4-56eb-8b03-66465706414f,CUS-00125,Reyes-James,Telecommunications,procurement125@customer.example,(452)478-8162x130,United States,West,active
+8ba710c9-4197-5127-bdce-f6ff242cda4d,CUS-00126,Lawrence Group,Retail,procurement126@customer.example,744.591.5659x7394,United States,West,active
+1319795d-ef0b-5067-93ce-2bd5fa4fc6cf,CUS-00127,Walker Group,Financial Services,procurement127@customer.example,237.892.8709,United States,Midwest,active
+270a3d7f-e92d-57ce-ad4d-911a873f0506,CUS-00128,Jackson Group,Financial Services,procurement128@customer.example,309-553-6772,United States,Northeast,active
+3070a1af-5ed0-5cad-98f4-647e810fdaad,CUS-00129,Bentley-Henderson,Healthcare,procurement129@customer.example,5454108232,United States,West,active
+aa3eabe4-24b7-5773-b850-3f1255577ef8,CUS-00130,Adams-Lewis,Manufacturing,procurement130@customer.example,+1-642-528-3825x82433,United States,Southwest,active
+b7ca9756-55ff-5e43-9cb1-9cbab905e9db,CUS-00131,Barry LLC,Professional Services,procurement131@customer.example,001-746-871-5677x8614,United States,Southwest,active
+033ffeb0-b055-5c7e-88aa-85ce598880bd,CUS-00132,"Bullock, Kirby and Woods",Transportation,procurement132@customer.example,490-392-3223x1670,United States,Southwest,active
+1976b3dd-ea06-5684-a4c4-396fd7a0acae,CUS-00133,Ortega-Smith,Telecommunications,procurement133@customer.example,864-676-8533x464,United States,Midwest,active
+3dbd17c9-c1a7-5150-9f9c-032157d5e21c,CUS-00134,Hubbard-Wagner,Technology,procurement134@customer.example,+1-753-726-6148x45637,United States,Southeast,active
+4d282e22-c517-59c5-9ca0-622477c0905c,CUS-00135,Weaver and Sons,Financial Services,procurement135@customer.example,620-406-2361,United States,West,active
+81243744-dd13-5a29-aa58-34fe371a7b6a,CUS-00136,Gallegos Group,Retail,procurement136@customer.example,(836)916-9299x98348,United States,Northeast,active
+2a3d099e-3aaf-57b1-97c7-34bd4ff7ef6a,CUS-00137,"Stevens, Reyes and Perez",Telecommunications,procurement137@customer.example,001-226-716-9799x6329,United States,Southwest,active
+c3abef48-e783-5505-b88d-e552561c30a1,CUS-00138,Sanders-Rodriguez,Retail,procurement138@customer.example,924.368.9561x31427,United States,Northeast,active
+42bdf6db-1274-5c67-9c95-0386c787dcbe,CUS-00139,Smith Group,Healthcare,procurement139@customer.example,(884)495-2369x662,United States,Midwest,active
+54d84529-df9a-5737-ad18-6954910821d6,CUS-00140,"Grimes, Rich and Hernandez",Manufacturing,procurement140@customer.example,001-517-369-4306x664,United States,Southwest,active
+7d426d71-c6e4-5914-8ad8-a142129a8265,CUS-00141,Ochoa-Edwards,Financial Services,procurement141@customer.example,697.408.4674x288,United States,Midwest,prospect
+55d9e34f-0219-5915-bc14-28a0ba915bd3,CUS-00142,"Berg, Steele and Fernandez",Transportation,procurement142@customer.example,887.903.5137,United States,Southeast,active
+2630094e-3017-5eb7-a597-40f99100a14c,CUS-00143,Howard LLC,Professional Services,procurement143@customer.example,597.814.7182x92148,United States,Southwest,active
+6b62e287-4f45-5a76-9fda-ac07b8a4a484,CUS-00144,Miller-Browning,Technology,procurement144@customer.example,(908)591-6152x7624,United States,Southeast,active
+387db0fb-71df-5889-b6b4-cc6802693cba,CUS-00145,Stephens Group,Technology,procurement145@customer.example,001-233-958-2861x63773,United States,Northeast,prospect
+dc5fd084-70dd-5c0b-a9ac-b8e96bfb8e3a,CUS-00146,"Warner, Hutchinson and Henderson",Retail,procurement146@customer.example,741-445-8303x18405,United States,Southeast,active
+aa9cc48e-5859-5893-a5cd-6087a97d33a6,CUS-00147,Jackson Ltd,Technology,procurement147@customer.example,928-711-8850x518,United States,Southeast,active
+aa8c63c8-d686-52ed-9d78-13d55844bf50,CUS-00148,Silva-Simpson,Transportation,procurement148@customer.example,463.884.9019,United States,Northeast,active
+983d05f9-03e8-5e36-b2ac-6f84e0fad364,CUS-00149,"Matthews, Hogan and Martinez",Telecommunications,procurement149@customer.example,359-629-8479,United States,Midwest,active
+900e7d64-6e77-517b-85bd-a7a01e69fa56,CUS-00150,Anderson-Herring,Healthcare,procurement150@customer.example,643-357-4556x4785,United States,Northeast,active
+0b55ee75-bb2b-5c75-b3d5-150d382451d8,CUS-00151,Espinoza LLC,Technology,procurement151@customer.example,(369)507-6752x56463,United States,Midwest,active
+06f3ea78-51ad-533f-99ed-7b66e5105fb0,CUS-00152,Powell-Harper,Healthcare,procurement152@customer.example,+1-367-292-0184x427,United States,Midwest,inactive
+7a334245-32b6-5b38-8681-ab7e7d2017f6,CUS-00153,"Hebert, Gilbert and Schmidt",Technology,procurement153@customer.example,+1-594-611-0729x75014,United States,Northeast,active
+87eaed28-29f4-55cd-9771-91e40da15720,CUS-00154,"Shaw, Torres and Butler",Telecommunications,procurement154@customer.example,969.914.6403,United States,Northeast,active
+86682e2f-ff0a-52dc-81ef-2af7bd616176,CUS-00155,Mckay PLC,Financial Services,procurement155@customer.example,254-257-7448,United States,West,active
+74443b9c-c37e-521d-9d96-fbf0604f7124,CUS-00156,Santos-Morris,Retail,procurement156@customer.example,462.211.8336x434,United States,West,active
+4b6bb816-82b5-57b3-bd02-982228d1149a,CUS-00157,Thomas-Knight,Transportation,procurement157@customer.example,001-798-615-5499x769,United States,Southeast,active
+034d01dd-efd3-5bd1-9094-16ec39189ebd,CUS-00158,Mejia Inc,Professional Services,procurement158@customer.example,(310)447-6285,United States,Midwest,active
+941f4689-b896-529f-8bfa-f2d7ce6001ee,CUS-00159,Johnson and Sons,Technology,procurement159@customer.example,897.407.2015,United States,Midwest,prospect
+6d5dbc60-2c04-539f-b340-5d35e2b8268f,CUS-00160,Carrillo-Poole,Telecommunications,procurement160@customer.example,279-505-2027,United States,West,active
+14f6fed9-a5d8-5823-b536-a8a8bba662bf,CUS-00161,Evans Group,Technology,procurement161@customer.example,(337)696-0466x51004,United States,Southwest,active
+a6fc7f43-4df6-5ffa-bea1-42a83c3fa8e4,CUS-00162,Oconnor and Sons,Healthcare,procurement162@customer.example,931.349.7737x206,United States,West,active
+0ef49f4d-7bf6-5984-b7c6-1597a2c4f2d4,CUS-00163,"Vazquez, Mitchell and Baird",Healthcare,procurement163@customer.example,827-554-0434,United States,Southwest,active
+377afc55-7eef-572f-9ae7-501f7b3d8b12,CUS-00164,Davis-Cantu,Manufacturing,procurement164@customer.example,+1-867-686-7992,United States,Southeast,active
+abcf2b63-66d8-582c-a587-08010c4be1d4,CUS-00165,"Allison, Beard and Love",Telecommunications,procurement165@customer.example,940-423-3397x90525,United States,Southwest,active
+47384714-e1b7-5e0f-92ca-9cc7b429d98f,CUS-00166,King PLC,Telecommunications,procurement166@customer.example,4394419859,United States,Northeast,active
+a0a33f10-1906-5e9c-b602-72a155faa409,CUS-00167,Payne-Thomas,Financial Services,procurement167@customer.example,220.410.4003,United States,Midwest,active
+811abe48-1457-5c11-8bad-e4667903f9c3,CUS-00168,"Smith, Morrow and Coleman",Retail,procurement168@customer.example,(231)662-4258,United States,Midwest,active
+81af2ab0-055e-50df-83a2-49b78ffd7097,CUS-00169,Hudson-Hall,Manufacturing,procurement169@customer.example,940-987-2437,United States,Midwest,active
+50d5ba2e-b0c3-524c-b66d-2e436641c796,CUS-00170,Cherry-Sanders,Healthcare,procurement170@customer.example,672.519.0187x53694,United States,Southeast,active
+f0087d63-1c35-5e6f-994e-0844a8e342f4,CUS-00171,"Salazar, Harrison and Ramos",Retail,procurement171@customer.example,(428)267-8629x4861,United States,West,active
+fa45f60a-2206-5593-a37e-29358f9539e6,CUS-00172,Pennington Inc,Financial Services,procurement172@customer.example,(747)871-2994x65886,United States,Northeast,active
+211e9348-4f39-5391-99e3-c207abb6aa3d,CUS-00173,"Davis, Chaney and Howard",Healthcare,procurement173@customer.example,903-218-9645,United States,Midwest,inactive
+8baf19c7-db64-5221-93e0-52e621bdd5a6,CUS-00174,Scott-Thomas,Technology,procurement174@customer.example,+1-540-862-9349x8608,United States,Midwest,active
+cc9131a9-5014-5684-a229-810deffab2f7,CUS-00175,Brown-Caldwell,Manufacturing,procurement175@customer.example,+1-906-521-2448,United States,West,active
+713b454d-8698-5f1c-89f5-b1b4401010ea,CUS-00176,Duncan and Sons,Healthcare,procurement176@customer.example,945.749.3332x7688,United States,Southeast,active
+005ffe4b-0e2f-53cd-acdb-4bfb76bb1b72,CUS-00177,Rogers-Huff,Healthcare,procurement177@customer.example,001-691-492-4842x367,United States,Midwest,active
+0fae5ac6-afb9-5b81-99c4-d80d51446c73,CUS-00178,Jackson-Andrews,Financial Services,procurement178@customer.example,(997)371-0250,United States,Southeast,active
+51813e7b-b521-5ada-8c7e-13ea9b551a15,CUS-00179,Gregory-Bell,Financial Services,procurement179@customer.example,297.590.8130x283,United States,Midwest,inactive
+781869ae-9d51-528d-8d7b-21897d2236d8,CUS-00180,Larson-Johnson,Telecommunications,procurement180@customer.example,888-713-1864x80308,United States,Midwest,inactive
+5df9a8da-94a4-5c04-84ee-974b8fcc82c3,CUS-00181,Mcgee Group,Healthcare,procurement181@customer.example,371-748-9626,United States,Southwest,active
+1528185b-cf40-5ae0-bf34-08cf9ed4d3d3,CUS-00182,Blackwell-Burke,Transportation,procurement182@customer.example,001-290-777-5103x295,United States,West,active
+35b16062-11a6-5c7b-bb2c-1728ff821eb0,CUS-00183,Martin Inc,Professional Services,procurement183@customer.example,001-714-665-9208x654,United States,Southwest,active
+f941616b-f138-5e2a-84a6-62e46fcbc804,CUS-00184,"Mora, Hawkins and Jenkins",Healthcare,procurement184@customer.example,001-814-243-8840x082,United States,Northeast,active
+5dadb797-e2ca-59d9-b8ee-77ec85628d0b,CUS-00185,Park-Taylor,Financial Services,procurement185@customer.example,906-847-6028,United States,West,prospect
+efc6d6e2-3820-5513-8123-558be8fd8390,CUS-00186,Wong Ltd,Telecommunications,procurement186@customer.example,294.612.8827,United States,Southwest,active
+51172e6f-d077-58a4-8184-b9b56e540b8c,CUS-00187,"Bowers, Diaz and Decker",Retail,procurement187@customer.example,+1-341-961-6756x9917,United States,West,active
+0229bf32-83e3-5e7c-8306-8db796b70f33,CUS-00188,Miller-Wagner,Transportation,procurement188@customer.example,853-254-1732x55694,United States,Northeast,prospect
+40514aaa-f2d7-54e1-925b-f96e2ce00054,CUS-00189,Adams-Lee,Technology,procurement189@customer.example,001-874-203-1899x47851,United States,Southeast,active
+184031f6-2b7f-5fc8-a2dc-3a0529ec90bd,CUS-00190,"Stark, Matthews and Wallace",Financial Services,procurement190@customer.example,448-772-5609x230,United States,Northeast,prospect
+b659317c-a6a4-5430-b551-b8318b240920,CUS-00191,Carey and Sons,Professional Services,procurement191@customer.example,001-573-874-7178x823,United States,Southeast,active
+44f662d2-5cf7-5f6a-ba8a-b043ec347536,CUS-00192,"Williams, Pena and Goodman",Transportation,procurement192@customer.example,349.658.2733,United States,Midwest,active
+405f7bae-779e-5a02-bcd6-7f8bcb6c819a,CUS-00193,Case-Daniel,Financial Services,procurement193@customer.example,+1-990-521-0871x1552,United States,Midwest,active
+f01eb0d3-1237-5eb2-9493-3a08abd1d822,CUS-00194,"Smith, Jones and Miller",Technology,procurement194@customer.example,565.771.4288,United States,West,inactive
+f2604e64-ceef-58d5-8f2a-17a0c5d81c44,CUS-00195,Oneal-Parrish,Healthcare,procurement195@customer.example,(897)206-5245x15580,United States,Southeast,active
+78e4723d-ded1-5a57-88c3-ec9efe2efc1e,CUS-00196,"Martinez, Butler and Mckinney",Technology,procurement196@customer.example,+1-945-819-2430,United States,West,active
+71759505-eb52-563b-968f-e39ae3da4478,CUS-00197,"Leonard, Hernandez and Matthews",Retail,procurement197@customer.example,+1-882-806-4846x4009,United States,West,prospect
+be07142d-7058-522d-b8dd-7fc784639659,CUS-00198,Wilcox-Jackson,Healthcare,procurement198@customer.example,001-460-627-1735x8563,United States,West,active
+332f3a64-ba26-5dc9-88bf-4b722a6dee9d,CUS-00199,"Flowers, Blake and Jacobs",Manufacturing,procurement199@customer.example,490-554-7296x06390,United States,Southwest,active
+fdd1bf33-4026-5da5-8c98-a828d9ec7319,CUS-00200,Parks-Edwards,Transportation,procurement200@customer.example,+1-829-201-7376x74690,United States,Southwest,active
+b3398a43-50be-54d0-b982-9c62184be451,CUS-00201,"Ramirez, Williams and Johnson",Manufacturing,procurement201@customer.example,001-338-909-7021x83731,United States,West,active
+f0b39e46-c4d5-54bb-a075-5a9a7c87f516,CUS-00202,Ramirez-Nichols,Manufacturing,procurement202@customer.example,(280)561-1284x663,United States,Northeast,active
+cc2ce181-81fc-5f80-8405-c8d7324a0a86,CUS-00203,"Robinson, Brown and Hunter",Transportation,procurement203@customer.example,001-773-880-0654,United States,West,active
+da6b5bde-41d2-57db-9bb6-3906939e5897,CUS-00204,Peterson Ltd,Transportation,procurement204@customer.example,001-975-303-5924x317,United States,Southeast,active
+692b1e81-f08c-5c9d-b5c5-bfb5e52305cc,CUS-00205,Brown Inc,Financial Services,procurement205@customer.example,934.467.6590,United States,Southwest,active
+5cad41fc-a2d2-509b-93eb-b3342281c57c,CUS-00206,Thomas-Phillips,Healthcare,procurement206@customer.example,200.822.7995x51653,United States,Northeast,inactive
+70be961d-aa79-5f28-a4c6-e908fe43d946,CUS-00207,"Webster, Diaz and Brooks",Healthcare,procurement207@customer.example,+1-728-272-6058x43778,United States,West,active
+fcf1f8c9-ccaf-5878-a594-7eabc3d39110,CUS-00208,"Adams, Cruz and Mann",Professional Services,procurement208@customer.example,+1-231-371-3081x7568,United States,Northeast,inactive
+0c8950ed-4171-5694-8ff0-3a4425ff5fa6,CUS-00209,Gibson-Castro,Professional Services,procurement209@customer.example,(499)520-9827x260,United States,Southwest,active
+e8dd6aa3-8bd7-58ac-8da3-1d1981dcb4d8,CUS-00210,Hill Ltd,Professional Services,procurement210@customer.example,(685)676-2687,United States,West,active
+9f76bfad-d135-58ad-92f6-6a87e5dc378f,CUS-00211,Cook-Mccarthy,Manufacturing,procurement211@customer.example,(276)291-0854x7499,United States,West,active
+1d2b55eb-9007-525b-a8cb-e3e473de35dd,CUS-00212,Martinez-Sanchez,Telecommunications,procurement212@customer.example,929-378-9342x83969,United States,Southeast,active
+56f4c86f-4e04-5b9c-8202-c386fedc6c3d,CUS-00213,Cook LLC,Professional Services,procurement213@customer.example,(957)347-7549x69719,United States,Northeast,active
+15d106c1-93f3-5d77-97d8-5bcc9e3ca025,CUS-00214,"Vargas, Washington and Johnson",Telecommunications,procurement214@customer.example,(804)755-4895,United States,West,active
+715f4c06-3281-5c35-a117-2eca4c007df9,CUS-00215,Rivera Inc,Manufacturing,procurement215@customer.example,001-827-865-4912x031,United States,Southeast,active
+cc917d1b-2ad4-5f02-a1bb-f34d02c724d8,CUS-00216,Robbins-Nguyen,Technology,procurement216@customer.example,001-407-654-4132x34400,United States,Midwest,active
+913375e2-0480-5ccc-a43a-c352e976d07b,CUS-00217,Weaver-Sanchez,Retail,procurement217@customer.example,453.604.9464,United States,Northeast,active
+9c0b4fb1-df94-5e63-9bdf-23db45824d08,CUS-00218,"Armstrong, Walters and Smith",Manufacturing,procurement218@customer.example,+1-281-395-2146x3343,United States,Southeast,active
+7b4e4282-74df-5df9-b2bd-7c0c893b80db,CUS-00219,"Hinton, Jones and Ellison",Technology,procurement219@customer.example,001-708-919-9582x80033,United States,West,active
+a301724f-db9c-53d1-8e7a-a1f8196a2859,CUS-00220,James Group,Professional Services,procurement220@customer.example,545.505.1655,United States,Midwest,active
+09a8c0ba-422d-54f5-93d2-2db3265bd30f,CUS-00221,Sellers Inc,Retail,procurement221@customer.example,270.414.4277,United States,West,active
+1472294e-a186-5245-9afc-ccaad7893a3e,CUS-00222,English-Wilson,Transportation,procurement222@customer.example,726.239.0921x498,United States,Midwest,active
+700e5794-56b9-584e-aa85-d8674fda964c,CUS-00223,"Campbell, Rodgers and Stevens",Healthcare,procurement223@customer.example,+1-425-294-3507x2898,United States,Southeast,inactive
+5ff31b67-f47a-592a-9a3a-341942e30c8e,CUS-00224,Hobbs-Smith,Transportation,procurement224@customer.example,494.703.6231,United States,Northeast,active
+2ca6c1cf-f742-57f7-b43e-589510bd781f,CUS-00225,"Dyer, Owens and Lucas",Telecommunications,procurement225@customer.example,+1-714-213-4503x164,United States,Southwest,active
+5b8abb09-4a9c-53c0-af7e-2b86d19dd652,CUS-00226,Henry Group,Healthcare,procurement226@customer.example,+1-551-314-9596,United States,Southwest,prospect
+ef09a97a-4bba-5f6b-96ff-4ebf88d8d5d2,CUS-00227,"Howe, Drake and Chavez",Professional Services,procurement227@customer.example,(907)939-8669,United States,West,prospect
+9de31ba8-d50d-5ca8-be6f-99ca504274bd,CUS-00228,Williams Group,Professional Services,procurement228@customer.example,758.764.6985,United States,Southeast,prospect
+ea454c85-b607-5c71-a84f-ec84919fb709,CUS-00229,House-Cruz,Healthcare,procurement229@customer.example,+1-727-893-6686x313,United States,Southwest,active
+75c72440-ddbf-5bff-8e8c-8488b4c35b35,CUS-00230,"James, Gutierrez and Smith",Financial Services,procurement230@customer.example,001-595-267-1455x882,United States,West,active
+d32c591e-40f3-580a-ba9e-b940e2ef427c,CUS-00231,Coffey-Patterson,Telecommunications,procurement231@customer.example,+1-379-984-7721x7911,United States,Southwest,active
+492571cd-6c54-530b-8ecd-49c381ce4c96,CUS-00232,Gilmore LLC,Technology,procurement232@customer.example,+1-843-610-7285x4213,United States,Northeast,active
+5aee8f2d-fad8-5f72-897b-558e19b91816,CUS-00233,Johnson Inc,Transportation,procurement233@customer.example,(485)904-1203,United States,Southwest,active
+57f7533b-b4e4-5587-922e-aaede6234691,CUS-00234,Smith-Moreno,Healthcare,procurement234@customer.example,+1-266-829-9284x18116,United States,Northeast,active
+f7bf81a8-1406-5ca5-96ab-e964d881e491,CUS-00235,"Williams, Griffin and Clark",Financial Services,procurement235@customer.example,+1-898-413-5343x4469,United States,Northeast,active
+dfb31383-dd0a-51d3-8936-ebd04fadd595,CUS-00236,"Perry, Shea and Thomas",Retail,procurement236@customer.example,(709)375-1438x2386,United States,Southwest,active
+225ac19b-ce5f-585c-b5e4-1f431f510a79,CUS-00237,Jackson-Baker,Financial Services,procurement237@customer.example,546-901-4778x65941,United States,West,active
+d2f6b061-ebf1-58ea-80d0-8bba279f21c4,CUS-00238,Campbell-Mckee,Healthcare,procurement238@customer.example,(321)481-2810,United States,Midwest,active
+32a20227-b521-57c2-8043-1a0717dc15a9,CUS-00239,Rojas and Sons,Telecommunications,procurement239@customer.example,470.279.9820x629,United States,Midwest,active
+a48fbd90-693e-5449-bbfb-d34c370d27bb,CUS-00240,"Smith, Knight and Miller",Healthcare,procurement240@customer.example,(745)348-2486x672,United States,West,active
+5f078f90-2d6f-5cd4-baf1-e221a1ccd6b0,CUS-00241,Hayes-Hamilton,Professional Services,procurement241@customer.example,+1-440-379-9852x920,United States,Midwest,prospect
+b2abf452-14bc-53db-999b-1f4ea0829d09,CUS-00242,"Rojas, Riggs and Lloyd",Retail,procurement242@customer.example,001-431-835-3765,United States,Northeast,active
+75614514-deb7-5fb4-bad4-a46fffb0f790,CUS-00243,"Allen, Torres and Woods",Professional Services,procurement243@customer.example,402.334.6656,United States,Southwest,active
+e45ef230-a000-5b1f-a26b-abd2492609e6,CUS-00244,Patton PLC,Transportation,procurement244@customer.example,839.544.6826x94003,United States,West,active
+72e2b61c-b634-5e79-8565-069a598af025,CUS-00245,"Estrada, Thompson and Peterson",Healthcare,procurement245@customer.example,(420)752-2958x5567,United States,Southeast,active
+93129e2a-807c-5cb5-ab31-86ccf1638805,CUS-00246,Smith-Wright,Financial Services,procurement246@customer.example,+1-594-541-9631x00080,United States,Midwest,active
+30a44f7a-d5a3-5e4b-9a31-9eaf120064ca,CUS-00247,Davidson Ltd,Telecommunications,procurement247@customer.example,001-372-718-4306x984,United States,Midwest,active
+a0f41799-d018-5980-95cb-9d8f5c11ead0,CUS-00248,Duffy and Sons,Technology,procurement248@customer.example,001-971-622-9937x459,United States,West,active
+7cd8f59a-b1f3-5d2e-8caf-bf094111530c,CUS-00249,French-Steele,Telecommunications,procurement249@customer.example,(599)844-4215x563,United States,Northeast,active
+a8c99066-2209-5a24-8615-1a40a59c8b1b,CUS-00250,Cervantes-Young,Manufacturing,procurement250@customer.example,+1-901-706-9605x169,United States,Southwest,active
+0eec7b4c-002b-5dab-878e-f2a8a04e4b25,CUS-00251,Kerr PLC,Healthcare,procurement251@customer.example,471-272-0479,United States,Southeast,active
+226ca4b8-3720-5062-a88c-86445c07ea66,CUS-00252,"Mullins, Martin and Gutierrez",Healthcare,procurement252@customer.example,944-293-5207x19190,United States,Northeast,active
+4e8d9a35-92c7-5ebc-9d79-0467edde17b9,CUS-00253,Ford PLC,Healthcare,procurement253@customer.example,+1-556-937-8952x591,United States,Southeast,active
+b24f3844-d851-58bf-96a0-1484395ce08c,CUS-00254,"Medina, Blair and Ibarra",Technology,procurement254@customer.example,298-453-7573x94230,United States,Southeast,prospect
+441412c9-4946-5136-b1dc-b971c3175c8f,CUS-00255,Moore-Johnson,Technology,procurement255@customer.example,350.523.7657,United States,Southwest,active
+74f10365-790c-52e0-96a2-a32d6c70ce60,CUS-00256,Montgomery-Pearson,Healthcare,procurement256@customer.example,8463994579,United States,Southeast,active
+9c5ba231-ce4c-5e72-9ae8-025ae5a06908,CUS-00257,"Cisneros, Galvan and Pena",Manufacturing,procurement257@customer.example,557.673.0634,United States,West,active
+e34220b6-615a-5201-8434-eddf14b32a02,CUS-00258,Richardson-Hall,Healthcare,procurement258@customer.example,907-460-3945x73786,United States,Southwest,inactive
+1a1d90d7-5a47-5c68-b402-61d616464e17,CUS-00259,Thompson Inc,Manufacturing,procurement259@customer.example,(545)615-8930,United States,Southeast,active
+6289e26f-3f62-5717-b208-759544c72c9b,CUS-00260,"Fletcher, Lopez and Cowan",Telecommunications,procurement260@customer.example,+1-665-490-9834x3978,United States,Southeast,active
+b703766e-29da-5a0c-ab16-d0b8918643f5,CUS-00261,Jones and Sons,Healthcare,procurement261@customer.example,8396989522,United States,Midwest,active
+eb3f4c86-c3ca-5995-a9ae-dc2ad1743144,CUS-00262,Cooper-Bolton,Telecommunications,procurement262@customer.example,001-823-600-6764x2844,United States,Southwest,active
+8ea16eb1-2214-5eae-a29f-7d92773c437b,CUS-00263,Davis-Wilson,Technology,procurement263@customer.example,666-770-9983,United States,Southeast,active
+326b78f7-ab16-5357-b19e-c4fe014ff6e4,CUS-00264,Russo Group,Professional Services,procurement264@customer.example,589-673-2910x371,United States,Midwest,active
+46b1ec4a-7b12-5360-b5d7-4cd067e6e191,CUS-00265,"Bush, Brown and Savage",Technology,procurement265@customer.example,492.444.2095x272,United States,Southwest,active
+66174413-8e10-5c51-b577-3068e8d05432,CUS-00266,Arroyo-Leach,Technology,procurement266@customer.example,001-521-340-0166x14019,United States,Midwest,active
+28bb09d8-2545-57e8-a7ca-0789bb764966,CUS-00267,Brown-Petersen,Technology,procurement267@customer.example,(464)749-6303x8540,United States,Southeast,active
+f055a98f-c476-5dcf-a370-33fc7510ae5f,CUS-00268,Ruiz LLC,Financial Services,procurement268@customer.example,539.376.2084x95393,United States,Southeast,active
+f15b9a43-7cbc-58dc-82db-d266c5f7afb5,CUS-00269,Williams-Craig,Transportation,procurement269@customer.example,+1-321-312-9081x838,United States,Midwest,active
+dbea81be-bd5e-5213-a72f-430435501132,CUS-00270,Martin LLC,Financial Services,procurement270@customer.example,845-478-8815,United States,Midwest,active
+b3a45022-1f53-54d9-b834-97360e5477b5,CUS-00271,"Moran, Burton and Mcclure",Manufacturing,procurement271@customer.example,001-853-835-3714,United States,Southwest,active
+1b7886f4-413e-503f-b140-c48d42f2310e,CUS-00272,Brown and Sons,Healthcare,procurement272@customer.example,407-390-5727x2013,United States,Northeast,active
+139d23d0-0ca8-556c-a57f-46e9850e725d,CUS-00273,"Johnson, Sanchez and Mclaughlin",Technology,procurement273@customer.example,001-766-775-3554,United States,West,active
+d5688502-59d2-59ea-9155-1859535acf44,CUS-00274,Vazquez-Valdez,Transportation,procurement274@customer.example,+1-534-479-8375x67491,United States,Southwest,active
+dbca9ad4-77ae-5d51-b3ca-657cf0356913,CUS-00275,Cardenas PLC,Financial Services,procurement275@customer.example,+1-674-670-5824,United States,West,active
+2fcb06ab-8744-5be2-97af-1d16fe182b02,CUS-00276,"Gentry, Rowe and Esparza",Telecommunications,procurement276@customer.example,(719)267-6192,United States,Southeast,active
+dd5cd671-0268-55ac-a614-2ac59c182f40,CUS-00277,Carrillo LLC,Technology,procurement277@customer.example,001-376-207-5484x49813,United States,Southeast,active
+dc28ddad-a1b2-5fb6-8f6b-159e35a70ab1,CUS-00278,Armstrong-Alexander,Telecommunications,procurement278@customer.example,326-275-8227x96921,United States,Northeast,active
+a00a4326-61fb-505c-97b3-10a900ce3809,CUS-00279,Hernandez and Sons,Healthcare,procurement279@customer.example,(788)529-9745x413,United States,Southeast,active
+d7d581f1-c2da-5bd4-84fa-32ad01cc255b,CUS-00280,Bartlett and Sons,Technology,procurement280@customer.example,830-642-8203x35901,United States,Southwest,active
+619e7c22-b0d6-5bc9-a6a0-ceb9e0a340e3,CUS-00281,Ortiz-Goodman,Transportation,procurement281@customer.example,275.322.2456,United States,Midwest,active
+6d6f03ad-df29-5190-bcc1-4e253af30b8f,CUS-00282,Byrd-Pacheco,Retail,procurement282@customer.example,5512603090,United States,Southwest,active
+1594960b-82de-5ed2-b182-c91999a8afac,CUS-00283,"Hughes, Acevedo and Walter",Transportation,procurement283@customer.example,001-478-993-2885x4817,United States,West,active
+306f57ff-40e0-510d-a6d4-f7d03b736925,CUS-00284,"Bradshaw, Anderson and Ray",Transportation,procurement284@customer.example,560.453.2024x2320,United States,Southeast,active
+05a5c6bc-3c27-569a-8cfa-c848e070f23e,CUS-00285,"Proctor, Banks and Mann",Healthcare,procurement285@customer.example,(227)572-6860,United States,Southwest,active
+eb561ad0-9380-5a85-8731-9b83a34616f8,CUS-00286,Erickson and Sons,Retail,procurement286@customer.example,255.694.4686x52605,United States,Southeast,active
+f01fb266-be0e-529e-8004-92cdf4cc9317,CUS-00287,Castro Inc,Professional Services,procurement287@customer.example,589.889.1240x75852,United States,Midwest,inactive
+82d3547e-402b-58f3-8568-daab678823eb,CUS-00288,"Mccall, Bauer and Walker",Professional Services,procurement288@customer.example,447-261-1787x8421,United States,Midwest,active
+325d16ba-eea1-5758-9c8a-54636e31f8a8,CUS-00289,"Berry, Williams and Wong",Financial Services,procurement289@customer.example,304.733.5699,United States,West,active
+bffe2a6e-3224-59cf-a78a-767da38789d8,CUS-00290,Richards Group,Telecommunications,procurement290@customer.example,578.752.0426,United States,West,active
+f906c04d-16d4-51fa-b739-4b43a0519d33,CUS-00291,Horn-Poole,Professional Services,procurement291@customer.example,(367)831-3122x240,United States,Midwest,active
+391e55b5-f6e6-52a8-9196-1063349c9396,CUS-00292,Mendez Group,Telecommunications,procurement292@customer.example,410-947-6980x8880,United States,Midwest,active
+f602a6a2-3a5a-50db-8935-3d2a6f4c76e3,CUS-00293,Smith PLC,Retail,procurement293@customer.example,001-908-285-3295x2248,United States,Midwest,active
+5edca693-c9ea-5312-9c2a-a4730fbe5c81,CUS-00294,Sanchez-Evans,Professional Services,procurement294@customer.example,(391)704-6765,United States,Northeast,prospect
+2748db13-6911-5fba-bff3-ee3fc2feb585,CUS-00295,"Rodriguez, Sharp and Caldwell",Professional Services,procurement295@customer.example,229.843.3458x26422,United States,Midwest,active
+c83368bd-2297-5133-898c-f2e1d3e97285,CUS-00296,Hunt PLC,Healthcare,procurement296@customer.example,320.328.3125,United States,Northeast,active
+0495ddd2-4276-5189-9c75-2cb81e46b7e1,CUS-00297,Moore-Smith,Financial Services,procurement297@customer.example,590.798.7608,United States,Southeast,active
+2dc3a094-7673-5a36-8eda-09ce2921d716,CUS-00298,"Clark, Sanders and Waters",Manufacturing,procurement298@customer.example,700-567-4340x75376,United States,Northeast,active
+b5c5e541-d869-59b6-bb0f-690aae22a20d,CUS-00299,Santiago-Pierce,Telecommunications,procurement299@customer.example,840.751.9601,United States,Southeast,active
+a7b7d28d-8038-5a31-9253-199e0498df20,CUS-00300,"Fox, Collins and Jones",Retail,procurement300@customer.example,001-527-689-9859x25611,United States,Southwest,active
+638b00ed-91cb-531d-b799-3b67878ac7b3,CUS-00301,Wilkinson-Navarro,Healthcare,procurement301@customer.example,001-519-468-5865,United States,Northeast,active
+abdc1779-4100-596b-8d77-e8c9b1c5ba82,CUS-00302,"Johnson, Graham and Fischer",Retail,procurement302@customer.example,001-570-748-2459x67445,United States,West,active
+1e63369d-411f-5853-8c02-849cf4e8764f,CUS-00303,Shepard PLC,Retail,procurement303@customer.example,+1-829-746-1671x78907,United States,Southwest,inactive
+69343164-0d9f-5c31-a832-2a81958753bf,CUS-00304,Schaefer and Sons,Professional Services,procurement304@customer.example,736.983.6535,United States,West,inactive
+0c869bee-b1b5-5f47-9bd4-287fb4f684a7,CUS-00305,"Bryant, Huynh and Brewer",Transportation,procurement305@customer.example,654.234.6577,United States,West,active
+79c0aefc-5401-5768-acf7-3d92461e78f8,CUS-00306,Le-Perez,Financial Services,procurement306@customer.example,001-462-695-6619x2332,United States,Midwest,active
+41ac330f-ba74-5e82-a265-9bd30e071559,CUS-00307,Roberson Ltd,Technology,procurement307@customer.example,(912)615-1489,United States,Northeast,active
+da64b36b-b5b6-555b-9093-3c014d6534ff,CUS-00308,Mills-Black,Professional Services,procurement308@customer.example,929-756-1079x60979,United States,Midwest,active
+0d34bfa4-fcc6-59f8-9652-5e0affb1d4f4,CUS-00309,Cunningham Ltd,Technology,procurement309@customer.example,316-448-9972x02122,United States,Southwest,active
+b73c7bc3-14d4-53cf-a7a9-a9002d7bf9ab,CUS-00310,Gardner and Sons,Manufacturing,procurement310@customer.example,445-301-8358x468,United States,Southwest,active
+f0648a7a-1f33-5d5c-a484-653be39260f5,CUS-00311,Becker and Sons,Retail,procurement311@customer.example,(757)730-9429,United States,Midwest,prospect
+25a987bf-d43f-5c6b-950a-3fd2f1513969,CUS-00312,Jackson-Sloan,Financial Services,procurement312@customer.example,(757)556-0514x36920,United States,Northeast,active
+b33caefb-e0d0-53cf-bfee-efb8c0f6f5a8,CUS-00313,Mcintyre Group,Manufacturing,procurement313@customer.example,(976)565-9957,United States,West,active
+0d8c7000-8d7b-5c36-86a5-0d82acadddc2,CUS-00314,Collins and Sons,Transportation,procurement314@customer.example,9245950278,United States,West,inactive
+939cc1b1-b2b9-5377-8a1f-b66bf84b5aab,CUS-00315,Moore-Garcia,Retail,procurement315@customer.example,+1-469-767-7953x19285,United States,West,active
+6aea5a07-6ece-51ab-b807-9b678bb5b1d1,CUS-00316,Schwartz-Lee,Professional Services,procurement316@customer.example,(574)833-7794x9176,United States,Midwest,active
+dc63379c-e5c5-5b57-983a-6f7fa7d15bdf,CUS-00317,Olson Inc,Transportation,procurement317@customer.example,001-876-674-0768x6122,United States,West,active
+0f56079a-c587-5919-a93b-3c4cf99003e0,CUS-00318,"Reeves, Nichols and Carter",Retail,procurement318@customer.example,795.968.9196,United States,Southwest,active
+36b5bc99-770b-564c-9cc1-4822b00d0ba5,CUS-00319,Herman-Becker,Manufacturing,procurement319@customer.example,001-436-394-9682,United States,Southeast,active
+ea1db81d-517d-59e1-9029-bf062d02a015,CUS-00320,"Newman, Olson and Davis",Technology,procurement320@customer.example,(464)465-0507,United States,Midwest,active
+23d58a1d-7f26-55e7-a59d-b1b41e692582,CUS-00321,"Leblanc, Hill and Harmon",Manufacturing,procurement321@customer.example,(839)940-8865x0893,United States,West,active
+4e710c59-f3b8-5937-827e-4e7682f006f8,CUS-00322,"Becker, Banks and Hicks",Transportation,procurement322@customer.example,+1-817-631-3173x14276,United States,Northeast,active
+05e55145-f922-5b7f-9a87-b4e535288ab0,CUS-00323,Mcknight LLC,Retail,procurement323@customer.example,404-636-2349x753,United States,Southeast,active
+d37938b7-749c-5fa6-8182-e9f88d561a06,CUS-00324,Meyer-Mendoza,Manufacturing,procurement324@customer.example,654-697-3610x3739,United States,Midwest,active
+98c4b38d-c8fd-5043-ac5f-38ada8b0589c,CUS-00325,Miller PLC,Technology,procurement325@customer.example,+1-558-210-4326x8144,United States,Midwest,active
+49b4b103-0ec7-5e78-ac2f-44a83adcf738,CUS-00326,"Medina, Hudson and Horn",Technology,procurement326@customer.example,(926)936-4446x7501,United States,Southwest,active
+a834bea2-ce91-50c8-9038-7c4a38933628,CUS-00327,Rodriguez PLC,Technology,procurement327@customer.example,239-323-6794,United States,Southeast,active
+0ed325ad-dc2c-56e0-bd0f-314849308cd2,CUS-00328,"Carpenter, Kelly and Mueller",Technology,procurement328@customer.example,537-985-9879,United States,Southwest,inactive
+1888901a-2aa8-5cf0-afb6-d48a0822f2c1,CUS-00329,Torres and Sons,Retail,procurement329@customer.example,(480)203-4885,United States,Southeast,active
+9a47fbec-2eb1-5aa9-978a-b7ecfe7e3013,CUS-00330,Holland-Johnson,Healthcare,procurement330@customer.example,+1-203-594-6714x26028,United States,Midwest,active
+19320701-b239-5638-97f2-e5e7ef202f73,CUS-00331,"Howard, Burns and Jenkins",Telecommunications,procurement331@customer.example,275-557-4867,United States,Northeast,active
+5b9a240a-08cf-5146-92b8-dc12785af04d,CUS-00332,"Cunningham, Lopez and Hogan",Technology,procurement332@customer.example,+1-820-663-6343,United States,Northeast,active
+798042e6-6e8d-5878-a20a-04d8a7d0277c,CUS-00333,Mann LLC,Retail,procurement333@customer.example,600.668.3402x44029,United States,Northeast,active
+9d0f2869-bc81-5ddc-ac5b-0afe4a393c00,CUS-00334,"Gonzales, Mooney and Gonzalez",Technology,procurement334@customer.example,902.352.3150,United States,Southwest,active
+8ebcae03-2625-57f2-82ee-a29c3784ddea,CUS-00335,Jimenez-Mcbride,Technology,procurement335@customer.example,001-480-918-5558x4470,United States,West,active
+f3b32c23-d3e5-5147-83fc-209309790194,CUS-00336,"Sharp, Hill and Bradley",Telecommunications,procurement336@customer.example,809.647.3665x5545,United States,Northeast,inactive
+c6d441aa-8d4f-5010-a0f1-0859c85abd66,CUS-00337,Kim-Evans,Healthcare,procurement337@customer.example,3827980039,United States,Southeast,active
+411e90c0-155c-596b-aaa6-0c0619bc80e1,CUS-00338,Hicks and Sons,Retail,procurement338@customer.example,+1-563-205-5829x380,United States,Northeast,active
+3fda2c6c-c926-56d4-a25f-f2e7e2f4bc34,CUS-00339,Simpson PLC,Manufacturing,procurement339@customer.example,+1-576-656-5369x901,United States,Southeast,active
+e366214c-6aa6-5aee-8dc2-20932cc4fea2,CUS-00340,"Rodriguez, Cannon and Robinson",Healthcare,procurement340@customer.example,824.404.3104x866,United States,Southwest,active
+a85bd626-8a28-5fe3-8033-401cc6ee790e,CUS-00341,Alvarado Inc,Healthcare,procurement341@customer.example,(552)978-0012x4745,United States,Southeast,active
+9b5e283a-de19-5c2b-86ae-74edf53feb32,CUS-00342,Ross Inc,Transportation,procurement342@customer.example,8803831988,United States,West,active
+62bdc722-1c50-5dca-97ba-fb435dd7015a,CUS-00343,"Camacho, Wilcox and Wood",Telecommunications,procurement343@customer.example,347.499.6510x32251,United States,West,active
+503b9322-80b5-5bfc-9b7b-7bace874d064,CUS-00344,Hamilton-Gomez,Transportation,procurement344@customer.example,+1-569-352-6779x585,United States,West,active
+604d18ac-e6bb-5ab1-ab92-569dfc0b5646,CUS-00345,"Bishop, Ford and Perez",Professional Services,procurement345@customer.example,932.540.3005x284,United States,Southwest,active
+1055b7e8-8538-5966-86ca-9f9cce8f490b,CUS-00346,"Lucero, Miller and Vargas",Financial Services,procurement346@customer.example,001-342-351-5231x628,United States,Southwest,active
+72b1e8bc-0905-5b54-9feb-da127b614396,CUS-00347,"Novak, Lam and Steele",Technology,procurement347@customer.example,001-726-819-5684x831,United States,Southwest,active
+c568bbbf-f746-5446-90b8-01ca85a5b0e6,CUS-00348,Kaiser-Reed,Financial Services,procurement348@customer.example,240.339.5767x179,United States,Southwest,active
+6e23a361-7958-5672-a4fd-fc01200a033d,CUS-00349,"Wilkins, Randolph and Sullivan",Manufacturing,procurement349@customer.example,001-302-998-6790x04499,United States,Southwest,active
+ae2db326-af20-5343-8590-65c805d0128f,CUS-00350,"Owens, Elliott and Jennings",Manufacturing,procurement350@customer.example,265-523-6308x968,United States,Midwest,active
+8cde1c9d-f5f7-509d-ae3f-e5278667f0f5,CUS-00351,"Jackson, Martinez and Bradshaw",Retail,procurement351@customer.example,466-248-8466x9946,United States,Northeast,active
+21ff8f4b-f607-5666-b239-f86c0ef4a0a9,CUS-00352,"Hernandez, Bautista and Hicks",Healthcare,procurement352@customer.example,323-249-5340,United States,West,prospect
+a7995a27-133e-513f-ad52-42c967bf1a74,CUS-00353,Lester Ltd,Manufacturing,procurement353@customer.example,700.888.1366x08813,United States,Southeast,prospect
+ab14f6e6-87ff-58e4-ac00-46e50d96fddc,CUS-00354,"Neal, Matthews and Haas",Technology,procurement354@customer.example,(838)734-0961x85239,United States,West,active
+1afc74f0-729e-53a4-89fa-30228c710657,CUS-00355,"Johnson, Thompson and Allen",Manufacturing,procurement355@customer.example,395-877-8596x2291,United States,West,active
+e2796e24-73bc-50d9-8592-d2444a8ec1ff,CUS-00356,Houston LLC,Manufacturing,procurement356@customer.example,001-378-969-8818x2321,United States,Southwest,inactive
+ea89d463-10a8-5c69-9e48-a00cfc942028,CUS-00357,Ellis-Young,Telecommunications,procurement357@customer.example,363.686.7127x13132,United States,Midwest,active
+01e5eb13-be9c-50d0-90dd-28a9cce2c901,CUS-00358,Peterson-Higgins,Retail,procurement358@customer.example,+1-628-223-9541,United States,Southeast,active
+d027279c-8bfe-5082-bd82-b432dfa4a62f,CUS-00359,Orozco Group,Technology,procurement359@customer.example,631.935.7922x506,United States,Southwest,active
+de2eaee2-a489-5d91-a5f3-d7b041fed771,CUS-00360,Wilson Group,Transportation,procurement360@customer.example,6089152405,United States,Southeast,active
+8edd1228-3a2b-545d-a363-a0240edd721e,CUS-00361,Brewer-Barnett,Manufacturing,procurement361@customer.example,757.598.2737,United States,Midwest,active
+37abbf5e-03da-5827-a286-803358b02c78,CUS-00362,Clark-Hill,Financial Services,procurement362@customer.example,+1-968-923-4826x303,United States,Southeast,active
+0f325fb4-920f-51aa-92ca-6894b2ef8c37,CUS-00363,Fuller Inc,Transportation,procurement363@customer.example,001-685-217-8512x568,United States,West,active
+4edd4353-ea41-5f28-a532-c57780412c41,CUS-00364,Hale-Garcia,Technology,procurement364@customer.example,001-298-261-6168,United States,Midwest,inactive
+52d6db95-2df5-508d-a394-02136262050d,CUS-00365,"Smith, Phillips and Herring",Healthcare,procurement365@customer.example,+1-720-719-8286x5748,United States,Southeast,active
+328c00d1-8d31-56fc-b118-f14451e8e83e,CUS-00366,Vang-Carter,Technology,procurement366@customer.example,001-441-435-5320,United States,Midwest,prospect
+5a50cdc9-fb0b-58f7-9924-c34148c6997d,CUS-00367,"Smith, Reid and Jones",Financial Services,procurement367@customer.example,212.575.5021x3022,United States,Midwest,active
+98720647-5e5b-52f7-b8a1-84433d1df38e,CUS-00368,Garcia Group,Transportation,procurement368@customer.example,+1-355-892-6567x9930,United States,Southeast,active
+2df9d00a-36d1-5377-aec2-5548b2971241,CUS-00369,Edwards-Blake,Technology,procurement369@customer.example,346-652-4853x936,United States,West,active
+66f2f002-1fe4-5b41-bc51-cb7ea54fa270,CUS-00370,Jackson Inc,Professional Services,procurement370@customer.example,(454)870-1345x91538,United States,Southwest,active
+c3d964c3-64c5-5f24-bdaf-3aceb8ad6485,CUS-00371,"Orr, Barnett and Mata",Manufacturing,procurement371@customer.example,541.976.8227,United States,Northeast,active
+bfe531f3-7881-5f16-b241-20f069111509,CUS-00372,Phillips Inc,Retail,procurement372@customer.example,001-616-342-0546x9625,United States,Northeast,active
+9e37795c-761a-5907-8655-c9cc6614657e,CUS-00373,Lozano Inc,Transportation,procurement373@customer.example,3507234013,United States,Midwest,active
+ddef0d18-ace0-5bc5-96a0-ad9463f27ac2,CUS-00374,Preston Ltd,Transportation,procurement374@customer.example,001-436-568-5385x273,United States,Southeast,active
+ebbe7ebd-6675-5967-8807-1e99ebe9f4d5,CUS-00375,Johnson-Price,Healthcare,procurement375@customer.example,955-263-5842,United States,Midwest,active
+262319a1-2adf-53b9-a484-605c017a9104,CUS-00376,"Brady, Ray and Black",Healthcare,procurement376@customer.example,765.638.8627x1045,United States,West,active
+238c4b69-138e-5f45-ac27-13ef8d5a4207,CUS-00377,Kim-Pierce,Transportation,procurement377@customer.example,990-608-4492x8939,United States,Southwest,active
+3326515d-41a7-58a9-907c-e06089fa01c5,CUS-00378,Garcia-Williams,Technology,procurement378@customer.example,001-599-882-9551x177,United States,West,active
+c4156948-f677-5af4-a0de-d5141492c2fc,CUS-00379,"Perkins, West and Ross",Transportation,procurement379@customer.example,(899)491-2388x363,United States,Southeast,prospect
+cf2226a8-1b7f-5eb6-8a4c-6bd84e7f34df,CUS-00380,"Oneill, Potts and Marshall",Technology,procurement380@customer.example,001-872-806-6154x208,United States,Midwest,active
+553c1b99-7077-5bc3-b1fe-ff6ea738e56c,CUS-00381,Jones PLC,Financial Services,procurement381@customer.example,6487356261,United States,Midwest,active
+00ec496a-96dc-5e8f-a2f4-e34e1e87ab2c,CUS-00382,"Reynolds, Nash and Smith",Healthcare,procurement382@customer.example,201.408.9711x973,United States,West,active
+d0912a42-5e15-50d0-bbe2-7065c5632e55,CUS-00383,Parks-Elliott,Manufacturing,procurement383@customer.example,916-705-3016x63344,United States,West,active
+f3ca3a6f-cfe7-5169-b9ad-383c2c7a2cc8,CUS-00384,Sexton and Sons,Healthcare,procurement384@customer.example,834-650-3327,United States,Midwest,active
+633d183a-2766-5cdc-8457-7eaf84de177f,CUS-00385,Fletcher-Martinez,Manufacturing,procurement385@customer.example,(843)810-0885x127,United States,Midwest,active
+bc9907a8-c576-5f86-9d61-076200e309c0,CUS-00386,"Drake, Weaver and Turner",Retail,procurement386@customer.example,(368)231-5742,United States,Midwest,active
+2a15a126-84d8-555c-9e3c-17fe42636955,CUS-00387,"Harris, Gutierrez and Elliott",Telecommunications,procurement387@customer.example,(534)904-0302x33926,United States,West,active
+ed94c90f-0279-5414-bdbf-8f0c432575cd,CUS-00388,"Williams, Montgomery and Vaughn",Financial Services,procurement388@customer.example,+1-752-863-5295x4234,United States,Northeast,active
+98040fa4-e3e2-5e47-ba22-98dddec004f3,CUS-00389,Anderson-Guerrero,Healthcare,procurement389@customer.example,(737)313-1294x9982,United States,Southwest,active
+5799dc89-848a-5029-a596-a8c578777134,CUS-00390,Cook-Finley,Healthcare,procurement390@customer.example,(576)572-7008x460,United States,Southwest,active
+e92ebbd6-5163-5470-8264-b84780f6f521,CUS-00391,Phillips-Miller,Transportation,procurement391@customer.example,791-651-8659,United States,West,active
+3d33b250-ec74-5d47-92d7-57a58e7093aa,CUS-00392,Lara-Young,Transportation,procurement392@customer.example,969.449.9481x734,United States,West,active
+d982a404-da9e-5464-ab0b-632124ce3852,CUS-00393,Murray-Garcia,Transportation,procurement393@customer.example,427.644.5303x960,United States,Southwest,active
+e483cfea-9d2d-52b7-92b3-54c40b036175,CUS-00394,Murphy Ltd,Financial Services,procurement394@customer.example,001-706-808-7646x6641,United States,Southeast,active
+0c6b4432-a2aa-5a08-aa98-037878e0a135,CUS-00395,Walker-Stout,Transportation,procurement395@customer.example,(652)785-4644x105,United States,Southwest,active
+93bf04d9-8e55-5311-acba-bb55bb0a74b1,CUS-00396,"Kelly, Freeman and Gonzales",Manufacturing,procurement396@customer.example,2588782590,United States,Southeast,active
+389102bb-679b-54d2-a322-bd281ba8e916,CUS-00397,Thompson PLC,Healthcare,procurement397@customer.example,456.250.4874x3385,United States,Southwest,active
+57f9a8b3-e5ff-5ea5-b2f2-b5735ffb7811,CUS-00398,Nelson and Sons,Telecommunications,procurement398@customer.example,(212)931-9944x0010,United States,Southwest,active
+29caa4a7-72db-50d1-95f2-39c2135c883a,CUS-00399,Morgan-Ramsey,Professional Services,procurement399@customer.example,001-276-626-4458x2850,United States,West,active
+022518fc-c9ab-5ab7-89f9-7077b5801b6f,CUS-00400,"Gardner, Hawkins and Kidd",Professional Services,procurement400@customer.example,684.545.6687x2408,United States,Midwest,active
+c3ea99b8-8b78-52eb-9fbc-defb149ad98e,CUS-00401,Chapman Group,Retail,procurement401@customer.example,811-771-2608,United States,Southeast,active
+26ed9af7-a2ed-54ae-960b-d5f7ceb3f29f,CUS-00402,Young-Cardenas,Healthcare,procurement402@customer.example,721-810-9031,United States,Northeast,active
+874da0f2-11f6-538f-9e17-ca7279ca8d78,CUS-00403,Sweeney Ltd,Telecommunications,procurement403@customer.example,6359857893,United States,West,active
+28b3fd98-5708-52b6-9827-2438ba2f7d9d,CUS-00404,"Newman, Crosby and Fritz",Professional Services,procurement404@customer.example,(603)309-6404x144,United States,Southwest,active
+d9db03df-2d6b-54b9-a7f4-723fe446ffa4,CUS-00405,Moore-Haley,Telecommunications,procurement405@customer.example,001-618-329-8484x2210,United States,West,active
+01ff9cad-dfbc-5aa4-b0cb-9146d48f095b,CUS-00406,Williams and Sons,Professional Services,procurement406@customer.example,+1-987-913-2433x51466,United States,West,active
+8abef9ed-a119-5b75-93c5-7185d84922d1,CUS-00407,Lewis PLC,Technology,procurement407@customer.example,702-888-9715,United States,Northeast,active
+ba75f812-6df0-51cd-974c-2c3e45c78227,CUS-00408,"Richmond, Garrett and Johnson",Healthcare,procurement408@customer.example,941.777.6130,United States,Northeast,active
+e1601e4b-9021-56e3-bb1d-fef14dbe7f8d,CUS-00409,Roberts-Montgomery,Manufacturing,procurement409@customer.example,246.857.5752x94491,United States,Midwest,active
+87c644ab-4a08-59ae-8d46-46413cec7d15,CUS-00410,Robinson Ltd,Manufacturing,procurement410@customer.example,898-717-8199x77395,United States,West,prospect
+069ee107-ef39-5b56-8a25-9bd98963b8c1,CUS-00411,Austin-Riley,Manufacturing,procurement411@customer.example,899-649-6488x33636,United States,Southeast,active
+f2b634ca-cd08-51b5-bc53-6b0d79e912e1,CUS-00412,Spears Group,Healthcare,procurement412@customer.example,001-833-621-4212,United States,Southeast,active
+af85b719-4b89-502c-9b4c-e7b6e45692b0,CUS-00413,Oconnell LLC,Transportation,procurement413@customer.example,5962704248,United States,Southeast,active
+39110d84-8485-5cb3-84d7-c181db1c1ca5,CUS-00414,Santana and Sons,Retail,procurement414@customer.example,8344490713,United States,Midwest,inactive
+e6d92daf-dcd2-58ca-90d7-636261dd7bbc,CUS-00415,Hayden LLC,Retail,procurement415@customer.example,8103653966,United States,Southeast,prospect
+f68b1bf8-566b-599a-816f-a2d153d02af8,CUS-00416,Burns Ltd,Professional Services,procurement416@customer.example,6882202909,United States,Southwest,active
+7004f89a-407f-5257-885a-50bfaca6f7a1,CUS-00417,"Chambers, Horton and Zimmerman",Healthcare,procurement417@customer.example,821-201-9582x873,United States,West,active
+e1454273-e9fe-5e55-9d8e-d857fb47b39d,CUS-00418,"Ortega, Hernandez and Armstrong",Technology,procurement418@customer.example,887.216.0487,United States,Southwest,active
+f1dea065-29d1-559a-8ab4-891657df2249,CUS-00419,"Garcia, Jenkins and George",Technology,procurement419@customer.example,317.924.2101,United States,Southwest,active
+d35b7450-b912-5394-a06e-ce5de144ba54,CUS-00420,Dyer-Pope,Manufacturing,procurement420@customer.example,(630)664-6631x448,United States,Southeast,active
+f86387ed-fd14-52ca-a24d-736799edf380,CUS-00421,Dickerson-Phillips,Telecommunications,procurement421@customer.example,385-331-3632x0324,United States,Southeast,inactive
+6723025d-688e-5195-bedd-bcb932d3d17b,CUS-00422,"Weber, Robertson and Holmes",Transportation,procurement422@customer.example,(574)363-8714,United States,Southeast,active
+93462d1f-c965-536d-a89a-5bbb9014fd6f,CUS-00423,Tate-Shea,Professional Services,procurement423@customer.example,279-612-1052x3501,United States,West,active
+2add0fbc-eec3-558e-a863-4f5381899638,CUS-00424,"Decker, Edwards and Poole",Retail,procurement424@customer.example,(317)729-3644x479,United States,West,active
+82bdf2c6-fb02-526a-b9f4-ce7bbbbfc3d1,CUS-00425,"Watson, Smith and Howard",Retail,procurement425@customer.example,873.643.1396x840,United States,Southeast,active
+497cb1c0-768f-58c2-901a-4e193a0b67da,CUS-00426,Hernandez Ltd,Telecommunications,procurement426@customer.example,+1-419-705-4731x84081,United States,West,active
+143876d1-7806-5041-b6ec-f88b1624387d,CUS-00427,Little-Rice,Telecommunications,procurement427@customer.example,+1-413-354-9535,United States,Midwest,active
+8a7e172c-2406-570d-bb2c-f395c8b100cb,CUS-00428,Beltran-Gonzalez,Retail,procurement428@customer.example,857-890-6171x84002,United States,Northeast,active
+d6aa22ab-3615-5c51-bbf3-9de40c1c9fab,CUS-00429,Stewart-Erickson,Manufacturing,procurement429@customer.example,(540)773-0783x561,United States,Northeast,inactive
+700fe391-76f6-58a4-a880-f59a4a5ad740,CUS-00430,Knox-Brewer,Telecommunications,procurement430@customer.example,001-444-912-5016,United States,West,inactive
+4bdf7145-d5e2-5aca-a2cf-ead963af7d49,CUS-00431,"Mcclure, Wiley and Herrera",Manufacturing,procurement431@customer.example,001-520-671-5723x02588,United States,Southwest,active
+a7c30ac5-1aef-5d3b-9f64-e3c97ba4e5b0,CUS-00432,Greene PLC,Technology,procurement432@customer.example,423-304-9898x1323,United States,Midwest,active
+af5889bd-793d-5c81-8fd4-248376e371a9,CUS-00433,Park-Potter,Professional Services,procurement433@customer.example,290-224-2997x9508,United States,Southeast,active
+8f1ae530-27a9-5f1b-a497-89b9e2010b99,CUS-00434,Young Ltd,Financial Services,procurement434@customer.example,898.325.3236,United States,Southeast,active
+7e50da50-b5fb-52e0-832e-32137912d98f,CUS-00435,Peters-Garza,Transportation,procurement435@customer.example,(525)517-6454x144,United States,Midwest,active
+db25c8a0-7fa8-5822-9b41-1e4641d82453,CUS-00436,"Price, Morris and Ortiz",Retail,procurement436@customer.example,693.818.7989x177,United States,Northeast,active
+79e273c0-69c6-51de-8517-f3521ed8a328,CUS-00437,Schmidt-Smith,Technology,procurement437@customer.example,725.889.0376x471,United States,Northeast,inactive
+2551c2d5-434d-5e87-bcbf-32afc3d4e198,CUS-00438,White-Elliott,Technology,procurement438@customer.example,396-248-8181x4251,United States,Midwest,prospect
+6c0bfc10-bb3c-593c-9a18-e405560e8709,CUS-00439,Hartman Ltd,Retail,procurement439@customer.example,403-392-9071x96336,United States,Northeast,active
+f71423cb-38e5-59b6-ba2e-a49c11cf652a,CUS-00440,Villanueva-Holmes,Technology,procurement440@customer.example,(288)306-9055x543,United States,Southwest,active
+9f7b7f01-a60c-5dc1-9967-c775a39903a8,CUS-00441,"Harvey, Chambers and Miller",Telecommunications,procurement441@customer.example,(249)517-7250x952,United States,Northeast,active
+721afae2-f05c-5b9d-a637-08a16c97f3d1,CUS-00442,"Cruz, Carter and Ayers",Telecommunications,procurement442@customer.example,9606290481,United States,Northeast,active
+2a4ad27a-6ab9-51d1-be27-99feb2c2b3b4,CUS-00443,Jones LLC,Financial Services,procurement443@customer.example,989-885-0806x3690,United States,Midwest,active
+8fed6c9d-c734-5d42-9849-c4483092e717,CUS-00444,Bowman PLC,Professional Services,procurement444@customer.example,(881)778-4653,United States,Southwest,active
+ad50ff8a-1dec-5f15-9b85-48bef28b785c,CUS-00445,"Jennings, Faulkner and Black",Technology,procurement445@customer.example,(528)518-0612x70363,United States,Southwest,active
+219adb0d-08f2-5951-a5c0-5fda355c7032,CUS-00446,Parker-Peck,Retail,procurement446@customer.example,(408)429-2794,United States,Midwest,active
+57d7232b-2833-5bf1-820e-f45ca061f08e,CUS-00447,Clark Inc,Technology,procurement447@customer.example,(990)956-8597x4577,United States,Southwest,active
+2467f2db-4a4a-5856-9a40-f2a6fb9df68b,CUS-00448,"Ruiz, Wells and Gordon",Professional Services,procurement448@customer.example,001-403-518-0910x43327,United States,Northeast,active
+822e8833-9e3e-5270-82dc-32821fc71b54,CUS-00449,Washington Inc,Financial Services,procurement449@customer.example,327.263.1478x45034,United States,West,active
+c21c4019-dc0f-5fe1-a6d7-af0225e48191,CUS-00450,Rojas-Williams,Professional Services,procurement450@customer.example,001-998-253-8923x78119,United States,West,active
+3477d02c-6fdf-5d7c-8357-b54812dd8855,CUS-00451,Young and Sons,Professional Services,procurement451@customer.example,+1-431-637-0185x9714,United States,Southeast,inactive
+79efd663-c0a0-59c6-a6e0-a220eeec4c58,CUS-00452,"Zimmerman, Tucker and Bell",Healthcare,procurement452@customer.example,001-618-540-9687,United States,Midwest,active
+cd275717-4296-50b2-80de-ea05e18a1d8a,CUS-00453,Zavala-English,Retail,procurement453@customer.example,(901)380-6815x116,United States,Southwest,active
+542d6269-bd1a-56c2-98a9-2504da4fec78,CUS-00454,"Smith, Miller and Wells",Healthcare,procurement454@customer.example,(201)812-8075x587,United States,Midwest,active
+3d06ad06-e9ad-572c-a150-f2a59ab9e5a7,CUS-00455,"Gilmore, Gross and Steele",Financial Services,procurement455@customer.example,583.213.7876x5807,United States,Southwest,prospect
+fc886c33-609e-58ba-9c2b-27308ba7b1a5,CUS-00456,"Roberts, Caldwell and Gonzalez",Financial Services,procurement456@customer.example,001-701-329-1864,United States,Southwest,active
+f2f81d66-d8d7-5fe9-b9f5-5dca2fbd4faf,CUS-00457,"Coleman, Johnson and Moore",Healthcare,procurement457@customer.example,910.580.2423x10702,United States,Southeast,active
+3dbf251a-a5bf-5807-a6f3-caa0dc206be5,CUS-00458,"Brown, Wilson and Rodriguez",Professional Services,procurement458@customer.example,733-608-7285,United States,Southwest,active
+b0d9dc71-db6b-54ca-83de-6f0bb41b90d3,CUS-00459,"Reyes, Garcia and Brown",Telecommunications,procurement459@customer.example,(896)921-6072x7330,United States,West,active
+ab4c85bb-634b-5969-957b-afa538a0a0d3,CUS-00460,King-Jones,Retail,procurement460@customer.example,(636)931-3230x54073,United States,West,active
+6d7ac280-4655-5c2e-8f1a-eff56227b009,CUS-00461,"Torres, Prince and Howell",Transportation,procurement461@customer.example,2214724952,United States,West,active
+8cf031cc-9566-509a-9d4e-0589cdb07af0,CUS-00462,"Lindsey, Rogers and White",Technology,procurement462@customer.example,583.761.4630,United States,Midwest,active
+d8ec780d-d529-5e46-9ba8-c938ad38acc1,CUS-00463,Patterson Inc,Financial Services,procurement463@customer.example,646-562-2799,United States,Northeast,active
+2a8cbd56-0a98-594a-a572-aa5c527c3a0c,CUS-00464,Burns-Smith,Healthcare,procurement464@customer.example,(464)704-6441,United States,Midwest,active
+386b1daf-8e64-5b8e-8c48-36b4f45e4676,CUS-00465,"Jones, Ortega and Jackson",Retail,procurement465@customer.example,430-714-0674,United States,Midwest,inactive
+01b3310c-e7f2-5f55-b265-7fe8ab84b435,CUS-00466,"Jordan, Clements and Sosa",Financial Services,procurement466@customer.example,(479)719-3383,United States,Southwest,active
+3d6fe6ad-62d2-5fa8-8190-6cfbf75ef15f,CUS-00467,Mitchell-Dean,Financial Services,procurement467@customer.example,001-857-481-7493x774,United States,Midwest,active
+aea5f911-2a06-5494-9dfe-cb34f0a60dc6,CUS-00468,"Figueroa, Winters and Santos",Manufacturing,procurement468@customer.example,(549)636-0958,United States,Midwest,active
+dd8ace5e-df6a-5b8f-9041-eaea07c89500,CUS-00469,French-Fischer,Healthcare,procurement469@customer.example,001-917-503-1802x66358,United States,Midwest,active
+7e4272d4-f864-5687-b0cf-72e011a55fc2,CUS-00470,Murray-Clark,Financial Services,procurement470@customer.example,520-601-7187x784,United States,Northeast,active
+acd40d76-d845-5d77-9fb8-32b0713d5e75,CUS-00471,Dickson and Sons,Technology,procurement471@customer.example,(349)453-5506x69724,United States,Northeast,prospect
+9f769551-bb60-5df1-a479-16f53ffee812,CUS-00472,Rowland-Perez,Professional Services,procurement472@customer.example,001-836-959-9526,United States,Southwest,prospect
+35393ba6-62ef-5245-a602-5a808930ddae,CUS-00473,Gomez Inc,Telecommunications,procurement473@customer.example,+1-713-286-1823x88343,United States,West,active
+1996d607-1c11-51f5-85a6-da3cfe7c20fa,CUS-00474,Bennett-Solomon,Financial Services,procurement474@customer.example,001-594-461-6538,United States,Midwest,inactive
+a19efc6f-37e7-5457-9301-3409697b7ceb,CUS-00475,Page Inc,Manufacturing,procurement475@customer.example,(915)648-1577x1823,United States,Southwest,active
+63534638-a926-5a7e-845f-8612ee936aae,CUS-00476,Gonzalez-Clark,Professional Services,procurement476@customer.example,+1-654-985-1393,United States,Midwest,active
+47b2113d-3249-5ba8-83c1-9c45202481e7,CUS-00477,"Reed, Evans and Jones",Manufacturing,procurement477@customer.example,264.221.0750,United States,West,active
+2ccf9d32-bdd1-5c33-9ad2-71a0a0d3251b,CUS-00478,Fields and Sons,Transportation,procurement478@customer.example,3862772652,United States,Southeast,active
+4bd863dc-24bc-586d-aca7-7ca6c200c922,CUS-00479,Jones Ltd,Professional Services,procurement479@customer.example,(394)886-7304,United States,Northeast,active
+6a2b116f-c0c8-5545-af9e-5b992c477ef4,CUS-00480,Richardson-Velazquez,Retail,procurement480@customer.example,001-386-383-3590,United States,Midwest,active
+57b88fcc-0e15-5085-b1ad-f496f7d8a541,CUS-00481,Calderon-Stevens,Manufacturing,procurement481@customer.example,001-276-944-4415,United States,Southeast,active
+b3119163-f064-5448-bec8-27bccef6526c,CUS-00482,Morton-Faulkner,Telecommunications,procurement482@customer.example,611.513.4881,United States,Southeast,active
+2f6b6099-8007-5523-9235-cf21c3bcac4c,CUS-00483,Gonzales Ltd,Financial Services,procurement483@customer.example,834-640-7334x173,United States,Midwest,active
+6858fae9-7ed7-5f04-8ab6-e5ee88ba4b38,CUS-00484,"Fields, Castro and Foster",Financial Services,procurement484@customer.example,(757)732-3391x162,United States,West,active
+2cf463c0-2759-59c5-8362-c3b877fa5132,CUS-00485,Young-Boyd,Telecommunications,procurement485@customer.example,706.742.7659x488,United States,Northeast,active
+a89d640d-e9fc-5076-a3d2-383e3593fefc,CUS-00486,"Wilson, Huff and Houston",Healthcare,procurement486@customer.example,364.554.5266x37403,United States,Northeast,active
+f8c7eff7-a4df-5068-a000-f19c3841a85b,CUS-00487,"Hernandez, Richardson and Galvan",Transportation,procurement487@customer.example,(543)287-5098x209,United States,Midwest,active
+a98419ea-5e76-56d6-b39c-febe5a5fe8ff,CUS-00488,"Goodwin, Arnold and Jenkins",Healthcare,procurement488@customer.example,360-939-1591x995,United States,Southwest,active
+0723f889-4315-5df1-b33d-408167c715c2,CUS-00489,Garcia-Adams,Transportation,procurement489@customer.example,(961)448-3730,United States,Northeast,active
+5534c501-8b7e-5366-b01c-0f6fb114cf12,CUS-00490,"Gardner, Ward and Payne",Technology,procurement490@customer.example,001-491-336-0673x79555,United States,Southeast,active
+6c9842ff-71fb-595a-8d42-349b92031020,CUS-00491,Lane-Rangel,Healthcare,procurement491@customer.example,688.767.4019x66281,United States,Midwest,active
+8de18351-1e5e-544d-a3fe-2e406340c7bc,CUS-00492,Hernandez Group,Financial Services,procurement492@customer.example,(571)883-4833x39624,United States,Southwest,prospect
+3b4b169a-98ee-50cb-8fc8-a090b124d298,CUS-00493,Jones-Montgomery,Transportation,procurement493@customer.example,639-249-2599x9218,United States,Northeast,active
+639085c3-c8cf-5ada-a8ad-a24b7dd0c941,CUS-00494,"Harris, Taylor and Parks",Transportation,procurement494@customer.example,001-988-454-7509x51792,United States,Southeast,active
+d8b549d8-419b-52a0-ba9a-d7edfb7e0747,CUS-00495,Wood-Guerrero,Manufacturing,procurement495@customer.example,452-744-7242,United States,Midwest,active
+2cbc0a20-b6e1-5bfa-aacc-ddf987a5613a,CUS-00496,Armstrong and Sons,Retail,procurement496@customer.example,456.947.9593x61441,United States,Midwest,active
+d2ab141c-3bc1-5b67-a147-cfc0288402d9,CUS-00497,"Little, Benitez and Ruiz",Telecommunications,procurement497@customer.example,200.834.8997x186,United States,Midwest,active
+1d3846cd-4352-506c-a7ab-f5bec4f3f116,CUS-00498,Phillips-Johnson,Transportation,procurement498@customer.example,6258580896,United States,Southeast,active
+0501d962-3f43-51c1-b425-2ddc365d5054,CUS-00499,Martinez Ltd,Telecommunications,procurement499@customer.example,731-597-6333x665,United States,Southwest,active
+c89828a6-9f17-55e0-be6e-63697f108439,CUS-00500,"Jones, Stewart and Martin",Technology,procurement500@customer.example,001-874-657-7283,United States,Southwest,active

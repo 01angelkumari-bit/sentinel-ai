@@ -1,0 +1,8 @@
+﻿id,account_code,name,account_type
+cd5513fd-cfa8-57b2-8fe3-2147e91649d1,1000,Operating Cash,asset
+3bf61546-f014-5364-9feb-2a1b13a17c41,1200,Accounts Receivable,asset
+7e8959bb-b309-52e1-9019-817a37a7599f,4000,Product Revenue,revenue
+e19f03da-f472-5db3-a0cb-b2afd5637a07,4100,Services Revenue,revenue
+2c6e999e-d0fe-5337-827c-c6fe2453e3c2,5000,Cost of Goods Sold,expense
+239a7fd7-296b-5269-8cd8-20fa80746967,6100,Payroll Expense,expense
+c3977b55-7bf4-54f8-ab23-cc2fffa4d7da,6200,Operating Expense,expense

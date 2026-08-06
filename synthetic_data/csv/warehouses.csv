@@ -1,0 +1,11 @@
+﻿id,code,name,city,country,capacity_units
+d61bead2-0544-5c10-af89-1f294f977280,WH-01,New York Distribution Center,New York,United States,27000
+567ece63-3ecb-5062-b4d8-c97433823b3c,WH-02,Chicago Distribution Center,Chicago,United States,36000
+be9e90f6-93bd-5906-b22d-cf69ae825bf6,WH-03,Dallas Distribution Center,Dallas,United States,62000
+ea34d2f0-9fc8-5823-a8a8-93e650e8d79c,WH-04,Seattle Distribution Center,Seattle,United States,46000
+20fecf33-ed69-5e83-9868-8fbd7ac874f2,WH-05,Atlanta Distribution Center,Atlanta,United States,37000
+76665f8f-f1fd-52b9-acfd-56394df014ee,WH-06,Toronto Distribution Center,Toronto,Canada,31000
+da60ffad-f4d8-5b60-9b77-de38fe932483,WH-07,London Distribution Center,London,United Kingdom,40000
+6e039cec-5ab4-53d3-adb8-e74b029d685b,WH-08,Frankfurt Distribution Center,Frankfurt,Germany,24000
+23f8bdd0-20c2-5f8c-89b8-7599eeca3670,WH-09,Bengaluru Distribution Center,Bengaluru,India,49000
+33b1b47f-62eb-570c-b668-56135b416569,WH-10,Singapore Distribution Center,Singapore,Singapore,21000

@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+node_modules/
+.next/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.venv-win/
+dist/
+coverage/
+postgres_data/
+.sentinel/
+*.tsbuildinfo
+*.db
