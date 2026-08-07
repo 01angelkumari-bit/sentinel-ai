@@ -199,11 +199,18 @@ The current authentication API is versioned under `/api/v1`:
 | `GET` | `/api/v1/support` | Paginated support tickets and status distribution |
 | `GET` | `/api/v1/employees` | Paginated workforce directory and department distribution |
 | `GET` | `/api/v1/customers` | Paginated customer accounts and regional distribution |
+| `GET` | `/api/v1/analytics/overview` | Revenue, profit, gross margin, MoM/WoW growth, and average order value |
+| `GET` | `/api/v1/analytics/products` | Top-selling products ranked by revenue |
+| `GET` | `/api/v1/analytics/regions` | Regional revenue, profit, share, and average order value |
+| `GET` | `/api/v1/analytics/customers/lifetime-value` | Customers ranked by realized lifetime value |
+| `GET` | `/api/v1/analytics/summary` | Combined executive analytics payload |
 | `GET` | `/health` | Operational health check |
 
 Protected endpoints validate bearer tokens through a shared FastAPI dependency. The frontend exchanges the access token for an HttpOnly, SameSite session cookie.
 
 The six business endpoints return a consistent Recharts-ready envelope containing `items`, `pagination`, and `chart_data` (`label`/`value` points). Each supports validated `page`, `page_size`, `sort_by`, and `sort_order` parameters plus domain-specific filters. Page size is capped at 100, and sorting is restricted to explicit safe columns. See the interactive Swagger documentation for the complete filter contract.
+
+Analytics endpoints accept optional inclusive `start_date` and `end_date` query parameters in `YYYY-MM-DD` format. SQLAlchemy performs scalable database aggregation while Pandas calculates calendar month-over-month and week-over-week series. Customer lifetime value represents recognized, non-cancelled historical revenue per customer.
 
 The executive dashboard calculates revenue, profit, cash balance, open support cases, workforce totals, regional performance, top products, and customer sentiment directly from the normalized BI database. Visualizations are rendered with Recharts and do not rely on hardcoded KPI values.
 

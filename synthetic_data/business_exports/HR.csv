@@ -1,0 +1,201 @@
+Employee,Department,Leave,Performance,Joining
+EMP-00001 - Arjun Malhotra,People & Culture,11,Needs Improvement,2023-12-28
+EMP-00002 - Arjun Mehta,Sales,15,Exceeds Expectations,2024-12-21
+EMP-00003 - Ishaan Verma,Sales,5,Outstanding,2025-05-29
+EMP-00004 - Zoya Singh,Security,24,Exceeds Expectations,2018-01-21
+EMP-00005 - Aarav Singh,Customer Success,3,Outstanding,2024-02-12
+EMP-00006 - Aditi Sharma,Sales,4,Meets Expectations,2020-11-15
+EMP-00007 - Priya Rao,Operations,1,Needs Improvement,2025-04-19
+EMP-00008 - Meera Singh,Engineering,3,Outstanding,2023-08-10
+EMP-00009 - Aarav Singh,People & Culture,22,Exceeds Expectations,2018-08-29
+EMP-00010 - Rahul Mehta,People & Culture,14,Needs Improvement,2021-02-04
+EMP-00011 - Rahul Joshi,Operations,12,Exceeds Expectations,2023-01-24
+EMP-00012 - Aarav Rao,Engineering,9,Needs Improvement,2025-12-10
+EMP-00013 - Kavya Joshi,Operations,24,Exceeds Expectations,2023-02-26
+EMP-00014 - Priya Verma,Sales,3,Outstanding,2023-08-19
+EMP-00015 - Kavya Kapoor,Data Science,21,Needs Improvement,2019-09-18
+EMP-00016 - Neha Iyer,Sales,3,Needs Improvement,2018-06-18
+EMP-00017 - Arjun Verma,Security,17,Outstanding,2023-02-11
+EMP-00018 - Ishaan Rao,Operations,15,Needs Improvement,2025-05-04
+EMP-00019 - Diya Singh,Data Science,1,Meets Expectations,2018-07-03
+EMP-00020 - Priya Mehta,Engineering,18,Exceeds Expectations,2020-08-23
+EMP-00021 - Diya Gupta,Sales,7,Exceeds Expectations,2023-10-22
+EMP-00022 - Priya Iyer,Engineering,23,Needs Improvement,2023-08-06
+EMP-00023 - Vikram Verma,Security,20,Needs Improvement,2018-07-03
+EMP-00024 - Saanvi Singh,Security,9,Needs Improvement,2021-05-27
+EMP-00025 - Rohan Malhotra,People & Culture,6,Needs Improvement,2024-07-30
+EMP-00026 - Rohan Rao,Engineering,24,Outstanding,2020-07-10
+EMP-00027 - Rohan Rao,Operations,4,Exceeds Expectations,2023-01-21
+EMP-00028 - Zoya Kapoor,People & Culture,15,Outstanding,2023-08-20
+EMP-00029 - Ananya Patel,People & Culture,6,Exceeds Expectations,2024-06-25
+EMP-00030 - Kavya Singh,Finance,2,Outstanding,2021-07-19
+EMP-00031 - Meera Singh,Security,6,Exceeds Expectations,2022-01-14
+EMP-00032 - Aditi Nair,People & Culture,24,Exceeds Expectations,2025-07-30
+EMP-00033 - Diya Sharma,People & Culture,16,Exceeds Expectations,2018-02-26
+EMP-00034 - Priya Kapoor,People & Culture,15,Outstanding,2020-02-14
+EMP-00035 - Priya Joshi,Customer Success,12,Meets Expectations,2021-11-22
+EMP-00036 - Saanvi Gupta,Data Science,1,Exceeds Expectations,2021-03-08
+EMP-00037 - Rahul Sharma,Sales,5,Exceeds Expectations,2023-01-03
+EMP-00038 - Rohan Singh,Operations,19,Needs Improvement,2026-01-25
+EMP-00039 - Aarav Mehta,Security,20,Outstanding,2024-10-25
+EMP-00040 - Priya Patel,Engineering,20,Exceeds Expectations,2019-06-27
+EMP-00041 - Aditi Mehta,Engineering,11,Meets Expectations,2022-09-26
+EMP-00042 - Arjun Nair,Security,22,Meets Expectations,2022-07-26
+EMP-00043 - Rohan Kapoor,Engineering,20,Outstanding,2022-10-31
+EMP-00044 - Aarav Verma,Finance,4,Meets Expectations,2025-06-19
+EMP-00045 - Arjun Iyer,Security,15,Needs Improvement,2024-04-17
+EMP-00046 - Arjun Nair,Data Science,1,Exceeds Expectations,2024-04-13
+EMP-00047 - Neha Verma,Security,6,Meets Expectations,2023-03-10
+EMP-00048 - Meera Verma,Security,0,Needs Improvement,2023-06-15
+EMP-00049 - Rohan Kapoor,Sales,21,Meets Expectations,2022-12-21
+EMP-00050 - Rohan Verma,Customer Success,19,Needs Improvement,2023-01-20
+EMP-00051 - Neha Malhotra,Data Science,0,Exceeds Expectations,2022-12-08
+EMP-00052 - Kavya Verma,Finance,11,Needs Improvement,2020-08-25
+EMP-00053 - Zoya Singh,Finance,21,Needs Improvement,2023-06-02
+EMP-00054 - Arjun Nair,Finance,9,Exceeds Expectations,2018-04-22
+EMP-00055 - Meera Rao,Sales,9,Outstanding,2023-01-11
+EMP-00056 - Diya Iyer,Finance,8,Needs Improvement,2019-04-03
+EMP-00057 - Rohan Rao,Customer Success,12,Meets Expectations,2018-01-24
+EMP-00058 - Neha Joshi,Security,8,Meets Expectations,2025-05-12
+EMP-00059 - Ishaan Kapoor,Customer Success,6,Exceeds Expectations,2024-06-14
+EMP-00060 - Neha Gupta,Security,6,Meets Expectations,2024-01-02
+EMP-00061 - Diya Singh,Sales,6,Needs Improvement,2021-07-09
+EMP-00062 - Kavya Iyer,Finance,2,Needs Improvement,2020-08-19
+EMP-00063 - Ishaan Verma,Operations,4,Outstanding,2022-10-27
+EMP-00064 - Ananya Nair,Finance,14,Meets Expectations,2019-06-15
+EMP-00065 - Vikram Rao,Engineering,11,Needs Improvement,2021-04-01
+EMP-00066 - Aarav Joshi,Finance,5,Needs Improvement,2020-10-14
+EMP-00067 - Kavya Malhotra,Operations,11,Outstanding,2026-01-26
+EMP-00068 - Kavya Kapoor,Operations,4,Exceeds Expectations,2023-10-01
+EMP-00069 - Vikram Malhotra,Data Science,3,Outstanding,2025-04-24
+EMP-00070 - Ishaan Mehta,Customer Success,19,Outstanding,2024-11-09
+EMP-00071 - Kavya Iyer,Customer Success,14,Needs Improvement,2021-05-01
+EMP-00072 - Aarav Gupta,People & Culture,2,Exceeds Expectations,2021-09-16
+EMP-00073 - Meera Patel,Finance,2,Outstanding,2018-03-13
+EMP-00074 - Rohan Rao,Data Science,2,Needs Improvement,2024-08-11
+EMP-00075 - Kavya Verma,Security,18,Needs Improvement,2022-05-29
+EMP-00076 - Kavya Patel,People & Culture,16,Exceeds Expectations,2023-10-03
+EMP-00077 - Vikram Gupta,Customer Success,11,Outstanding,2021-11-24
+EMP-00078 - Vikram Singh,Operations,18,Needs Improvement,2025-09-18
+EMP-00079 - Arjun Iyer,Engineering,8,Outstanding,2025-05-03
+EMP-00080 - Aditi Patel,Engineering,2,Outstanding,2020-07-24
+EMP-00081 - Kavya Nair,Customer Success,3,Exceeds Expectations,2024-01-07
+EMP-00082 - Aarav Joshi,Operations,0,Meets Expectations,2022-03-06
+EMP-00083 - Priya Gupta,Sales,24,Meets Expectations,2019-12-09
+EMP-00084 - Vikram Patel,Engineering,5,Exceeds Expectations,2022-06-20
+EMP-00085 - Ishaan Nair,Sales,2,Outstanding,2019-05-07
+EMP-00086 - Kavya Malhotra,Security,12,Exceeds Expectations,2022-08-26
+EMP-00087 - Rohan Iyer,Operations,6,Meets Expectations,2024-06-12
+EMP-00088 - Aarav Gupta,Customer Success,8,Outstanding,2019-04-07
+EMP-00089 - Kavya Sharma,Engineering,12,Needs Improvement,2025-03-28
+EMP-00090 - Rohan Singh,Sales,0,Outstanding,2021-10-14
+EMP-00091 - Kavya Verma,Customer Success,21,Needs Improvement,2020-01-15
+EMP-00092 - Kavya Sharma,Security,24,Outstanding,2024-09-25
+EMP-00093 - Saanvi Patel,Customer Success,13,Exceeds Expectations,2021-07-13
+EMP-00094 - Rohan Malhotra,Data Science,1,Meets Expectations,2023-06-13
+EMP-00095 - Priya Verma,Customer Success,20,Exceeds Expectations,2023-06-18
+EMP-00096 - Ishaan Singh,Finance,6,Outstanding,2025-02-25
+EMP-00097 - Vikram Nair,Customer Success,6,Exceeds Expectations,2020-05-11
+EMP-00098 - Meera Patel,Finance,7,Needs Improvement,2025-06-04
+EMP-00099 - Meera Verma,Customer Success,24,Outstanding,2018-06-24
+EMP-00100 - Neha Malhotra,Data Science,3,Needs Improvement,2020-09-27
+EMP-00101 - Vikram Rao,People & Culture,23,Outstanding,2019-05-28
+EMP-00102 - Arjun Malhotra,Finance,12,Meets Expectations,2023-02-21
+EMP-00103 - Diya Kapoor,Operations,6,Outstanding,2025-06-03
+EMP-00104 - Kavya Verma,Finance,15,Exceeds Expectations,2020-05-18
+EMP-00105 - Diya Sharma,Sales,13,Meets Expectations,2019-05-07
+EMP-00106 - Vikram Mehta,Engineering,21,Meets Expectations,2024-02-22
+EMP-00107 - Priya Nair,Finance,12,Meets Expectations,2021-05-03
+EMP-00108 - Diya Iyer,Data Science,10,Exceeds Expectations,2022-06-20
+EMP-00109 - Aarav Joshi,Sales,23,Meets Expectations,2023-05-03
+EMP-00110 - Priya Rao,Sales,10,Exceeds Expectations,2024-01-26
+EMP-00111 - Vikram Nair,Sales,12,Meets Expectations,2022-11-19
+EMP-00112 - Vikram Sharma,Operations,21,Exceeds Expectations,2023-01-03
+EMP-00113 - Rahul Rao,Engineering,15,Needs Improvement,2018-06-24
+EMP-00114 - Neha Verma,Customer Success,23,Needs Improvement,2018-01-29
+EMP-00115 - Kavya Patel,Data Science,8,Needs Improvement,2019-11-02
+EMP-00116 - Rohan Verma,Finance,8,Exceeds Expectations,2018-01-01
+EMP-00117 - Ananya Verma,People & Culture,19,Outstanding,2021-07-13
+EMP-00118 - Kavya Mehta,Finance,5,Needs Improvement,2023-01-08
+EMP-00119 - Kavya Kapoor,Operations,2,Needs Improvement,2022-01-17
+EMP-00120 - Rahul Joshi,Customer Success,15,Exceeds Expectations,2024-11-25
+EMP-00121 - Diya Mehta,Data Science,16,Needs Improvement,2024-06-16
+EMP-00122 - Meera Verma,Operations,9,Meets Expectations,2020-01-22
+EMP-00123 - Vikram Patel,Security,22,Needs Improvement,2022-09-16
+EMP-00124 - Saanvi Mehta,Customer Success,23,Exceeds Expectations,2024-05-31
+EMP-00125 - Meera Sharma,Security,2,Meets Expectations,2020-08-04
+EMP-00126 - Meera Patel,Customer Success,18,Meets Expectations,2023-01-20
+EMP-00127 - Neha Rao,Data Science,2,Outstanding,2025-10-26
+EMP-00128 - Arjun Verma,Security,1,Exceeds Expectations,2019-12-12
+EMP-00129 - Meera Gupta,Finance,18,Needs Improvement,2021-01-22
+EMP-00130 - Neha Singh,Operations,0,Meets Expectations,2018-02-08
+EMP-00131 - Ananya Nair,People & Culture,3,Outstanding,2022-10-19
+EMP-00132 - Rahul Patel,Customer Success,22,Meets Expectations,2025-08-18
+EMP-00133 - Diya Verma,Security,23,Needs Improvement,2020-05-11
+EMP-00134 - Ananya Verma,Data Science,13,Meets Expectations,2020-08-26
+EMP-00135 - Arjun Mehta,Security,3,Outstanding,2025-01-29
+EMP-00136 - Kavya Mehta,Engineering,7,Outstanding,2024-02-02
+EMP-00137 - Rahul Singh,Engineering,19,Outstanding,2026-02-13
+EMP-00138 - Kavya Singh,Finance,5,Outstanding,2020-02-15
+EMP-00139 - Ishaan Singh,Security,13,Outstanding,2021-03-19
+EMP-00140 - Aditi Nair,Customer Success,5,Exceeds Expectations,2025-04-28
+EMP-00141 - Neha Sharma,People & Culture,15,Meets Expectations,2021-08-10
+EMP-00142 - Kavya Gupta,Finance,10,Outstanding,2025-10-05
+EMP-00143 - Vikram Verma,People & Culture,5,Outstanding,2022-10-24
+EMP-00144 - Arjun Nair,Data Science,0,Meets Expectations,2021-05-29
+EMP-00145 - Kavya Singh,Security,14,Needs Improvement,2025-04-11
+EMP-00146 - Vikram Gupta,Engineering,8,Exceeds Expectations,2024-08-12
+EMP-00147 - Aarav Iyer,People & Culture,22,Meets Expectations,2018-07-31
+EMP-00148 - Priya Nair,Data Science,13,Exceeds Expectations,2025-11-10
+EMP-00149 - Saanvi Singh,People & Culture,19,Exceeds Expectations,2025-07-16
+EMP-00150 - Kavya Kapoor,Sales,19,Needs Improvement,2024-04-14
+EMP-00151 - Neha Verma,Engineering,17,Meets Expectations,2025-05-19
+EMP-00152 - Arjun Gupta,Security,18,Exceeds Expectations,2025-03-28
+EMP-00153 - Zoya Malhotra,Data Science,13,Outstanding,2020-10-15
+EMP-00154 - Diya Kapoor,Data Science,1,Meets Expectations,2024-04-11
+EMP-00155 - Neha Rao,People & Culture,8,Needs Improvement,2022-10-05
+EMP-00156 - Priya Rao,Operations,14,Exceeds Expectations,2023-09-03
+EMP-00157 - Ishaan Rao,Finance,4,Exceeds Expectations,2025-01-19
+EMP-00158 - Vikram Rao,Security,5,Meets Expectations,2022-10-13
+EMP-00159 - Aarav Nair,People & Culture,6,Outstanding,2025-08-01
+EMP-00160 - Meera Nair,Operations,7,Exceeds Expectations,2024-03-26
+EMP-00161 - Saanvi Mehta,People & Culture,19,Outstanding,2022-10-09
+EMP-00162 - Vikram Nair,Security,20,Outstanding,2026-01-15
+EMP-00163 - Meera Nair,Operations,8,Exceeds Expectations,2023-09-06
+EMP-00164 - Meera Iyer,Customer Success,17,Exceeds Expectations,2021-01-29
+EMP-00165 - Zoya Verma,Operations,18,Outstanding,2020-08-29
+EMP-00166 - Rohan Sharma,Security,18,Exceeds Expectations,2019-03-08
+EMP-00167 - Zoya Kapoor,Customer Success,20,Outstanding,2018-07-24
+EMP-00168 - Arjun Verma,Customer Success,7,Needs Improvement,2018-11-01
+EMP-00169 - Priya Malhotra,Sales,0,Outstanding,2024-01-22
+EMP-00170 - Zoya Malhotra,Customer Success,10,Outstanding,2021-10-16
+EMP-00171 - Rahul Iyer,Sales,12,Exceeds Expectations,2025-09-09
+EMP-00172 - Kavya Singh,People & Culture,3,Exceeds Expectations,2021-08-28
+EMP-00173 - Priya Gupta,Operations,11,Meets Expectations,2019-12-23
+EMP-00174 - Aarav Joshi,Security,10,Meets Expectations,2022-10-25
+EMP-00175 - Rahul Patel,Data Science,10,Outstanding,2025-12-14
+EMP-00176 - Diya Mehta,Customer Success,13,Needs Improvement,2024-11-14
+EMP-00177 - Saanvi Kapoor,Security,13,Exceeds Expectations,2024-04-26
+EMP-00178 - Diya Kapoor,Sales,6,Meets Expectations,2024-10-29
+EMP-00179 - Aditi Kapoor,Sales,15,Outstanding,2022-05-21
+EMP-00180 - Priya Joshi,Data Science,14,Exceeds Expectations,2025-08-14
+EMP-00181 - Saanvi Verma,Operations,8,Meets Expectations,2020-10-07
+EMP-00182 - Priya Joshi,Security,15,Needs Improvement,2025-02-23
+EMP-00183 - Rahul Singh,Security,8,Exceeds Expectations,2021-05-31
+EMP-00184 - Kavya Iyer,People & Culture,12,Outstanding,2019-08-18
+EMP-00185 - Rohan Rao,Data Science,0,Needs Improvement,2021-05-06
+EMP-00186 - Aditi Singh,Sales,21,Meets Expectations,2024-02-29
+EMP-00187 - Ananya Kapoor,Finance,13,Needs Improvement,2020-10-06
+EMP-00188 - Zoya Nair,Operations,15,Meets Expectations,2025-03-13
+EMP-00189 - Aarav Singh,Finance,7,Meets Expectations,2018-08-29
+EMP-00190 - Meera Mehta,People & Culture,17,Outstanding,2019-10-19
+EMP-00191 - Arjun Patel,Engineering,19,Outstanding,2020-06-29
+EMP-00192 - Arjun Verma,Engineering,16,Needs Improvement,2019-05-24
+EMP-00193 - Aditi Verma,Customer Success,15,Exceeds Expectations,2018-09-28
+EMP-00194 - Aarav Singh,Operations,9,Outstanding,2020-12-22
+EMP-00195 - Aditi Joshi,Customer Success,3,Exceeds Expectations,2024-04-06
+EMP-00196 - Saanvi Joshi,Sales,1,Meets Expectations,2024-08-31
+EMP-00197 - Diya Iyer,Engineering,3,Needs Improvement,2023-01-22
+EMP-00198 - Ananya Kapoor,Security,3,Outstanding,2022-07-28
+EMP-00199 - Ananya Rao,Finance,24,Outstanding,2022-08-12
+EMP-00200 - Kavya Rao,Operations,1,Outstanding,2025-07-17
