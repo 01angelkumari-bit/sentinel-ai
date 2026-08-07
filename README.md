@@ -192,9 +192,20 @@ The current authentication API is versioned under `/api/v1`:
 | `POST` | `/api/v1/auth/register` | Create a user account |
 | `POST` | `/api/v1/auth/login` | Issue an access token |
 | `GET` | `/api/v1/auth/me` | Return the authenticated user |
+| `GET` | `/api/v1/dashboard/summary` | Return live executive KPIs, chart series, alerts, and recommendations |
+| `GET` | `/api/v1/sales` | Paginated sales orders and revenue trend |
+| `GET` | `/api/v1/finance` | Paginated ledger transactions and account balances |
+| `GET` | `/api/v1/inventory` | Paginated warehouse-product availability |
+| `GET` | `/api/v1/support` | Paginated support tickets and status distribution |
+| `GET` | `/api/v1/employees` | Paginated workforce directory and department distribution |
+| `GET` | `/api/v1/customers` | Paginated customer accounts and regional distribution |
 | `GET` | `/health` | Operational health check |
 
 Protected endpoints validate bearer tokens through a shared FastAPI dependency. The frontend exchanges the access token for an HttpOnly, SameSite session cookie.
+
+The six business endpoints return a consistent Recharts-ready envelope containing `items`, `pagination`, and `chart_data` (`label`/`value` points). Each supports validated `page`, `page_size`, `sort_by`, and `sort_order` parameters plus domain-specific filters. Page size is capped at 100, and sorting is restricted to explicit safe columns. See the interactive Swagger documentation for the complete filter contract.
+
+The executive dashboard calculates revenue, profit, cash balance, open support cases, workforce totals, regional performance, top products, and customer sentiment directly from the normalized BI database. Visualizations are rendered with Recharts and do not rely on hardcoded KPI values.
 
 ## Development commands
 
