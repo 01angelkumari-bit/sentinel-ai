@@ -1,62 +1,72 @@
 # Sentinel AI
 
-Sentinel AI is a Windows-native, enterprise Business Intelligence platform that combines governed AI-agent workflows, normalized operational data, secure authentication, and an executive command center.
+Sentinel AI is a Windows-first, multi-tenant Business Intelligence platform. Organizations upload their own CSV or Excel data, receive tenant-isolated dashboards and PDF reports, and ask a data-aware assistant questions about verified business metrics, risks, anomalies, and recommendations.
 
-The repository includes a Next.js dashboard, FastAPI backend, SQLAlchemy data layer, Alembic migrations, deterministic Faker datasets, and PowerShell automation for setup and process management.
+The application does not load a shared demo database. A new authenticated session starts with an empty analysis workspace, and uploaded data, generated reports, and session-specific AI conversations are cleared when that session ends. Permanent accounts, organizations, roles, audit records, invitations, and report schedules remain intact.
 
-## What Sentinel AI provides
+## Features
 
-- Secure registration and login with Argon2 password hashing and JWT authentication.
-- Protected B2B dashboard with executive metrics, signal monitoring, and insight panels.
-- Responsive enterprise interface built with Next.js, Tailwind CSS, and shadcn/ui conventions.
-- Normalized 3NF business schema covering customers, products, sales, inventory, finance, employees, suppliers, support, warehouses, and reports.
-- PostgreSQL-ready SQLAlchemy models with Alembic migrations.
-- Native SQLite development database for immediate Windows setup.
-- Deterministic Faker seed generation and relational CSV exports.
-- Windows PowerShell scripts for installation, startup, health checks, logging, and shutdown.
+- Real email registration, OTP login, and password recovery through SMTP.
+- JWT authentication with revocable server-side sessions and HttpOnly cookies.
+- Organization isolation, role-based access control, and PostgreSQL row-level security migrations.
+- Roles: `owner`, `admin`, `manager`, `employee`, and `viewer`.
+- CSV/XLSX onboarding with validation, preview, batch import, append/replace modes, progress, and history.
+- Executive KPIs, revenue trends, regional performance, products, alerts, and recommendations.
+- Protected CSV export and detailed, persisted PDF reports with view/download endpoints.
+- Sentinel AI multi-turn chat with deterministic calculations over the active tenant dataset.
+- Evidence-backed revenue, concentration, cancellation, anomaly, and data-quality risk analysis.
+- Optional rating or feedback sentiment analysis through the open-source VADER model.
+- Self-hostable Hugging Face model adapter; no paid AI API is required.
+- LangGraph Data Agent with PostgreSQL loading, validation, cleaning, normalization, and typed state.
+- Native Windows setup, start, stop, migration, logging, and test workflows.
 
-## Technology stack
+## Technology
 
-| Layer | Technology |
+| Area | Stack |
 |---|---|
-| Web application | Next.js 15 App Router, React 19, TypeScript |
-| UI | Tailwind CSS, shadcn/ui conventions, Lucide icons |
-| API | FastAPI, Pydantic |
-| ORM and migrations | SQLAlchemy 2, Alembic |
-| Development database | SQLite |
-| Production database | PostgreSQL |
-| Authentication | JWT, Argon2, HttpOnly cookies |
-| Synthetic data | Faker, deterministic Python generator |
-| Local automation | Windows PowerShell |
+| Frontend | Next.js 15 App Router, React 19, TypeScript |
+| UI | Tailwind CSS, shadcn/ui conventions, Lucide, Recharts |
+| Backend | FastAPI, Pydantic, Pandas |
+| Persistence | PostgreSQL or local SQLite, SQLAlchemy 2, Alembic |
+| Authentication | JWT, Argon2, real SMTP OTP |
+| AI | Deterministic analytics, VADER, optional local Hugging Face model |
+| Agents | LangGraph, typed workflow state |
+| Reports | ReportLab PDF generation |
+| Tests | Pytest, Next.js production build, TypeScript |
 
-## Repository structure
+## Project structure
 
 ```text
-sentinel-ai/
-├── frontend/                Next.js dashboard and authentication UI
-├── backend/                 FastAPI application and Alembic migrations
-│   ├── app/api/             Versioned routes and authentication dependencies
-│   ├── app/application/     Business use cases and services
-│   ├── app/domain/          User and BI SQLAlchemy models
-│   └── app/infrastructure/  Database engine and sessions
-├── agents/                  Agent contracts and governance boundary
-├── database/                Database documentation and model surface
-├── synthetic_data/          Faker seed generator and generated CSV files
-├── scripts/windows/         Native Windows setup/start/stop scripts
-└── docs/                    Architecture, Windows runbook, and ER diagram
+Sentinel AI/
+|-- frontend/               Next.js application and server-side API relays
+|-- backend/                FastAPI application, domain models, services, tests
+|   |-- alembic/            Versioned database migrations
+|   `-- app/
+|       |-- api/            REST routes, validation, auth dependencies
+|       |-- application/    Auth, analytics, AI, imports, reports
+|       |-- domain/         SQLAlchemy business and user models
+|       |-- repositories/   Tenant-filtered database access
+|       `-- infrastructure/ Database engine and sessions
+|-- agents/                 LangGraph Data Agent and tests
+|-- database/               Database documentation
+|-- synthetic_data/         Faker generators and CSV exports
+|-- docs/                   Architecture, ER diagram, Windows runbook
+|-- scripts/windows/        Native setup/start/stop scripts
+`-- docker/                 Reserved; Docker is not required for Windows
 ```
 
 ## Windows prerequisites
 
-Sentinel AI runs natively on Windows. Docker, WSL, Bash, and Linux containers are not required.
+Install these applications and enable their PATH options:
 
-Install:
+- Windows 10 or Windows 11
+- Python 3.12 with the Python Launcher (`py`)
+- Node.js 22 LTS and npm
+- Git for Windows
+- Optional: PostgreSQL 16+ for a production-like local database
+- Optional: a locally hosted Hugging Face inference server
 
-- Python 3.12 with the Python Launcher enabled.
-- Node.js 22 LTS.
-- Git for Windows.
-
-Confirm the tools are available:
+Verify them in PowerShell:
 
 ```powershell
 py -3.12 --version
@@ -65,33 +75,75 @@ npm --version
 git --version
 ```
 
-## Quick start
+Docker Desktop, WSL, Bash, and Linux containers are not required.
 
-Open PowerShell in the project directory.
+## Quick start on Windows
 
-### 1. Configure the environment
+### 1. Clone and enter the repository
+
+```powershell
+git clone https://github.com/01angelkumari-bit/sentinel-ai.git
+cd sentinel-ai
+```
+
+### 2. Create the local environment file
 
 ```powershell
 Copy-Item .env.windows.example .env
 ```
 
-Edit `.env` and replace `JWT_SECRET_KEY` with a random value containing at least 32 characters. The local database is configured as:
+Generate a secure JWT signing key:
+
+```powershell
+$bytes = New-Object byte[] 48
+[Security.Cryptography.RandomNumberGenerator]::Fill($bytes)
+[Convert]::ToBase64String($bytes)
+```
+
+Copy the generated value into `JWT_SECRET_KEY` in `.env`. Never commit `.env` or paste real credentials into issues, commits, screenshots, or chat messages.
+
+For the easiest local database, keep:
 
 ```env
 DATABASE_URL=sqlite:///./sentinel.db
 ```
 
-Do not commit `.env`. It is already ignored by Git.
+### 3. Configure real SMTP email
 
-### 2. Install dependencies and migrate the database
+Registration and password recovery require real email delivery. For Gmail development:
+
+1. Enable two-step verification on the sending Google account.
+2. Create a Google App Password named `Sentinel AI`.
+3. Configure `.env`:
+
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USERNAME=sender@gmail.com
+SMTP_PASSWORD=your-16-character-app-password
+SMTP_USE_TLS=true
+SMTP_USE_SSL=false
+EMAIL_FROM=sender@gmail.com
+```
+
+Use the App Password, not the normal Gmail password. For production, use a transactional provider and authenticate the sending domain with SPF and DKIM. SendGrid SMTP uses `smtp.sendgrid.net`, port `587`, username `apikey`, and the API key as `SMTP_PASSWORD`.
+
+### 4. Install dependencies and migrate
+
+Run PowerShell from the repository root:
 
 ```powershell
 .\scripts\windows\setup.ps1
 ```
 
-This command creates the Python 3.12 virtual environment, installs backend and frontend dependencies, and runs every Alembic migration.
+The script:
 
-### 3. Start Sentinel AI
+- creates `backend\.venv-win`;
+- installs Python dependencies;
+- installs frontend npm dependencies;
+- applies every Alembic migration.
+
+### 5. Start the application
 
 ```powershell
 .\scripts\windows\start.ps1 -SkipSetup
@@ -99,142 +151,167 @@ This command creates the Python 3.12 virtual environment, installs backend and f
 
 Open:
 
-- Application: [http://localhost:3000](http://localhost:3000)
-- API health: [http://localhost:8000/health](http://localhost:8000/health)
-- Interactive API documentation: [http://localhost:8000/docs](http://localhost:8000/docs)
+- Web application: <http://localhost:3000>
+- Login: <http://localhost:3000/login>
+- API documentation: <http://localhost:8000/docs>
+- Health endpoint: <http://localhost:8000/health>
 
-### 4. Create an account
+Runtime PID files and logs are written to the ignored `.sentinel` directory.
 
-1. Open the application.
-2. Select **Create an account**.
-3. Enter your name, work email, password, and matching confirmation password.
-4. Sign in to access the protected command center.
-
-### 5. Stop Sentinel AI
+### 6. Stop the application
 
 ```powershell
 .\scripts\windows\stop.ps1
 ```
 
-Application logs are written to the ignored `.sentinel` directory.
+## First-use workflow
 
-## Business Intelligence database
+1. Open `/register`.
+2. Enter organization name, full name, real email, password, and confirmation.
+3. Retrieve the six-character letter-and-number OTP from the mailbox.
+4. Verify the OTP and sign in.
+5. A new login opens an empty, private analysis workspace.
+6. Upload a valid CSV or XLSX file on the onboarding page.
+7. Wait for validation and import completion.
+8. Open the generated dashboard, ask Sentinel questions, or export a PDF.
+9. Sign out to revoke the token and clear session-only datasets, reports, files, caches, and AI context.
 
-The schema follows third normal form. Business entities and reusable classifications are stored once, while junction and transaction tables represent operational relationships.
+## Dataset format
 
-Major domains include:
+Every import must contain these core columns:
 
-- Customers and support history.
-- Product catalog and normalized categories.
-- Supplier sourcing with lead times and preferred-vendor status.
-- Sales order headers and line items.
-- Warehouse inventory balances and audited movements.
-- Employees, departments, and manager hierarchies.
-- Finance accounts and transactions linked to originating sales orders.
-- Configurable business reports and schedules.
-
-See [the ER diagram](docs/er-diagram.md) for the complete relationship model.
-
-## Synthetic datasets
-
-The included generator uses a fixed seed, so generated identifiers and relationships are repeatable.
-
-Current reference dataset:
-
-| Dataset | Rows |
-|---|---:|
-| Sales coverage | 365 consecutive days |
-| Customers | 500 |
-| Products | 100 |
-| Employees | 200 |
-| Suppliers | 50 |
-| Warehouses | 10 |
-| Sales orders | 1,609 |
-| Sales line items | 4,814 |
-| Support tickets | 900 |
-| Finance transactions | 1,516 |
-
-Generate fresh CSV files:
-
-```powershell
-backend\.venv-win\Scripts\python.exe synthetic_data\seed.py
+```csv
+Date,Revenue,Orders,Cancelled,Region,Product,Customer
+2026-08-01,250000,25,2,North,Sentinel Core,Acme Corporation
 ```
 
-Regenerate CSVs and replace the local BI seed data:
+Rules:
 
-```powershell
-backend\.venv-win\Scripts\python.exe synthetic_data\seed.py --database --reset
+- `Date` must be a valid date.
+- `Revenue`, `Orders`, and `Cancelled` must be numeric.
+- Values cannot be negative.
+- `Cancelled` cannot exceed `Orders`.
+- `Region`, `Product`, and `Customer` cannot be empty.
+- Files must be UTF-8 CSV or valid XLSX.
+- The default upload limit is 10 MB and 100,000 records per import.
+
+Optional columns are preserved for structured analysis. Customer sentiment is available only when a supported column exists, such as:
+
+```csv
+Rating,Feedback
+5,Excellent service and a reliable product
 ```
 
-Never use `--reset` against a production database.
+Recognized rating names include `Rating`, `Stars`, `Review Score`, and `Satisfaction Score`. Recognized text names include `Feedback`, `Review`, `Comment`, and related normalized variants. If neither exists, Sentinel reports that sentiment is unavailable; it does not generate a default score.
 
-## PostgreSQL production configuration
+Import modes:
 
-SQLite is used only to simplify local Windows development. For production, provision PostgreSQL, update `DATABASE_URL`, and apply migrations:
+- `initial`: allowed only when the current session has no dataset.
+- `append`: adds validated records to the active dataset.
+- `replace`: removes the current temporary business dataset and imports the new one.
+
+## Sentinel AI
+
+Sentinel routes questions by intent:
+
+- normal conversation: greetings, thanks, and capabilities;
+- website help: onboarding, dashboards, login, files, and reports;
+- structured data: exact totals, averages, rankings, trends, and comparisons;
+- risks: decline, volatility, concentration, cancellations, anomalies, and data quality;
+- sentiment: rating normalization or VADER analysis of feedback text;
+- report questions: protected report and metric guidance.
+
+Structured calculations run in Python/Pandas or tenant-filtered SQL. The language model is never trusted to calculate business numbers.
+
+Example questions:
+
+```text
+Hi
+Summarize my data.
+What is total revenue?
+Which region performed worst?
+Which product performed best?
+What are the biggest risks?
+What evidence supports that conclusion?
+Give me recommendations.
+What is my customer sentiment?
+```
+
+### Optional self-hosted model
+
+Sentinel works without an LLM. To enable natural-language rewriting, host an open-source Hugging Face instruction model through an OpenAI-compatible local server such as vLLM or llama.cpp:
 
 ```env
-DATABASE_URL=postgresql+psycopg://sentinel:strong-password@database-host:5432/sentinel
+AI_PROVIDER=local_hf
+AI_MODEL_ID=Qwen/Qwen2.5-3B-Instruct
+AI_BASE_URL=http://localhost:8080
+AI_REQUEST_TIMEOUT_SECONDS=45
 ```
+
+If the model is unavailable, Sentinel returns the deterministic verified response rather than inventing an answer.
+
+## Session and tenant security
+
+- Every JWT carries user, organization, role, JTI, issue time, and expiry claims.
+- Every protected request validates the JTI against a non-revoked server-side session.
+- Business records, imports, files, conversations, reports, and analytics are organization-filtered.
+- Direct cross-tenant resource IDs return `404` or `401` as appropriate.
+- PostgreSQL RLS migrations provide defense in depth.
+- Browser tokens remain in HttpOnly, SameSite cookies.
+- Logout revokes the server session and clears browser storage/cache.
+- A successful fresh login clears the previous temporary analysis workspace.
+- Permanent identity, RBAC, invitations, schedules, and audit records are not deleted on logout.
+- Uploaded names are sanitized, stored names are unique, and resolved paths are constrained to `STORAGE_ROOT`.
+
+## PostgreSQL configuration
+
+Install PostgreSQL on Windows, create a database and least-privileged application user, then set:
+
+```env
+DATABASE_URL=postgresql+psycopg://sentinel:strong-password@localhost:5432/sentinel
+```
+
+Apply migrations:
 
 ```powershell
 cd backend
 .\.venv-win\Scripts\python.exe -m alembic upgrade head
+cd ..
 ```
 
-Use a managed secret store for database credentials and JWT signing keys.
+Use a managed secret store, encrypted backups, TLS database connections, and credential rotation in production.
 
-## API layout
+## API overview
 
-The current authentication API is versioned under `/api/v1`:
+All application APIs are under `/api/v1`.
 
-| Method | Endpoint | Purpose |
-|---|---|---|
-| `POST` | `/api/v1/auth/register` | Create a user account |
-| `POST` | `/api/v1/auth/login` | Issue an access token |
-| `GET` | `/api/v1/auth/me` | Return the authenticated user |
-| `GET` | `/api/v1/dashboard/summary` | Return live executive KPIs, chart series, alerts, and recommendations |
-| `GET` | `/api/v1/sales` | Paginated sales orders and revenue trend |
-| `GET` | `/api/v1/finance` | Paginated ledger transactions and account balances |
-| `GET` | `/api/v1/inventory` | Paginated warehouse-product availability |
-| `GET` | `/api/v1/support` | Paginated support tickets and status distribution |
-| `GET` | `/api/v1/employees` | Paginated workforce directory and department distribution |
-| `GET` | `/api/v1/customers` | Paginated customer accounts and regional distribution |
-| `GET` | `/api/v1/analytics/overview` | Revenue, profit, gross margin, MoM/WoW growth, and average order value |
-| `GET` | `/api/v1/analytics/products` | Top-selling products ranked by revenue |
-| `GET` | `/api/v1/analytics/regions` | Regional revenue, profit, share, and average order value |
-| `GET` | `/api/v1/analytics/customers/lifetime-value` | Customers ranked by realized lifetime value |
-| `GET` | `/api/v1/analytics/summary` | Combined executive analytics payload |
-| `GET` | `/health` | Operational health check |
+| Area | Important endpoints |
+|---|---|
+| Authentication | `/auth/register`, `/auth/register/verify-otp`, `/auth/login`, `/auth/otp-login/*`, `/auth/password/*`, `/auth/logout`, `/auth/me` |
+| Dataset onboarding | `/datasets/status`, `/datasets/imports`, `/datasets/current` |
+| Dashboard | `/dashboard/summary` |
+| Business data | `/sales`, `/finance`, `/inventory`, `/support`, `/employees`, `/customers` |
+| Analytics | `/analytics/overview`, `/analytics/products`, `/analytics/regions`, `/analytics/customers/lifetime-value`, `/analytics/summary` |
+| Sentinel AI | `/ai/chat`, `/ai/conversations`, `/ai/forecast`, `/ai/anomalies`, `/ai/dataset-intelligence` |
+| Files and reports | `/files`, `/files/uploads`, `/files/reports`, `/files/{id}/view`, `/files/{id}/download` |
+| Governance | invitations, audit logs, and report schedules under `/governance` |
 
-Protected endpoints validate bearer tokens through a shared FastAPI dependency. The frontend exchanges the access token for an HttpOnly, SameSite session cookie.
-
-The six business endpoints return a consistent Recharts-ready envelope containing `items`, `pagination`, and `chart_data` (`label`/`value` points). Each supports validated `page`, `page_size`, `sort_by`, and `sort_order` parameters plus domain-specific filters. Page size is capped at 100, and sorting is restricted to explicit safe columns. See the interactive Swagger documentation for the complete filter contract.
-
-Analytics endpoints accept optional inclusive `start_date` and `end_date` query parameters in `YYYY-MM-DD` format. SQLAlchemy performs scalable database aggregation while Pandas calculates calendar month-over-month and week-over-week series. Customer lifetime value represents recognized, non-cancelled historical revenue per customer.
-
-The executive dashboard calculates revenue, profit, cash balance, open support cases, workforce totals, regional performance, top products, and customer sentiment directly from the normalized BI database. Visualizations are rendered with Recharts and do not rely on hardcoded KPI values.
+Swagger documents validation, pagination, filtering, sorting, and response schemas at <http://localhost:8000/docs>.
 
 ## Development commands
 
-Backend development server:
+Start the backend with reload:
 
 ```powershell
 cd backend
-.\.venv-win\Scripts\python.exe -m uvicorn app.main:app --reload
+.\.venv-win\Scripts\python.exe -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-Frontend development server:
+Start the frontend separately:
 
 ```powershell
 cd frontend
 npm run dev
-```
-
-Frontend production validation:
-
-```powershell
-cd frontend
-npm run build
 ```
 
 Apply migrations:
@@ -244,67 +321,102 @@ cd backend
 .\.venv-win\Scripts\python.exe -m alembic upgrade head
 ```
 
-## Security baseline
+## Testing
 
-- Passwords are hashed with Argon2 and never stored as plaintext.
-- JWT access tokens are short lived and signed with a configurable secret.
-- Browser tokens are stored in HttpOnly cookies instead of local storage.
-- Protected pages are gated by Next.js middleware and revalidated by the API.
-- Database credentials and signing secrets are excluded from version control.
+Load `.env` into the current PowerShell process and run all Python tests:
 
-Before a public production launch, add TLS termination, secret rotation, rate limiting, audit-event persistence, backup policies, dependency scanning, and a managed identity provider.
+```powershell
+. .\scripts\windows\Import-SentinelEnv.ps1
+Import-SentinelEnv -Path .\.env
+backend\.venv-win\Scripts\python.exe -m pytest backend\tests agents\tests -q
+```
+
+Validate the frontend:
+
+```powershell
+cd frontend
+npx tsc --noEmit
+npm run build
+```
+
+Validate migrations against a disposable SQLite database by temporarily setting `DATABASE_URL` to a new file, applying `alembic upgrade head`, and deleting only that verified disposable file afterward.
+
+The test suite covers authentication, OTP security, session revocation, fresh-session data clearing, cross-tenant access, role enforcement, uploads, imports, PDFs, analytics, Sentinel conversation, exact calculations, risks, sentiment, forecasting, anomalies, invitations, and scheduled reports.
+
+## Synthetic data
+
+Generate deterministic normalized CSV datasets:
+
+```powershell
+backend\.venv-win\Scripts\python.exe synthetic_data\seed.py
+```
+
+Generate and replace the local database seed data:
+
+```powershell
+backend\.venv-win\Scripts\python.exe synthetic_data\seed.py --database --reset
+```
+
+Never use `--reset` with a production database.
 
 ## Troubleshooting
 
-### The site does not open
-
-Check the runtime logs:
+### Site cannot be reached
 
 ```powershell
-Get-Content .sentinel\backend-error.log
-Get-Content .sentinel\frontend-error.log
-```
-
-Restart the services:
-
-```powershell
+Get-Content .sentinel\backend-error.log -Tail 100
+Get-Content .sentinel\frontend-error.log -Tail 100
 .\scripts\windows\stop.ps1
 .\scripts\windows\start.ps1 -SkipSetup
 ```
 
-### Dependencies are missing
-
-Run the complete setup again:
+Check ports:
 
 ```powershell
-.\scripts\windows\setup.ps1
+Get-NetTCPConnection -LocalPort 3000,8000 -State Listen
 ```
 
-### Database schema is outdated
+### OTP email is not received
+
+- Confirm SMTP variables exist in `.env`.
+- For Gmail, use an App Password and enable two-step verification.
+- Confirm `EMAIL_FROM` is authorized by the provider.
+- Check spam and provider delivery logs.
+- Never use the normal mailbox password as `SMTP_PASSWORD`.
+
+### Database migration fails
 
 ```powershell
 cd backend
+.\.venv-win\Scripts\python.exe -m alembic current
+.\.venv-win\Scripts\python.exe -m alembic heads
 .\.venv-win\Scripts\python.exe -m alembic upgrade head
 ```
 
-## Documentation
+### Dashboard redirects to onboarding
+
+This is expected for a new session. Upload a dataset before opening the dashboard.
+
+## Additional documentation
 
 - [Architecture](docs/architecture.md)
-- [Native Windows runbook](docs/windows.md)
-- [Database ER diagram](docs/er-diagram.md)
-- [Synthetic data guide](synthetic_data/README.md)
-- [Database operations](database/README.md)
+- [ER diagram](docs/er-diagram.md)
+- [Windows runbook](docs/windows.md)
+- [Data Agent](agents/README.md)
+- [Database notes](database/README.md)
+- [Synthetic data](synthetic_data/README.md)
 
-## Roadmap
+## Production checklist
 
-- Live dashboard APIs backed by BI aggregation queries.
-- Dataset upload and validation workflows.
-- Governed agent orchestration and execution audit logs.
-- Role-based access control and multi-tenant workspaces.
-- Scheduled reports and alert delivery.
-- Data-source connectors for ERP, CRM, finance, and support platforms.
-- Automated tests and continuous integration.
+- Use PostgreSQL rather than SQLite.
+- Terminate TLS at a trusted reverse proxy.
+- Store secrets in a managed secret service.
+- Configure SPF, DKIM, and DMARC for email.
+- Run a durable background worker for large imports and scheduled reports.
+- Configure backups, restore testing, monitoring, dependency scanning, and centralized logs.
+- Host the selected open-source model on appropriately sized CPU/GPU infrastructure.
+- Review retention requirements before changing the session-only data policy.
 
 ## License
 
-No open-source license has been selected yet. Add an approved license before external redistribution.
+No open-source license has been selected. Add an organization-approved license before external redistribution.

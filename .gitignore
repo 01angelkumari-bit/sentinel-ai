@@ -12,7 +12,13 @@ dist/
 coverage/
 postgres_data/
 .sentinel/
+backend/storage/
+output/
+tmp/
 *.tsbuildinfo
 *.db
+*.db-wal
+*.db-shm
 synthetic_data/business_exports/*-preview.png
 synthetic_data/business_exports/*.inspect.ndjson
+synthetic_data/business_exports/*.pdf

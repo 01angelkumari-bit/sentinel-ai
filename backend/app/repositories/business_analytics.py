@@ -1,5 +1,6 @@
 from datetime import date
 from typing import Any
+from uuid import UUID
 
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
@@ -8,8 +9,9 @@ from app.domain.business.models import Customer, Product, SalesOrder, SalesOrder
 
 
 class BusinessAnalyticsRepository:
-    def __init__(self, db: Session) -> None:
+    def __init__(self, db: Session, organization_id: UUID) -> None:
         self.db = db
+        self.organization_id = organization_id
 
     @staticmethod
     def _revenue() -> Any:
@@ -39,7 +41,7 @@ class BusinessAnalyticsRepository:
             .select_from(SalesOrder)
             .join(SalesOrderItem)
             .join(Product)
-            .where(*self._date_filters(start_date, end_date))
+            .where(SalesOrder.organization_id == self.organization_id, *self._date_filters(start_date, end_date))
         ).mappings().one()
         return dict(row)
 
@@ -47,7 +49,7 @@ class BusinessAnalyticsRepository:
         rows = self.db.execute(
             select(SalesOrder.order_date.label("date"), func.sum(self._revenue()).label("revenue"))
             .join(SalesOrderItem)
-            .where(*self._date_filters(start_date, end_date))
+            .where(SalesOrder.organization_id == self.organization_id, *self._date_filters(start_date, end_date))
             .group_by(SalesOrder.order_date)
             .order_by(SalesOrder.order_date)
         ).mappings().all()
@@ -62,7 +64,7 @@ class BusinessAnalyticsRepository:
                 func.sum(self._revenue()).label("revenue"), func.sum(self._profit()).label("profit"),
             )
             .select_from(Product).join(SalesOrderItem).join(SalesOrder)
-            .where(*self._date_filters(start_date, end_date))
+            .where(SalesOrder.organization_id == self.organization_id, *self._date_filters(start_date, end_date))
             .group_by(Product.id, Product.name, Product.sku)
             .order_by(func.sum(self._revenue()).desc()).limit(limit)
         ).mappings().all()
@@ -76,7 +78,7 @@ class BusinessAnalyticsRepository:
                 func.sum(self._revenue()).label("revenue"), func.sum(self._profit()).label("profit"),
             )
             .select_from(Customer).join(SalesOrder).join(SalesOrderItem).join(Product)
-            .where(*self._date_filters(start_date, end_date))
+            .where(SalesOrder.organization_id == self.organization_id, *self._date_filters(start_date, end_date))
             .group_by(Customer.region).order_by(func.sum(self._revenue()).desc())
         ).mappings().all()
         return [dict(row) for row in rows]
@@ -89,9 +91,8 @@ class BusinessAnalyticsRepository:
                 func.count(func.distinct(SalesOrder.id)).label("orders"), func.sum(self._revenue()).label("lifetime_value"),
             )
             .select_from(Customer).join(SalesOrder).join(SalesOrderItem)
-            .where(SalesOrder.status != "cancelled")
+            .where(SalesOrder.status != "cancelled", SalesOrder.organization_id == self.organization_id)
             .group_by(Customer.id, Customer.company_name, Customer.region)
             .order_by(func.sum(self._revenue()).desc()).limit(limit)
         ).mappings().all()
         return [dict(row) for row in rows]
-

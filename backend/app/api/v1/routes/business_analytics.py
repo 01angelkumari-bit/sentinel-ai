@@ -13,8 +13,8 @@ from app.repositories.business_analytics import BusinessAnalyticsRepository
 router = APIRouter(prefix="/analytics", tags=["business analytics"])
 
 
-def analytics_service(db: Session = Depends(get_db)) -> BusinessAnalyticsService:
-    return BusinessAnalyticsService(BusinessAnalyticsRepository(db))
+def analytics_service(user: User = Depends(current_user), db: Session = Depends(get_db)) -> BusinessAnalyticsService:
+    return BusinessAnalyticsService(BusinessAnalyticsRepository(db, user.organization_id))
 
 
 def date_range(
@@ -80,4 +80,3 @@ def summary(
         "regional_performance": service.regions(*dates),
         "top_customers_by_ltv": service.customer_ltv(customer_limit),
     }
-

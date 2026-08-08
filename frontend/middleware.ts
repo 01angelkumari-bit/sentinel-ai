@@ -1,4 +1,3 @@
 import { NextRequest, NextResponse } from "next/server";
-export function middleware(request: NextRequest) { const token = request.cookies.get("sentinel_access_token")?.value; if (!token && request.nextUrl.pathname.startsWith("/dashboard")) return NextResponse.redirect(new URL("/login", request.url)); if (token && ["/login", "/register"].includes(request.nextUrl.pathname)) return NextResponse.redirect(new URL("/dashboard", request.url)); return NextResponse.next(); }
-export const config = { matcher: ["/dashboard/:path*", "/login", "/register"] };
-
+export function middleware(request: NextRequest) { const token = request.cookies.get("sentinel_access_token")?.value; if (!token && (request.nextUrl.pathname.startsWith("/dashboard") || request.nextUrl.pathname.startsWith("/onboarding"))) return NextResponse.redirect(new URL("/login", request.url)); if (request.nextUrl.pathname === "/login" && request.nextUrl.searchParams.get("expired") === "1") { const response = NextResponse.next(); response.cookies.set("sentinel_access_token", "", { path: "/", maxAge: 0 }); return response; } return NextResponse.next(); }
+export const config = { matcher: ["/dashboard/:path*", "/onboarding/:path*", "/login", "/register"] };
