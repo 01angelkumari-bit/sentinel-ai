@@ -39,10 +39,16 @@ def fit(image_path: Path) -> Image.Image:
 
 def frames():
     scenes = [
-        (title_frame("Sentinel AI", "Tenant-isolated analytics. Evidence-backed decisions."), 2.5),
-        (fit(SCREENSHOTS / "authentication-hero.png"), 3.0),
-        (fit(SCREENSHOTS / "register.png"), 3.0),
-        (title_frame("From data to decisions", "Upload • Analyze • Ask Sentinel • Export PDF"), 2.5),
+        (title_frame("Sentinel AI", "A real dataset-to-decision workflow"), 2.0),
+        (fit(SCREENSHOTS / "demo-login.png"), 3.0),
+        (title_frame("Secure dataset onboarding", "Importing test6.csv • 30,000 tenant-isolated records"), 1.5),
+        (fit(SCREENSHOTS / "demo-upload.png"), 3.0),
+        (title_frame("Executive intelligence", "Live KPIs and charts generated from test6.csv"), 1.5),
+        (fit(SCREENSHOTS / "demo-dashboard.png"), 4.0),
+        (title_frame("Ask Sentinel AI", "Exact calculations backed by uploaded business data"), 1.5),
+        (fit(SCREENSHOTS / "demo-sentinel-answer.png"), 3.5),
+        (fit(SCREENSHOTS / "demo-sentinel-risk.png"), 4.0),
+        (title_frame("From data to decisions", "Upload • Analyze • Ask Sentinel • Export PDF"), 2.0),
     ]
     fade = 12
     previous = None
