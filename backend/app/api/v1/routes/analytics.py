@@ -12,8 +12,8 @@ from app.repositories.analytics import AnalyticsRepository
 router = APIRouter(tags=["business intelligence"])
 
 
-def repository(db: Session = Depends(get_db)) -> AnalyticsRepository:
-    return AnalyticsRepository(db)
+def repository(user: User = Depends(current_user), db: Session = Depends(get_db)) -> AnalyticsRepository:
+    return AnalyticsRepository(db, user.organization_id)
 
 
 def pagination(page: int = Query(1, ge=1), page_size: int = Query(25, ge=1, le=100)) -> tuple[int, int]:

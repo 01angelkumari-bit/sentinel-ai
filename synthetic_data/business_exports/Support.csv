@@ -1,0 +1,601 @@
+Ticket,Issue,Priority,Status,Sentiment
+TKT-000001,Integration timeout,High,Closed,Neutral
+TKT-000002,Dashboard access,Low,Open,Positive
+TKT-000003,Incorrect revenue mapping,Critical,Resolved,Neutral
+TKT-000004,Incorrect revenue mapping,Critical,Resolved,Positive
+TKT-000005,Inventory mismatch,Critical,Open,Negative
+TKT-000006,Integration timeout,Critical,Pending,Negative
+TKT-000007,Dashboard access,High,Pending,Positive
+TKT-000008,Delayed data refresh,Low,Pending,Neutral
+TKT-000009,Inventory mismatch,Low,Resolved,Positive
+TKT-000010,Integration timeout,Low,Closed,Positive
+TKT-000011,User provisioning,High,Open,Neutral
+TKT-000012,Inventory mismatch,High,Resolved,Positive
+TKT-000013,Inventory mismatch,Low,Resolved,Positive
+TKT-000014,Forecast variance,Medium,Pending,Positive
+TKT-000015,Delayed data refresh,Low,Resolved,Positive
+TKT-000016,Dashboard access,Medium,Open,Positive
+TKT-000017,Integration timeout,Critical,Resolved,Positive
+TKT-000018,Incorrect revenue mapping,Medium,Pending,Positive
+TKT-000019,Forecast variance,Low,Pending,Positive
+TKT-000020,Incorrect revenue mapping,Low,Resolved,Neutral
+TKT-000021,Delayed data refresh,Critical,Closed,Positive
+TKT-000022,Forecast variance,Medium,Resolved,Neutral
+TKT-000023,Inventory mismatch,Low,Closed,Positive
+TKT-000024,Dashboard access,Medium,Closed,Positive
+TKT-000025,Integration timeout,High,Pending,Negative
+TKT-000026,User provisioning,High,Resolved,Neutral
+TKT-000027,Dashboard access,Medium,Closed,Neutral
+TKT-000028,Delayed data refresh,High,Pending,Neutral
+TKT-000029,Forecast variance,Medium,Open,Neutral
+TKT-000030,Inventory mismatch,Critical,Pending,Negative
+TKT-000031,Forecast variance,Medium,Closed,Positive
+TKT-000032,Export failure,Critical,Closed,Positive
+TKT-000033,Delayed data refresh,High,Resolved,Positive
+TKT-000034,Delayed data refresh,Medium,Open,Neutral
+TKT-000035,Forecast variance,Medium,Pending,Positive
+TKT-000036,User provisioning,Medium,Pending,Negative
+TKT-000037,Export failure,Low,Closed,Positive
+TKT-000038,User provisioning,Low,Closed,Neutral
+TKT-000039,User provisioning,Low,Pending,Negative
+TKT-000040,Dashboard access,High,Closed,Neutral
+TKT-000041,Export failure,High,Resolved,Positive
+TKT-000042,Export failure,Critical,Resolved,Neutral
+TKT-000043,Dashboard access,Medium,Open,Positive
+TKT-000044,Export failure,Medium,Pending,Negative
+TKT-000045,Dashboard access,High,Closed,Positive
+TKT-000046,User provisioning,High,Closed,Neutral
+TKT-000047,Dashboard access,Medium,Resolved,Positive
+TKT-000048,Inventory mismatch,High,Resolved,Neutral
+TKT-000049,Incorrect revenue mapping,High,Open,Neutral
+TKT-000050,User provisioning,Medium,Closed,Positive
+TKT-000051,User provisioning,High,Resolved,Neutral
+TKT-000052,Dashboard access,Low,Pending,Neutral
+TKT-000053,Forecast variance,Low,Pending,Neutral
+TKT-000054,Export failure,Critical,Resolved,Positive
+TKT-000055,Delayed data refresh,Low,Pending,Negative
+TKT-000056,User provisioning,Low,Pending,Positive
+TKT-000057,Dashboard access,Medium,Pending,Negative
+TKT-000058,User provisioning,Medium,Open,Neutral
+TKT-000059,Export failure,Medium,Open,Negative
+TKT-000060,Forecast variance,Medium,Pending,Negative
+TKT-000061,Dashboard access,Low,Closed,Positive
+TKT-000062,Forecast variance,Critical,Resolved,Positive
+TKT-000063,Inventory mismatch,Low,Pending,Negative
+TKT-000064,Integration timeout,Medium,Closed,Neutral
+TKT-000065,Dashboard access,Medium,Resolved,Neutral
+TKT-000066,Delayed data refresh,Medium,Open,Neutral
+TKT-000067,Inventory mismatch,Low,Resolved,Positive
+TKT-000068,User provisioning,Medium,Resolved,Positive
+TKT-000069,Export failure,High,Pending,Negative
+TKT-000070,User provisioning,High,Open,Negative
+TKT-000071,Forecast variance,High,Pending,Neutral
+TKT-000072,Dashboard access,Medium,Resolved,Neutral
+TKT-000073,Delayed data refresh,High,Resolved,Positive
+TKT-000074,Forecast variance,Low,Closed,Positive
+TKT-000075,Forecast variance,Critical,Resolved,Neutral
+TKT-000076,Forecast variance,Critical,Resolved,Positive
+TKT-000077,Delayed data refresh,Critical,Closed,Positive
+TKT-000078,Delayed data refresh,Low,Pending,Neutral
+TKT-000079,Forecast variance,Medium,Pending,Neutral
+TKT-000080,Inventory mismatch,Critical,Pending,Negative
+TKT-000081,Integration timeout,High,Closed,Neutral
+TKT-000082,Delayed data refresh,Low,Pending,Neutral
+TKT-000083,Integration timeout,High,Open,Neutral
+TKT-000084,Integration timeout,Medium,Open,Positive
+TKT-000085,Dashboard access,Critical,Open,Negative
+TKT-000086,Delayed data refresh,Medium,Resolved,Positive
+TKT-000087,User provisioning,Low,Resolved,Positive
+TKT-000088,User provisioning,Critical,Open,Negative
+TKT-000089,Forecast variance,Medium,Open,Neutral
+TKT-000090,Incorrect revenue mapping,High,Resolved,Neutral
+TKT-000091,Inventory mismatch,Medium,Closed,Neutral
+TKT-000092,Integration timeout,Critical,Open,Negative
+TKT-000093,Export failure,Medium,Resolved,Positive
+TKT-000094,User provisioning,Low,Pending,Negative
+TKT-000095,Delayed data refresh,Medium,Open,Positive
+TKT-000096,Integration timeout,High,Open,Neutral
+TKT-000097,Incorrect revenue mapping,Medium,Pending,Neutral
+TKT-000098,User provisioning,Medium,Closed,Positive
+TKT-000099,Incorrect revenue mapping,High,Closed,Neutral
+TKT-000100,Incorrect revenue mapping,High,Closed,Neutral
+TKT-000101,Forecast variance,Low,Pending,Negative
+TKT-000102,Forecast variance,Low,Open,Neutral
+TKT-000103,Forecast variance,Medium,Closed,Positive
+TKT-000104,Inventory mismatch,Medium,Pending,Neutral
+TKT-000105,Export failure,Low,Closed,Neutral
+TKT-000106,Dashboard access,Low,Resolved,Neutral
+TKT-000107,Integration timeout,Low,Open,Positive
+TKT-000108,Integration timeout,High,Pending,Positive
+TKT-000109,Incorrect revenue mapping,Critical,Closed,Positive
+TKT-000110,Integration timeout,High,Open,Positive
+TKT-000111,User provisioning,High,Open,Negative
+TKT-000112,Inventory mismatch,Medium,Resolved,Positive
+TKT-000113,Integration timeout,High,Pending,Negative
+TKT-000114,Export failure,Medium,Pending,Positive
+TKT-000115,Export failure,Low,Pending,Positive
+TKT-000116,Integration timeout,High,Open,Neutral
+TKT-000117,User provisioning,Medium,Resolved,Positive
+TKT-000118,Inventory mismatch,Low,Resolved,Positive
+TKT-000119,User provisioning,Medium,Resolved,Neutral
+TKT-000120,Inventory mismatch,Critical,Open,Negative
+TKT-000121,Forecast variance,High,Open,Negative
+TKT-000122,User provisioning,Low,Closed,Positive
+TKT-000123,Export failure,Medium,Resolved,Neutral
+TKT-000124,Inventory mismatch,Critical,Open,Negative
+TKT-000125,Integration timeout,Medium,Resolved,Positive
+TKT-000126,Export failure,High,Open,Positive
+TKT-000127,Delayed data refresh,Critical,Resolved,Neutral
+TKT-000128,Forecast variance,Medium,Resolved,Positive
+TKT-000129,Dashboard access,Critical,Resolved,Positive
+TKT-000130,Delayed data refresh,Medium,Open,Negative
+TKT-000131,Inventory mismatch,High,Closed,Neutral
+TKT-000132,User provisioning,Low,Pending,Neutral
+TKT-000133,Integration timeout,Medium,Open,Positive
+TKT-000134,Inventory mismatch,Low,Closed,Positive
+TKT-000135,Inventory mismatch,High,Open,Neutral
+TKT-000136,Forecast variance,Medium,Closed,Positive
+TKT-000137,Dashboard access,Medium,Resolved,Positive
+TKT-000138,Inventory mismatch,Critical,Pending,Negative
+TKT-000139,Inventory mismatch,Low,Resolved,Neutral
+TKT-000140,Delayed data refresh,Medium,Open,Neutral
+TKT-000141,Export failure,Low,Open,Negative
+TKT-000142,Export failure,High,Pending,Negative
+TKT-000143,User provisioning,Low,Pending,Neutral
+TKT-000144,User provisioning,High,Closed,Neutral
+TKT-000145,Integration timeout,Critical,Resolved,Neutral
+TKT-000146,User provisioning,High,Open,Negative
+TKT-000147,Inventory mismatch,Medium,Resolved,Positive
+TKT-000148,Integration timeout,Low,Open,Positive
+TKT-000149,Inventory mismatch,High,Pending,Positive
+TKT-000150,User provisioning,Medium,Pending,Negative
+TKT-000151,Incorrect revenue mapping,Medium,Pending,Neutral
+TKT-000152,Integration timeout,Medium,Open,Neutral
+TKT-000153,Dashboard access,Low,Pending,Negative
+TKT-000154,Delayed data refresh,Critical,Open,Negative
+TKT-000155,Export failure,Medium,Resolved,Positive
+TKT-000156,Export failure,Low,Resolved,Neutral
+TKT-000157,User provisioning,Medium,Pending,Negative
+TKT-000158,Delayed data refresh,Medium,Open,Negative
+TKT-000159,Delayed data refresh,Critical,Open,Negative
+TKT-000160,Delayed data refresh,Critical,Pending,Negative
+TKT-000161,User provisioning,Critical,Open,Negative
+TKT-000162,Export failure,High,Open,Negative
+TKT-000163,Integration timeout,Medium,Closed,Neutral
+TKT-000164,Inventory mismatch,Medium,Pending,Negative
+TKT-000165,Dashboard access,Critical,Pending,Negative
+TKT-000166,Integration timeout,Medium,Closed,Neutral
+TKT-000167,User provisioning,Medium,Open,Neutral
+TKT-000168,Dashboard access,Critical,Closed,Positive
+TKT-000169,Incorrect revenue mapping,High,Open,Negative
+TKT-000170,Incorrect revenue mapping,Medium,Closed,Positive
+TKT-000171,Forecast variance,Medium,Closed,Positive
+TKT-000172,Inventory mismatch,Low,Closed,Positive
+TKT-000173,Inventory mismatch,Low,Resolved,Neutral
+TKT-000174,Integration timeout,Low,Resolved,Positive
+TKT-000175,Delayed data refresh,High,Closed,Neutral
+TKT-000176,Delayed data refresh,Medium,Open,Positive
+TKT-000177,Export failure,Low,Resolved,Positive
+TKT-000178,Inventory mismatch,High,Resolved,Positive
+TKT-000179,Integration timeout,Low,Resolved,Positive
+TKT-000180,Incorrect revenue mapping,Medium,Open,Positive
+TKT-000181,Incorrect revenue mapping,Low,Closed,Positive
+TKT-000182,Forecast variance,Medium,Closed,Positive
+TKT-000183,Incorrect revenue mapping,Medium,Pending,Negative
+TKT-000184,Forecast variance,Medium,Open,Negative
+TKT-000185,Forecast variance,Medium,Pending,Neutral
+TKT-000186,Export failure,Low,Resolved,Positive
+TKT-000187,Incorrect revenue mapping,Critical,Closed,Positive
+TKT-000188,Integration timeout,Low,Resolved,Neutral
+TKT-000189,User provisioning,Critical,Pending,Negative
+TKT-000190,User provisioning,Medium,Open,Positive
+TKT-000191,Inventory mismatch,Low,Closed,Positive
+TKT-000192,User provisioning,Medium,Resolved,Positive
+TKT-000193,Integration timeout,Medium,Resolved,Positive
+TKT-000194,Inventory mismatch,Critical,Resolved,Positive
+TKT-000195,User provisioning,Critical,Pending,Negative
+TKT-000196,Dashboard access,High,Open,Positive
+TKT-000197,Inventory mismatch,High,Resolved,Positive
+TKT-000198,Integration timeout,Medium,Resolved,Neutral
+TKT-000199,Delayed data refresh,Medium,Open,Negative
+TKT-000200,User provisioning,High,Pending,Negative
+TKT-000201,Incorrect revenue mapping,High,Resolved,Positive
+TKT-000202,Forecast variance,Critical,Closed,Positive
+TKT-000203,Inventory mismatch,High,Open,Negative
+TKT-000204,Integration timeout,Low,Closed,Positive
+TKT-000205,Export failure,Medium,Resolved,Positive
+TKT-000206,Delayed data refresh,Critical,Closed,Neutral
+TKT-000207,Integration timeout,High,Resolved,Neutral
+TKT-000208,Integration timeout,Critical,Pending,Negative
+TKT-000209,Integration timeout,Medium,Pending,Neutral
+TKT-000210,Delayed data refresh,Medium,Open,Negative
+TKT-000211,Incorrect revenue mapping,Medium,Pending,Negative
+TKT-000212,Delayed data refresh,High,Resolved,Neutral
+TKT-000213,Incorrect revenue mapping,Medium,Closed,Positive
+TKT-000214,Forecast variance,High,Resolved,Positive
+TKT-000215,Delayed data refresh,Low,Pending,Negative
+TKT-000216,Incorrect revenue mapping,High,Closed,Positive
+TKT-000217,Forecast variance,Critical,Closed,Positive
+TKT-000218,Dashboard access,Low,Pending,Positive
+TKT-000219,Export failure,Critical,Open,Negative
+TKT-000220,Incorrect revenue mapping,Critical,Resolved,Positive
+TKT-000221,Delayed data refresh,Low,Closed,Neutral
+TKT-000222,Delayed data refresh,High,Closed,Positive
+TKT-000223,Inventory mismatch,Critical,Pending,Negative
+TKT-000224,Delayed data refresh,High,Closed,Positive
+TKT-000225,Export failure,Medium,Pending,Neutral
+TKT-000226,Forecast variance,Medium,Open,Positive
+TKT-000227,User provisioning,Low,Closed,Neutral
+TKT-000228,Delayed data refresh,Low,Closed,Neutral
+TKT-000229,Dashboard access,Medium,Open,Negative
+TKT-000230,Export failure,Critical,Closed,Positive
+TKT-000231,Forecast variance,Medium,Pending,Negative
+TKT-000232,User provisioning,Low,Pending,Negative
+TKT-000233,User provisioning,Low,Closed,Positive
+TKT-000234,User provisioning,Low,Resolved,Neutral
+TKT-000235,Delayed data refresh,Medium,Resolved,Positive
+TKT-000236,Incorrect revenue mapping,Critical,Closed,Neutral
+TKT-000237,Delayed data refresh,High,Open,Negative
+TKT-000238,Incorrect revenue mapping,Critical,Resolved,Positive
+TKT-000239,Dashboard access,High,Open,Positive
+TKT-000240,Integration timeout,Critical,Open,Negative
+TKT-000241,Export failure,Medium,Pending,Negative
+TKT-000242,User provisioning,Critical,Resolved,Neutral
+TKT-000243,Dashboard access,Medium,Pending,Negative
+TKT-000244,Incorrect revenue mapping,High,Closed,Positive
+TKT-000245,Inventory mismatch,Medium,Pending,Positive
+TKT-000246,Incorrect revenue mapping,High,Resolved,Positive
+TKT-000247,Export failure,Medium,Pending,Neutral
+TKT-000248,User provisioning,High,Pending,Positive
+TKT-000249,Inventory mismatch,Medium,Closed,Positive
+TKT-000250,Integration timeout,Critical,Open,Negative
+TKT-000251,Incorrect revenue mapping,Low,Resolved,Neutral
+TKT-000252,Forecast variance,Medium,Open,Negative
+TKT-000253,Delayed data refresh,Medium,Closed,Positive
+TKT-000254,Export failure,Low,Closed,Positive
+TKT-000255,User provisioning,Medium,Closed,Neutral
+TKT-000256,Forecast variance,High,Closed,Positive
+TKT-000257,Export failure,Low,Open,Negative
+TKT-000258,User provisioning,High,Closed,Neutral
+TKT-000259,Incorrect revenue mapping,Medium,Closed,Positive
+TKT-000260,Export failure,Critical,Pending,Negative
+TKT-000261,Dashboard access,Medium,Resolved,Neutral
+TKT-000262,Dashboard access,Critical,Resolved,Positive
+TKT-000263,User provisioning,Critical,Pending,Negative
+TKT-000264,Forecast variance,High,Resolved,Neutral
+TKT-000265,Dashboard access,Medium,Closed,Positive
+TKT-000266,Dashboard access,Medium,Closed,Positive
+TKT-000267,Dashboard access,Medium,Pending,Neutral
+TKT-000268,Forecast variance,High,Resolved,Positive
+TKT-000269,Incorrect revenue mapping,Medium,Pending,Neutral
+TKT-000270,Inventory mismatch,High,Open,Neutral
+TKT-000271,Forecast variance,Critical,Resolved,Neutral
+TKT-000272,Forecast variance,Low,Pending,Positive
+TKT-000273,Integration timeout,Medium,Closed,Positive
+TKT-000274,Inventory mismatch,Low,Open,Negative
+TKT-000275,User provisioning,High,Resolved,Neutral
+TKT-000276,Inventory mismatch,Medium,Pending,Negative
+TKT-000277,User provisioning,Low,Closed,Positive
+TKT-000278,Incorrect revenue mapping,High,Closed,Positive
+TKT-000279,Incorrect revenue mapping,Medium,Resolved,Neutral
+TKT-000280,User provisioning,High,Closed,Neutral
+TKT-000281,Dashboard access,Medium,Resolved,Neutral
+TKT-000282,Delayed data refresh,Low,Closed,Neutral
+TKT-000283,Delayed data refresh,Medium,Resolved,Positive
+TKT-000284,Export failure,Medium,Open,Negative
+TKT-000285,Dashboard access,High,Pending,Negative
+TKT-000286,Delayed data refresh,High,Closed,Neutral
+TKT-000287,Export failure,High,Pending,Negative
+TKT-000288,Forecast variance,Medium,Pending,Neutral
+TKT-000289,Export failure,Critical,Pending,Negative
+TKT-000290,Delayed data refresh,High,Resolved,Positive
+TKT-000291,Export failure,Low,Closed,Neutral
+TKT-000292,Incorrect revenue mapping,Critical,Pending,Negative
+TKT-000293,Integration timeout,High,Open,Negative
+TKT-000294,Dashboard access,Medium,Pending,Positive
+TKT-000295,Integration timeout,High,Resolved,Positive
+TKT-000296,Delayed data refresh,Critical,Resolved,Positive
+TKT-000297,Delayed data refresh,Critical,Pending,Negative
+TKT-000298,Delayed data refresh,Medium,Pending,Neutral
+TKT-000299,Inventory mismatch,Medium,Open,Neutral
+TKT-000300,Forecast variance,Critical,Closed,Positive
+TKT-000301,User provisioning,Medium,Open,Positive
+TKT-000302,Export failure,High,Pending,Neutral
+TKT-000303,Forecast variance,Medium,Closed,Positive
+TKT-000304,Dashboard access,Medium,Closed,Positive
+TKT-000305,Incorrect revenue mapping,Medium,Pending,Positive
+TKT-000306,Incorrect revenue mapping,Low,Pending,Neutral
+TKT-000307,User provisioning,Critical,Pending,Negative
+TKT-000308,Export failure,High,Closed,Positive
+TKT-000309,User provisioning,Medium,Pending,Neutral
+TKT-000310,Export failure,Medium,Resolved,Positive
+TKT-000311,Dashboard access,High,Resolved,Positive
+TKT-000312,Forecast variance,Critical,Closed,Positive
+TKT-000313,Integration timeout,Medium,Pending,Positive
+TKT-000314,Inventory mismatch,Low,Open,Negative
+TKT-000315,Export failure,Medium,Closed,Positive
+TKT-000316,Export failure,Medium,Closed,Neutral
+TKT-000317,Inventory mismatch,Low,Closed,Positive
+TKT-000318,Integration timeout,Critical,Resolved,Positive
+TKT-000319,Integration timeout,Medium,Open,Positive
+TKT-000320,Inventory mismatch,Medium,Open,Positive
+TKT-000321,User provisioning,Medium,Open,Neutral
+TKT-000322,User provisioning,Medium,Pending,Negative
+TKT-000323,Export failure,Medium,Resolved,Neutral
+TKT-000324,Dashboard access,Medium,Pending,Neutral
+TKT-000325,Forecast variance,Medium,Pending,Negative
+TKT-000326,Dashboard access,Low,Open,Positive
+TKT-000327,Integration timeout,Low,Pending,Neutral
+TKT-000328,Incorrect revenue mapping,Medium,Closed,Positive
+TKT-000329,Incorrect revenue mapping,Medium,Open,Negative
+TKT-000330,Integration timeout,High,Open,Neutral
+TKT-000331,Delayed data refresh,High,Closed,Positive
+TKT-000332,Integration timeout,Low,Resolved,Positive
+TKT-000333,Inventory mismatch,Medium,Closed,Neutral
+TKT-000334,Integration timeout,Medium,Closed,Neutral
+TKT-000335,Forecast variance,Medium,Closed,Positive
+TKT-000336,User provisioning,High,Pending,Positive
+TKT-000337,Integration timeout,Medium,Resolved,Positive
+TKT-000338,Forecast variance,Medium,Open,Neutral
+TKT-000339,User provisioning,Medium,Pending,Neutral
+TKT-000340,Export failure,Medium,Resolved,Positive
+TKT-000341,Integration timeout,Critical,Pending,Negative
+TKT-000342,Integration timeout,High,Pending,Negative
+TKT-000343,Integration timeout,Medium,Closed,Neutral
+TKT-000344,Export failure,Low,Resolved,Positive
+TKT-000345,Delayed data refresh,High,Closed,Neutral
+TKT-000346,Incorrect revenue mapping,Medium,Open,Positive
+TKT-000347,Integration timeout,Medium,Open,Positive
+TKT-000348,Export failure,Low,Resolved,Positive
+TKT-000349,Forecast variance,Low,Open,Negative
+TKT-000350,Forecast variance,Medium,Pending,Negative
+TKT-000351,Delayed data refresh,Medium,Pending,Negative
+TKT-000352,Export failure,High,Pending,Negative
+TKT-000353,Incorrect revenue mapping,Medium,Closed,Positive
+TKT-000354,Delayed data refresh,Medium,Open,Neutral
+TKT-000355,Delayed data refresh,High,Pending,Positive
+TKT-000356,Export failure,Low,Resolved,Neutral
+TKT-000357,User provisioning,Low,Closed,Positive
+TKT-000358,Export failure,High,Pending,Negative
+TKT-000359,Forecast variance,Critical,Pending,Negative
+TKT-000360,User provisioning,Critical,Pending,Negative
+TKT-000361,Forecast variance,Medium,Resolved,Neutral
+TKT-000362,User provisioning,Low,Resolved,Positive
+TKT-000363,Forecast variance,Medium,Pending,Negative
+TKT-000364,Export failure,Medium,Open,Positive
+TKT-000365,Incorrect revenue mapping,Low,Open,Positive
+TKT-000366,Export failure,Medium,Resolved,Positive
+TKT-000367,Incorrect revenue mapping,Medium,Closed,Neutral
+TKT-000368,Forecast variance,Low,Pending,Negative
+TKT-000369,Dashboard access,High,Pending,Positive
+TKT-000370,Forecast variance,Critical,Resolved,Positive
+TKT-000371,Integration timeout,Low,Closed,Neutral
+TKT-000372,Export failure,Low,Closed,Neutral
+TKT-000373,Inventory mismatch,High,Resolved,Positive
+TKT-000374,Integration timeout,Low,Resolved,Positive
+TKT-000375,Export failure,Critical,Pending,Negative
+TKT-000376,Export failure,High,Resolved,Neutral
+TKT-000377,Integration timeout,Medium,Resolved,Positive
+TKT-000378,Forecast variance,Low,Closed,Neutral
+TKT-000379,Delayed data refresh,Critical,Resolved,Positive
+TKT-000380,Delayed data refresh,Low,Resolved,Positive
+TKT-000381,Integration timeout,Medium,Open,Positive
+TKT-000382,Export failure,Low,Resolved,Positive
+TKT-000383,Dashboard access,Low,Resolved,Positive
+TKT-000384,Dashboard access,Low,Open,Negative
+TKT-000385,Incorrect revenue mapping,High,Pending,Positive
+TKT-000386,Inventory mismatch,Critical,Resolved,Positive
+TKT-000387,Dashboard access,Medium,Open,Neutral
+TKT-000388,Delayed data refresh,Low,Resolved,Positive
+TKT-000389,User provisioning,Critical,Resolved,Positive
+TKT-000390,Dashboard access,Low,Closed,Neutral
+TKT-000391,Inventory mismatch,Medium,Resolved,Positive
+TKT-000392,Integration timeout,Medium,Open,Neutral
+TKT-000393,Inventory mismatch,Medium,Closed,Positive
+TKT-000394,Delayed data refresh,High,Resolved,Neutral
+TKT-000395,User provisioning,Low,Pending,Negative
+TKT-000396,Export failure,Low,Resolved,Neutral
+TKT-000397,User provisioning,High,Resolved,Positive
+TKT-000398,Export failure,Medium,Pending,Positive
+TKT-000399,User provisioning,Medium,Open,Neutral
+TKT-000400,Dashboard access,Critical,Closed,Neutral
+TKT-000401,Export failure,Medium,Pending,Neutral
+TKT-000402,Dashboard access,Critical,Open,Negative
+TKT-000403,Dashboard access,Critical,Resolved,Positive
+TKT-000404,Integration timeout,Medium,Resolved,Positive
+TKT-000405,Delayed data refresh,Medium,Resolved,Positive
+TKT-000406,Forecast variance,Critical,Pending,Negative
+TKT-000407,Integration timeout,Critical,Pending,Negative
+TKT-000408,Forecast variance,High,Open,Positive
+TKT-000409,Forecast variance,Medium,Open,Positive
+TKT-000410,Delayed data refresh,Low,Closed,Positive
+TKT-000411,Forecast variance,Medium,Pending,Positive
+TKT-000412,Export failure,Critical,Resolved,Neutral
+TKT-000413,Dashboard access,Medium,Pending,Negative
+TKT-000414,User provisioning,Critical,Pending,Negative
+TKT-000415,Inventory mismatch,Low,Resolved,Positive
+TKT-000416,Inventory mismatch,Medium,Open,Negative
+TKT-000417,Inventory mismatch,Low,Open,Neutral
+TKT-000418,Delayed data refresh,Medium,Resolved,Neutral
+TKT-000419,Delayed data refresh,High,Open,Negative
+TKT-000420,Incorrect revenue mapping,Low,Resolved,Positive
+TKT-000421,Export failure,High,Open,Negative
+TKT-000422,Inventory mismatch,Medium,Open,Neutral
+TKT-000423,Forecast variance,High,Open,Neutral
+TKT-000424,Incorrect revenue mapping,Medium,Resolved,Neutral
+TKT-000425,Inventory mismatch,Medium,Closed,Neutral
+TKT-000426,Forecast variance,High,Pending,Neutral
+TKT-000427,Inventory mismatch,Medium,Closed,Positive
+TKT-000428,Dashboard access,High,Pending,Positive
+TKT-000429,Integration timeout,Low,Pending,Negative
+TKT-000430,Incorrect revenue mapping,Medium,Resolved,Positive
+TKT-000431,Export failure,High,Resolved,Neutral
+TKT-000432,Incorrect revenue mapping,Low,Resolved,Positive
+TKT-000433,Delayed data refresh,Medium,Pending,Neutral
+TKT-000434,Dashboard access,Critical,Open,Negative
+TKT-000435,User provisioning,Medium,Pending,Neutral
+TKT-000436,Delayed data refresh,High,Open,Neutral
+TKT-000437,Inventory mismatch,High,Closed,Positive
+TKT-000438,Integration timeout,Low,Pending,Negative
+TKT-000439,Delayed data refresh,High,Resolved,Positive
+TKT-000440,User provisioning,Critical,Pending,Negative
+TKT-000441,Integration timeout,Medium,Resolved,Neutral
+TKT-000442,User provisioning,Low,Resolved,Neutral
+TKT-000443,Dashboard access,Low,Closed,Positive
+TKT-000444,Dashboard access,Medium,Resolved,Positive
+TKT-000445,Integration timeout,Medium,Pending,Positive
+TKT-000446,Export failure,Medium,Open,Positive
+TKT-000447,Dashboard access,Medium,Pending,Negative
+TKT-000448,Inventory mismatch,Low,Pending,Neutral
+TKT-000449,Incorrect revenue mapping,Medium,Open,Positive
+TKT-000450,Integration timeout,Medium,Closed,Positive
+TKT-000451,Export failure,Low,Resolved,Positive
+TKT-000452,User provisioning,Medium,Pending,Neutral
+TKT-000453,User provisioning,High,Open,Negative
+TKT-000454,Forecast variance,Critical,Resolved,Positive
+TKT-000455,User provisioning,Low,Closed,Positive
+TKT-000456,Delayed data refresh,Low,Resolved,Positive
+TKT-000457,Incorrect revenue mapping,Medium,Pending,Neutral
+TKT-000458,Dashboard access,Medium,Resolved,Positive
+TKT-000459,Incorrect revenue mapping,Critical,Open,Negative
+TKT-000460,Delayed data refresh,Critical,Resolved,Positive
+TKT-000461,Incorrect revenue mapping,Medium,Closed,Positive
+TKT-000462,Incorrect revenue mapping,Medium,Closed,Positive
+TKT-000463,Forecast variance,Medium,Resolved,Positive
+TKT-000464,Integration timeout,High,Resolved,Positive
+TKT-000465,User provisioning,High,Open,Neutral
+TKT-000466,Export failure,Low,Resolved,Neutral
+TKT-000467,Forecast variance,Medium,Open,Positive
+TKT-000468,Incorrect revenue mapping,Low,Closed,Neutral
+TKT-000469,Incorrect revenue mapping,Medium,Closed,Neutral
+TKT-000470,User provisioning,Low,Pending,Positive
+TKT-000471,Incorrect revenue mapping,High,Resolved,Positive
+TKT-000472,Inventory mismatch,Critical,Pending,Negative
+TKT-000473,Forecast variance,Medium,Open,Neutral
+TKT-000474,Export failure,Medium,Open,Positive
+TKT-000475,User provisioning,High,Open,Negative
+TKT-000476,Delayed data refresh,Medium,Resolved,Positive
+TKT-000477,Export failure,Low,Resolved,Neutral
+TKT-000478,Incorrect revenue mapping,Critical,Closed,Neutral
+TKT-000479,Dashboard access,Medium,Open,Neutral
+TKT-000480,Inventory mismatch,Low,Resolved,Neutral
+TKT-000481,Dashboard access,Medium,Open,Positive
+TKT-000482,Dashboard access,Medium,Open,Neutral
+TKT-000483,Inventory mismatch,Medium,Pending,Negative
+TKT-000484,Export failure,High,Pending,Negative
+TKT-000485,Inventory mismatch,Critical,Pending,Negative
+TKT-000486,User provisioning,Medium,Closed,Positive
+TKT-000487,Forecast variance,Medium,Closed,Positive
+TKT-000488,Delayed data refresh,High,Open,Negative
+TKT-000489,Incorrect revenue mapping,Medium,Pending,Neutral
+TKT-000490,Incorrect revenue mapping,Low,Resolved,Neutral
+TKT-000491,Integration timeout,Critical,Resolved,Positive
+TKT-000492,Forecast variance,Low,Resolved,Neutral
+TKT-000493,User provisioning,Medium,Open,Negative
+TKT-000494,Dashboard access,High,Resolved,Neutral
+TKT-000495,Integration timeout,Medium,Pending,Negative
+TKT-000496,Integration timeout,Medium,Closed,Positive
+TKT-000497,Export failure,High,Closed,Positive
+TKT-000498,Inventory mismatch,Low,Resolved,Neutral
+TKT-000499,Integration timeout,Medium,Open,Neutral
+TKT-000500,User provisioning,Medium,Resolved,Positive
+TKT-000501,Incorrect revenue mapping,Medium,Open,Negative
+TKT-000502,User provisioning,Medium,Open,Neutral
+TKT-000503,Export failure,Medium,Resolved,Positive
+TKT-000504,Incorrect revenue mapping,Low,Open,Neutral
+TKT-000505,Incorrect revenue mapping,Critical,Closed,Positive
+TKT-000506,Export failure,Low,Open,Positive
+TKT-000507,Incorrect revenue mapping,Medium,Resolved,Positive
+TKT-000508,Dashboard access,Low,Pending,Positive
+TKT-000509,Export failure,Low,Resolved,Positive
+TKT-000510,Integration timeout,Low,Open,Negative
+TKT-000511,Delayed data refresh,Medium,Open,Neutral
+TKT-000512,Export failure,High,Closed,Neutral
+TKT-000513,Delayed data refresh,Medium,Open,Positive
+TKT-000514,Dashboard access,Medium,Open,Neutral
+TKT-000515,Incorrect revenue mapping,Medium,Pending,Neutral
+TKT-000516,Export failure,Critical,Closed,Positive
+TKT-000517,Delayed data refresh,Low,Closed,Positive
+TKT-000518,Export failure,Medium,Resolved,Positive
+TKT-000519,Incorrect revenue mapping,Low,Open,Negative
+TKT-000520,Inventory mismatch,Medium,Closed,Positive
+TKT-000521,Dashboard access,Low,Closed,Positive
+TKT-000522,User provisioning,Low,Closed,Neutral
+TKT-000523,Forecast variance,Critical,Pending,Negative
+TKT-000524,Delayed data refresh,High,Closed,Positive
+TKT-000525,Export failure,Low,Resolved,Neutral
+TKT-000526,Delayed data refresh,Medium,Closed,Positive
+TKT-000527,Incorrect revenue mapping,Low,Open,Negative
+TKT-000528,Export failure,Critical,Open,Negative
+TKT-000529,Forecast variance,Medium,Resolved,Positive
+TKT-000530,Export failure,Medium,Pending,Neutral
+TKT-000531,Dashboard access,High,Open,Negative
+TKT-000532,Dashboard access,Critical,Closed,Positive
+TKT-000533,Integration timeout,Medium,Closed,Neutral
+TKT-000534,Incorrect revenue mapping,Medium,Closed,Positive
+TKT-000535,Export failure,Medium,Pending,Negative
+TKT-000536,Dashboard access,Low,Pending,Positive
+TKT-000537,Incorrect revenue mapping,High,Open,Negative
+TKT-000538,Inventory mismatch,High,Closed,Neutral
+TKT-000539,Incorrect revenue mapping,Critical,Open,Negative
+TKT-000540,Delayed data refresh,Low,Open,Positive
+TKT-000541,User provisioning,Medium,Pending,Neutral
+TKT-000542,Delayed data refresh,Low,Closed,Positive
+TKT-000543,Forecast variance,Medium,Resolved,Neutral
+TKT-000544,Dashboard access,High,Open,Negative
+TKT-000545,Export failure,Low,Open,Negative
+TKT-000546,User provisioning,Low,Pending,Positive
+TKT-000547,Incorrect revenue mapping,High,Open,Negative
+TKT-000548,Dashboard access,Medium,Pending,Neutral
+TKT-000549,Incorrect revenue mapping,Low,Open,Negative
+TKT-000550,Incorrect revenue mapping,Low,Pending,Neutral
+TKT-000551,Inventory mismatch,High,Open,Neutral
+TKT-000552,Dashboard access,High,Open,Negative
+TKT-000553,Integration timeout,Medium,Closed,Positive
+TKT-000554,Dashboard access,Medium,Pending,Negative
+TKT-000555,Integration timeout,Medium,Pending,Negative
+TKT-000556,Inventory mismatch,Medium,Pending,Negative
+TKT-000557,Incorrect revenue mapping,Medium,Open,Negative
+TKT-000558,Incorrect revenue mapping,Critical,Closed,Positive
+TKT-000559,Dashboard access,Medium,Pending,Negative
+TKT-000560,Delayed data refresh,Critical,Closed,Positive
+TKT-000561,Incorrect revenue mapping,High,Open,Neutral
+TKT-000562,User provisioning,Medium,Closed,Positive
+TKT-000563,Incorrect revenue mapping,High,Open,Positive
+TKT-000564,User provisioning,Critical,Pending,Negative
+TKT-000565,Inventory mismatch,Medium,Closed,Positive
+TKT-000566,User provisioning,Low,Resolved,Neutral
+TKT-000567,User provisioning,High,Open,Neutral
+TKT-000568,Export failure,Medium,Closed,Positive
+TKT-000569,Export failure,Medium,Closed,Positive
+TKT-000570,Export failure,Medium,Resolved,Positive
+TKT-000571,Inventory mismatch,Critical,Pending,Negative
+TKT-000572,User provisioning,Medium,Resolved,Positive
+TKT-000573,User provisioning,Medium,Resolved,Positive
+TKT-000574,Dashboard access,Low,Pending,Positive
+TKT-000575,Integration timeout,Low,Resolved,Positive
+TKT-000576,Export failure,Critical,Pending,Negative
+TKT-000577,Dashboard access,Medium,Closed,Neutral
+TKT-000578,Incorrect revenue mapping,Low,Resolved,Positive
+TKT-000579,Export failure,High,Resolved,Neutral
+TKT-000580,Forecast variance,Critical,Closed,Positive
+TKT-000581,Dashboard access,Critical,Open,Negative
+TKT-000582,Incorrect revenue mapping,Critical,Open,Negative
+TKT-000583,Delayed data refresh,Critical,Closed,Positive
+TKT-000584,Delayed data refresh,High,Pending,Negative
+TKT-000585,Export failure,Medium,Pending,Positive
+TKT-000586,Delayed data refresh,Medium,Resolved,Positive
+TKT-000587,Export failure,Critical,Closed,Neutral
+TKT-000588,Dashboard access,Medium,Pending,Negative
+TKT-000589,Inventory mismatch,Medium,Resolved,Positive
+TKT-000590,Integration timeout,High,Resolved,Positive
+TKT-000591,Export failure,Medium,Closed,Positive
+TKT-000592,Dashboard access,High,Open,Negative
+TKT-000593,Dashboard access,Medium,Open,Positive
+TKT-000594,User provisioning,Critical,Open,Negative
+TKT-000595,Delayed data refresh,Medium,Open,Negative
+TKT-000596,Incorrect revenue mapping,High,Pending,Positive
+TKT-000597,Inventory mismatch,High,Pending,Neutral
+TKT-000598,Inventory mismatch,Medium,Open,Negative
+TKT-000599,Forecast variance,Medium,Pending,Positive
+TKT-000600,Forecast variance,Medium,Pending,Neutral

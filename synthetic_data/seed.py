@@ -14,16 +14,18 @@ from pathlib import Path
 from uuid import NAMESPACE_URL, UUID, uuid5
 
 from faker import Faker
-from sqlalchemy import Date as SADate, DateTime as SADateTime, Numeric as SANumeric, Uuid as SAUuid, delete
+from sqlalchemy import Date as SADate, DateTime as SADateTime, Numeric as SANumeric, Uuid as SAUuid, delete, select
 
 ROOT = Path(__file__).resolve().parents[1]
 BACKEND = ROOT / "backend"
 sys.path.insert(0, str(BACKEND))
 
 from app.domain.business import models  # noqa: E402
+from app.domain.users.models import Organization  # noqa: E402
 from app.infrastructure.database import SessionLocal  # noqa: E402
 
 SEED = 20260806
+DEMO_ORGANIZATION_ID = UUID("00000000-0000-0000-0000-000000000001")
 fake = Faker("en_US")
 fake.seed_instance(SEED)
 rng = random.Random(SEED)
@@ -153,6 +155,9 @@ def build_dataset() -> dict[str, list[dict[str, object]]]:
         report_type = rng.choice(["sales", "inventory", "finance", "support", "workforce"])
         data["reports"].append({"id": uid("report", i), "report_code": f"RPT-{i:04d}", "created_by_employee_id": rng.choice(employee_ids), "name": f"{report_type.title()} {rng.choice(['Executive Summary', 'Trend Analysis', 'Operational Review', 'Forecast'])}", "report_type": report_type, "schedule": rng.choice(["daily", "weekly", "monthly", None]), "configuration_json": json.dumps({"period": "rolling_12_months", "currency": "USD", "include_variance": True}, separators=(",", ":")), "is_active": rng.random() > .08})
 
+    for rows in data.values():
+        for row in rows:
+            row["organization_id"] = str(DEMO_ORGANIZATION_ID)
     return dict(data)
 
 
@@ -169,6 +174,8 @@ def seed_database(dataset: dict[str, list[dict[str, object]]], reset: bool) -> N
     table_order = ["product_categories", "departments", "customers", "suppliers", "warehouses", "finance_accounts", "employees", "products", "product_suppliers", "inventory_stock", "inventory_movements", "sales_orders", "sales_order_items", "finance_transactions", "support_tickets", "reports"]
     model_by_table = {mapper.local_table.name: mapper.class_ for mapper in models.Base.registry.mappers if mapper.local_table.name in table_order}
     with SessionLocal() as session:
+        if not session.get(Organization, DEMO_ORGANIZATION_ID):
+            session.add(Organization(id=DEMO_ORGANIZATION_ID, name="Sentinel AI Demo Organization")); session.flush()
         if reset:
             for table in reversed(table_order): session.execute(delete(model_by_table[table]))
         for table in table_order:

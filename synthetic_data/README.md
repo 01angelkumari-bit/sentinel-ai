@@ -15,3 +15,14 @@ backend\.venv-win\Scripts\python.exe synthetic_data\seed.py --database --reset
 ```
 
 Never use `--reset` against a production database.
+
+## Dashboard-ready business exports
+
+`build_business_datasets.mjs` generates deterministic, non-sensitive datasets in `synthetic_data/business_exports`:
+
+- `Sales.csv`: 1,460 regional sales segments across 365 consecutive days.
+- `Support.csv`: 600 uniquely identified support tickets with priority, status, and sentiment.
+- `HR.csv`: 200 uniquely identified employee records with department, leave, performance, and joining date.
+- `Sentinel-Business-Data.xlsx`: a formatted Excel companion containing all three datasets.
+
+Run the generator from the repository root using the bundled spreadsheet runtime configured for the project. The seed is fixed so repeated runs produce stable records for demonstrations and tests.

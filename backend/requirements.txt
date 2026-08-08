@@ -8,3 +8,11 @@ PyJWT==2.10.1
 pwdlib[argon2]==0.2.1
 email-validator==2.2.0
 Faker==33.1.0
+pandas>=2.2,<4
+openpyxl>=3.1,<4
+reportlab>=4.2,<5
+langgraph>=1.2,<2
+PyYAML>=6,<7
+pytest>=8,<10
+dnspython>=2.7,<3
+vaderSentiment>=3.3,<4

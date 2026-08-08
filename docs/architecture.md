@@ -1,11 +1,59 @@
 # Architecture
 
-Backend requests pass through FastAPI routers into application services. Services enforce use cases and transact through SQLAlchemy repositories; ORM models remain isolated in the infrastructure layer. JWT identity is extracted by a reusable dependency, so authorization can be extended consistently.
+```mermaid
+flowchart TB
+    data["Organization CSV / Excel data"] --> db["Neon PostgreSQL"]
+    db --> api["FastAPI API on Render"]
+    api --> collector["Data Collection Agent"]
+    collector --> sales["Sales Agent"]
+    collector --> finance["Finance Agent"]
+    collector --> hr["HR Agent"]
+    collector --> support["Support Agent"]
+    collector --> inventory["Inventory Agent"]
+    sales --> risk["Risk Analysis Agent"]
+    finance --> risk
+    hr --> risk
+    support --> risk
+    inventory --> risk
+    risk --> recommendation["Recommendation Agent"]
+    recommendation --> executive["Executive Summary Agent"]
+    executive --> dashboard["Sentinel AI Dashboard on Vercel"]
+    dashboard --> outputs["Forecasting, CSV exports, and PDF reports"]
+```
 
-The frontend stores no access token in browser storage. The login flow writes the access token to an `HttpOnly`, `Secure` (in production), `SameSite=Lax` cookie. Next.js middleware gates dashboard routes, while the dashboard validates the session with the API.
+Every request is scoped by the authenticated organization. The API resolves the
+JWT to a revocable server-side session and current user, then tenant-filtered
+repositories enforce `organization_id` before any data, file, report, or AI
+conversation is read or written.
 
-The supported local runtime is native Windows: SQLite for local persistence, FastAPI under a Python virtual environment, and Next.js under Node.js. PowerShell scripts manage setup, migrations, process lifecycle, and logs. PostgreSQL is selected for production by changing the SQLAlchemy `DATABASE_URL`.
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant N as Next.js / Vercel
+    participant F as FastAPI / Render
+    participant P as Neon PostgreSQL
+    participant D as Persistent Disk
 
-## Production operating notes
+    U->>N: Sign in or verify OTP
+    N->>F: Authenticate
+    F->>P: Validate user, organization, and session
+    F-->>N: JWT
+    N-->>U: HttpOnly session cookie
+    U->>N: Upload dataset
+    N->>F: Authorized file stream
+    F->>D: Save unique source file
+    F->>P: Batch insert tenant-tagged records
+    U->>N: Open dashboard or ask Sentinel
+    N->>F: Authorized analytics request
+    F->>P: Tenant-filtered calculations
+    F-->>N: Exact metrics and evidence
+```
 
-Run `alembic upgrade head` as a deploy step, configure a strong unique JWT secret from a secret manager, terminate TLS at an ingress, restrict CORS to trusted origins, and add rate limiting/auditing at the edge.
+The frontend never stores access tokens in browser storage. Next.js writes the
+token to an `HttpOnly`, `Secure` in production, `SameSite=Lax` cookie. Server-side
+route handlers relay authorized calls to FastAPI, and middleware gates protected
+routes.
+
+Local development is native Windows with SQLite, FastAPI, and Next.js. Production
+uses Vercel, Render, Neon PostgreSQL, and a Render persistent disk. Alembic runs as
+a pre-deploy command before the new API revision starts.

@@ -14,8 +14,11 @@ class TimestampMixin:
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
 
+class TenantMixin:
+    organization_id: Mapped[UUID] = mapped_column(ForeignKey("organizations.id", ondelete="CASCADE"), index=True, nullable=False)
 
-class Customer(TimestampMixin, Base):
+
+class Customer(TenantMixin, TimestampMixin, Base):
     __tablename__ = "customers"
     id: Mapped[UUID] = mapped_column(Uuid(as_uuid=True), primary_key=True, default=uuid4)
     customer_number: Mapped[str] = mapped_column(String(24), unique=True, nullable=False)
@@ -30,7 +33,7 @@ class Customer(TimestampMixin, Base):
     support_tickets: Mapped[list[SupportTicket]] = relationship(back_populates="customer")
 
 
-class ProductCategory(TimestampMixin, Base):
+class ProductCategory(TenantMixin, TimestampMixin, Base):
     __tablename__ = "product_categories"
     id: Mapped[UUID] = mapped_column(Uuid(as_uuid=True), primary_key=True, default=uuid4)
     name: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
@@ -38,7 +41,7 @@ class ProductCategory(TimestampMixin, Base):
     products: Mapped[list[Product]] = relationship(back_populates="category")
 
 
-class Product(TimestampMixin, Base):
+class Product(TenantMixin, TimestampMixin, Base):
     __tablename__ = "products"
     id: Mapped[UUID] = mapped_column(Uuid(as_uuid=True), primary_key=True, default=uuid4)
     sku: Mapped[str] = mapped_column(String(40), unique=True, nullable=False)
@@ -55,7 +58,7 @@ class Product(TimestampMixin, Base):
     __table_args__ = (CheckConstraint("unit_cost >= 0 AND unit_price >= unit_cost", name="ck_products_valid_pricing"),)
 
 
-class Supplier(TimestampMixin, Base):
+class Supplier(TenantMixin, TimestampMixin, Base):
     __tablename__ = "suppliers"
     id: Mapped[UUID] = mapped_column(Uuid(as_uuid=True), primary_key=True, default=uuid4)
     supplier_number: Mapped[str] = mapped_column(String(24), unique=True, nullable=False)
@@ -68,7 +71,7 @@ class Supplier(TimestampMixin, Base):
     products: Mapped[list[ProductSupplier]] = relationship(back_populates="supplier", cascade="all, delete-orphan")
 
 
-class ProductSupplier(Base):
+class ProductSupplier(TenantMixin, Base):
     __tablename__ = "product_suppliers"
     product_id: Mapped[UUID] = mapped_column(ForeignKey("products.id", ondelete="CASCADE"), primary_key=True)
     supplier_id: Mapped[UUID] = mapped_column(ForeignKey("suppliers.id", ondelete="CASCADE"), primary_key=True)
@@ -79,7 +82,7 @@ class ProductSupplier(Base):
     supplier: Mapped[Supplier] = relationship(back_populates="products")
 
 
-class Warehouse(TimestampMixin, Base):
+class Warehouse(TenantMixin, TimestampMixin, Base):
     __tablename__ = "warehouses"
     id: Mapped[UUID] = mapped_column(Uuid(as_uuid=True), primary_key=True, default=uuid4)
     code: Mapped[str] = mapped_column(String(20), unique=True, nullable=False)
@@ -90,7 +93,7 @@ class Warehouse(TimestampMixin, Base):
     inventory: Mapped[list[InventoryStock]] = relationship(back_populates="warehouse")
 
 
-class InventoryStock(TimestampMixin, Base):
+class InventoryStock(TenantMixin, TimestampMixin, Base):
     __tablename__ = "inventory_stock"
     id: Mapped[UUID] = mapped_column(Uuid(as_uuid=True), primary_key=True, default=uuid4)
     warehouse_id: Mapped[UUID] = mapped_column(ForeignKey("warehouses.id"), nullable=False)
@@ -103,7 +106,7 @@ class InventoryStock(TimestampMixin, Base):
     __table_args__ = (UniqueConstraint("warehouse_id", "product_id", name="uq_inventory_warehouse_product"), CheckConstraint("quantity_on_hand >= 0 AND quantity_reserved >= 0", name="ck_inventory_nonnegative"))
 
 
-class InventoryMovement(Base):
+class InventoryMovement(TenantMixin, Base):
     __tablename__ = "inventory_movements"
     id: Mapped[UUID] = mapped_column(Uuid(as_uuid=True), primary_key=True, default=uuid4)
     stock_id: Mapped[UUID] = mapped_column(ForeignKey("inventory_stock.id"), index=True, nullable=False)
@@ -114,7 +117,7 @@ class InventoryMovement(Base):
     stock: Mapped[InventoryStock] = relationship(back_populates="movements")
 
 
-class Department(TimestampMixin, Base):
+class Department(TenantMixin, TimestampMixin, Base):
     __tablename__ = "departments"
     id: Mapped[UUID] = mapped_column(Uuid(as_uuid=True), primary_key=True, default=uuid4)
     code: Mapped[str] = mapped_column(String(20), unique=True, nullable=False)
@@ -122,7 +125,7 @@ class Department(TimestampMixin, Base):
     employees: Mapped[list[Employee]] = relationship(back_populates="department")
 
 
-class Employee(TimestampMixin, Base):
+class Employee(TenantMixin, TimestampMixin, Base):
     __tablename__ = "employees"
     id: Mapped[UUID] = mapped_column(Uuid(as_uuid=True), primary_key=True, default=uuid4)
     employee_number: Mapped[str] = mapped_column(String(24), unique=True, nullable=False)
@@ -140,7 +143,7 @@ class Employee(TimestampMixin, Base):
     direct_reports: Mapped[list[Employee]] = relationship(back_populates="manager")
 
 
-class SalesOrder(TimestampMixin, Base):
+class SalesOrder(TenantMixin, TimestampMixin, Base):
     __tablename__ = "sales_orders"
     id: Mapped[UUID] = mapped_column(Uuid(as_uuid=True), primary_key=True, default=uuid4)
     order_number: Mapped[str] = mapped_column(String(32), unique=True, nullable=False)
@@ -155,7 +158,7 @@ class SalesOrder(TimestampMixin, Base):
     finance_transactions: Mapped[list[FinanceTransaction]] = relationship(back_populates="sales_order")
 
 
-class SalesOrderItem(Base):
+class SalesOrderItem(TenantMixin, Base):
     __tablename__ = "sales_order_items"
     id: Mapped[UUID] = mapped_column(Uuid(as_uuid=True), primary_key=True, default=uuid4)
     sales_order_id: Mapped[UUID] = mapped_column(ForeignKey("sales_orders.id", ondelete="CASCADE"), index=True, nullable=False)
@@ -168,7 +171,7 @@ class SalesOrderItem(Base):
     __table_args__ = (CheckConstraint("quantity > 0 AND unit_price >= 0 AND discount_amount >= 0", name="ck_sales_item_values"),)
 
 
-class FinanceAccount(TimestampMixin, Base):
+class FinanceAccount(TenantMixin, TimestampMixin, Base):
     __tablename__ = "finance_accounts"
     id: Mapped[UUID] = mapped_column(Uuid(as_uuid=True), primary_key=True, default=uuid4)
     account_code: Mapped[str] = mapped_column(String(20), unique=True, nullable=False)
@@ -177,7 +180,7 @@ class FinanceAccount(TimestampMixin, Base):
     transactions: Mapped[list[FinanceTransaction]] = relationship(back_populates="account")
 
 
-class FinanceTransaction(Base):
+class FinanceTransaction(TenantMixin, Base):
     __tablename__ = "finance_transactions"
     id: Mapped[UUID] = mapped_column(Uuid(as_uuid=True), primary_key=True, default=uuid4)
     account_id: Mapped[UUID] = mapped_column(ForeignKey("finance_accounts.id"), index=True, nullable=False)
@@ -191,7 +194,7 @@ class FinanceTransaction(Base):
     sales_order: Mapped[SalesOrder | None] = relationship(back_populates="finance_transactions")
 
 
-class SupportTicket(TimestampMixin, Base):
+class SupportTicket(TenantMixin, TimestampMixin, Base):
     __tablename__ = "support_tickets"
     id: Mapped[UUID] = mapped_column(Uuid(as_uuid=True), primary_key=True, default=uuid4)
     ticket_number: Mapped[str] = mapped_column(String(30), unique=True, nullable=False)
@@ -208,7 +211,7 @@ class SupportTicket(TimestampMixin, Base):
     assigned_employee: Mapped[Employee | None] = relationship()
 
 
-class Report(TimestampMixin, Base):
+class Report(TenantMixin, TimestampMixin, Base):
     __tablename__ = "reports"
     id: Mapped[UUID] = mapped_column(Uuid(as_uuid=True), primary_key=True, default=uuid4)
     report_code: Mapped[str] = mapped_column(String(30), unique=True, nullable=False)
