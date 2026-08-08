@@ -4,6 +4,21 @@ Sentinel AI is a Windows-first, multi-tenant Business Intelligence platform. Org
 
 The application does not load a shared demo database. A new authenticated session starts with an empty analysis workspace, and uploaded data, generated reports, and session-specific AI conversations are cleared when that session ends. Permanent accounts, organizations, roles, audit records, invitations, and report schedules remain intact.
 
+![Sentinel AI authentication experience](docs/screenshots/authentication-hero.png)
+
+## Hosted architecture
+
+| Layer | Production service |
+|---|---|
+| Frontend | Vercel |
+| Backend | Render |
+| Database | Neon PostgreSQL |
+| Uploads and reports | Render persistent disk |
+
+See the [deployment runbook](docs/deployment.md), [architecture diagrams](docs/architecture.md),
+[screenshots](docs/screenshots), [demo video](docs/demo/sentinel-ai-demo.avi), and
+[resume bullet points](docs/resume-bullets.md).
+
 ## Features
 
 - Real email registration, OTP login, and password recovery through SMTP.
