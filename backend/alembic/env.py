@@ -5,7 +5,9 @@ from app.infrastructure.database import Base
 import app.domain.users.models
 import app.domain.business.models
 config = context.config
-config.set_main_option("sqlalchemy.url", get_settings().database_url)
+# ConfigParser treats percent signs in URL-encoded query parameters as
+# interpolation markers. Escape them before passing the runtime URL to Alembic.
+config.set_main_option("sqlalchemy.url", get_settings().database_url.replace("%", "%%"))
 target_metadata = Base.metadata
 def run_migrations_offline():
     context.configure(url=config.get_main_option("sqlalchemy.url"), target_metadata=target_metadata, literal_binds=True)
