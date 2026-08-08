@@ -3,7 +3,7 @@
 Sentinel AI uses three independent managed services:
 
 - Vercel serves the Next.js frontend.
-- Render runs the FastAPI backend and owns persistent upload/report storage.
+- Render runs the FastAPI backend on its free web-service tier.
 - Neon provides PostgreSQL.
 
 No credential belongs in Git. Configure every secret in the provider dashboard.
@@ -32,9 +32,11 @@ postgresql+psycopg://USER:PASSWORD@HOST/DATABASE?sslmode=require
 6. Confirm `https://YOUR-RENDER-SERVICE.onrender.com/health` returns
    `{"status":"ok"}`.
 
-The Blueprint requests a persistent disk because uploaded datasets and generated
-PDFs must survive service restarts. A free ephemeral filesystem is not suitable
-for this application.
+The free deployment stores uploaded source files and generated PDFs under
+`/tmp/sentinel`. Render may clear this filesystem during restarts or redeploys.
+Imported business records, accounts, audit data, and metadata remain persistent
+in Neon PostgreSQL. Upgrade Render and attach a persistent disk before treating
+file retention as a production guarantee.
 
 ## 3. Deploy Next.js on Vercel
 
