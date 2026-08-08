@@ -28,7 +28,7 @@ postgresql+psycopg://USER:PASSWORD@HOST/DATABASE?sslmode=require
 2. Render detects [`render.yaml`](../render.yaml).
 3. Enter `DATABASE_URL`, `CORS_ORIGINS`, and the SMTP values when prompted.
 4. Use the public Vercel origin for `CORS_ORIGINS`, with no trailing slash.
-5. Confirm the pre-deploy migration succeeds.
+5. Confirm the Alembic migration in the build phase succeeds.
 6. Confirm `https://YOUR-RENDER-SERVICE.onrender.com/health` returns
    `{"status":"ok"}`.
 
