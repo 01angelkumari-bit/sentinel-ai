@@ -13,7 +13,7 @@ The application does not load a shared demo database. A new authenticated sessio
 | Frontend | Vercel |
 | Backend | Render |
 | Database | Neon PostgreSQL |
-| Uploads and reports | Render persistent disk |
+| Uploads and reports | Render ephemeral storage on free tier; persistent disk when upgraded |
 
 See the [deployment runbook](docs/deployment.md), [architecture diagrams](docs/architecture.md),
 [screenshots](docs/screenshots), [demo video](docs/demo/sentinel-ai-demo.avi), and

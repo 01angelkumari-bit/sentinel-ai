@@ -3,7 +3,7 @@ services:
     name: sentinel-ai-api
     runtime: python
     rootDir: backend
-    plan: starter
+    plan: free
     region: singapore
     buildCommand: pip install --upgrade pip && pip install -r requirements.txt
     preDeployCommand: python -m alembic upgrade head
@@ -24,7 +24,7 @@ services:
       - key: CORS_ORIGINS
         sync: false
       - key: STORAGE_ROOT
-        value: /var/data/sentinel
+        value: /tmp/sentinel
       - key: MAX_UPLOAD_BYTES
         value: 10485760
       - key: AI_PROVIDER
@@ -45,7 +45,3 @@ services:
         value: false
       - key: EMAIL_FROM
         sync: false
-    disk:
-      name: sentinel-storage
-      mountPath: /var/data/sentinel
-      sizeGB: 1
