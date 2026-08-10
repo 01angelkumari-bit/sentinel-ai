@@ -48,6 +48,12 @@ def frames():
         (title_frame("Ask Sentinel AI", "Exact calculations backed by uploaded business data"), 1.5),
         (fit(SCREENSHOTS / "demo-sentinel-answer.png"), 3.5),
         (fit(SCREENSHOTS / "demo-sentinel-risk.png"), 4.0),
+        (title_frame("Generate a detailed report", "Five pages of verified KPIs, trends, products, customers, and risks"), 1.5),
+        (fit(SCREENSHOTS / "demo-generated-pdf.png"), 4.0),
+        (title_frame("View every generated asset", "Protected report library with view and download actions"), 1.5),
+        (fit(SCREENSHOTS / "demo-report-library.png"), 3.5),
+        (title_frame("Share the executive report", "Native app sharing, WhatsApp, email, or a secure report link"), 1.5),
+        (fit(SCREENSHOTS / "demo-share-report.png"), 3.5),
         (title_frame("From data to decisions", "Upload • Analyze • Ask Sentinel • Export PDF"), 2.0),
     ]
     fade = 12

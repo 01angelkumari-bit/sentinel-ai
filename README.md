@@ -19,6 +19,11 @@ See the [deployment runbook](docs/deployment.md), [architecture diagrams](docs/a
 [screenshots](docs/screenshots), [demo video](docs/demo/sentinel-ai-demo.avi), and
 [resume bullet points](docs/resume-bullets.md).
 
+The demo follows the complete `test6.csv` workflow: secure login, dataset import,
+executive dashboard generation, grounded Sentinel AI questions, a detailed five-page
+PDF, the protected report library, and report sharing through native apps, WhatsApp,
+email, or a secure link.
+
 ## Features
 
 - Real email registration, OTP login, and password recovery through SMTP.
