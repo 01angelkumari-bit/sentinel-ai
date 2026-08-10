@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import smtplib
 import ssl
+import base64
 from email.message import EmailMessage
 
 import dns.exception
 import dns.resolver
+import requests
 
 from app.core.config import get_settings
 
@@ -31,8 +33,38 @@ class SmtpEmailService:
         self.settings = get_settings()
 
     def _configured(self) -> None:
-        if not self.settings.smtp_host or not self.settings.email_from:
+        if not self.settings.email_from:
             raise EmailConfigurationError("Email delivery is not configured")
+        if self.settings.email_provider == "gmail_api":
+            if not all((self.settings.google_client_id, self.settings.google_client_secret, self.settings.google_refresh_token)):
+                raise EmailConfigurationError("Gmail API delivery is not configured")
+        elif not self.settings.smtp_host:
+            raise EmailConfigurationError("SMTP delivery is not configured")
+
+    def _send_gmail_api(self, message: EmailMessage) -> None:
+        try:
+            token_response = requests.post(
+                "https://oauth2.googleapis.com/token",
+                data={
+                    "client_id": self.settings.google_client_id,
+                    "client_secret": self.settings.google_client_secret,
+                    "refresh_token": self.settings.google_refresh_token,
+                    "grant_type": "refresh_token",
+                },
+                timeout=15,
+            )
+            token_response.raise_for_status()
+            access_token = token_response.json()["access_token"]
+            raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode("ascii").rstrip("=")
+            send_response = requests.post(
+                "https://gmail.googleapis.com/gmail/v1/users/me/messages/send",
+                headers={"Authorization": f"Bearer {access_token}"},
+                json={"raw": raw_message},
+                timeout=15,
+            )
+            send_response.raise_for_status()
+        except (KeyError, ValueError, requests.RequestException) as exc:
+            raise EmailDeliveryError("Verification email delivery failed") from exc
 
     def send_otp(self, recipient: str, code: str, purpose: str) -> None:
         self._configured()
@@ -42,6 +74,9 @@ class SmtpEmailService:
         message["From"] = self.settings.email_from
         message["To"] = recipient
         message.set_content(f"Use this one-time code to {label}:\n\n{code}\n\nThis code expires in {self.settings.otp_expire_minutes} minutes. If you did not request it, ignore this email. Never share this code.")
+        if self.settings.email_provider == "gmail_api":
+            self._send_gmail_api(message)
+            return
         try:
             context = ssl.create_default_context()
             client_connection = smtplib.SMTP_SSL(self.settings.smtp_host, self.settings.smtp_port, timeout=15, context=context) if self.settings.smtp_use_ssl else smtplib.SMTP(self.settings.smtp_host, self.settings.smtp_port, timeout=15)
