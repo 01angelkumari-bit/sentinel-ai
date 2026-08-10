@@ -13,6 +13,10 @@ class Settings(BaseSettings):
     ai_model_id: str = "Qwen/Qwen2.5-3B-Instruct"
     ai_base_url: str = ""
     ai_request_timeout_seconds: int = 45
+    email_provider: str = "smtp"
+    google_client_id: str = ""
+    google_client_secret: str = ""
+    google_refresh_token: str = ""
     smtp_host: str = ""
     smtp_port: int = 587
     smtp_username: str = ""

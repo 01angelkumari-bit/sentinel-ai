@@ -30,6 +30,14 @@ services:
         value: deterministic
       - key: AI_BASE_URL
         value: ""
+      - key: EMAIL_PROVIDER
+        value: gmail_api
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_REFRESH_TOKEN
+        sync: false
       - key: SMTP_HOST
         sync: false
       - key: SMTP_PORT
