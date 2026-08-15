@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from uuid import uuid4
 from pathlib import Path
@@ -119,7 +119,7 @@ def test_owner_can_add_member_only_to_own_company(tenant_app):
     login = client.post("/api/v1/auth/login", json={"email": "invited@example.com", "password": "SecurePass123!"})
     assert login.status_code == 200
     invited_dashboard = client.get("/api/v1/dashboard/summary", headers=auth(login.json()["access_token"]))
-    assert invited_dashboard.json()["revenue"] == 0.0
+    assert invited_dashboard.json()["revenue"] == 100.0
     blocked = client.post("/api/v1/auth/members", headers=auth(tokens["a-viewer"]), json={"email": "blocked@example.com", "full_name": "Blocked", "password": "SecurePass123!", "role": "viewer"})
     assert blocked.status_code == 403
 
@@ -312,11 +312,14 @@ def test_real_otp_security_flows_and_session_revocation(tenant_app, monkeypatch)
     latest_token = latest_login.json()["access_token"]
     assert client.post("/api/v1/auth/logout", headers=auth(latest_token)).status_code == 204
     assert client.get("/api/v1/dashboard/summary", headers=auth(latest_token)).status_code == 401
+    remembered = client.post("/api/v1/auth/login", json={"email": "owner-a@example.com", "password": "ChangedPass123!", "remember": True})
+    remembered_claims = jwt.decode(remembered.json()["access_token"], get_settings().jwt_secret_key, algorithms=[get_settings().jwt_algorithm])
+    assert datetime.fromtimestamp(remembered_claims["exp"], UTC) - datetime.now(UTC) > timedelta(days=6)
     nonexistent = client.post("/api/v1/auth/password/request-otp", json={"email": "absent@example.com"})
     assert nonexistent.status_code == 202 and "If an account exists" in nonexistent.json()["message"]
 
 
-def test_fresh_login_clears_previous_temporary_workspace(tenant_app):
+def test_returning_login_preserves_tenant_workspace(tenant_app):
     client, tokens, _ = tenant_app
     member = client.post(
         "/api/v1/auth/members",
@@ -327,10 +330,10 @@ def test_fresh_login_clears_previous_temporary_workspace(tenant_app):
     first_login = client.post("/api/v1/auth/login", json={"email": "session-owner@example.com", "password": "SessionPass123!"})
     assert first_login.status_code == 200
     first_token = first_login.json()["access_token"]
-    assert client.get("/api/v1/datasets/status", headers=auth(first_token)).json()["has_data"] is False
+    assert client.get("/api/v1/datasets/status", headers=auth(first_token)).json()["has_data"] is True
 
     file_a = b"Date,Revenue,Orders,Cancelled,Region,Product,Customer\n2026-08-01,111,3,0,North,File A Product,File A Customer\n"
-    imported_a = client.post("/api/v1/datasets/imports", headers={**auth(first_token), "X-Filename": "file-a.csv", "X-Import-Mode": "initial", "Content-Type": "text/csv"}, content=file_a)
+    imported_a = client.post("/api/v1/datasets/imports", headers={**auth(first_token), "X-Filename": "file-a.csv", "X-Import-Mode": "replace", "Content-Type": "text/csv"}, content=file_a)
     assert imported_a.status_code == 202
     report = client.post("/api/v1/files/reports", headers={**auth(first_token), "Content-Type": "application/json"}, json={})
     chat = client.post("/api/v1/ai/chat", headers=auth(first_token), json={"message": "Show total revenue"})
@@ -345,18 +348,12 @@ def test_fresh_login_clears_previous_temporary_workspace(tenant_app):
     assert second_login.status_code == 200
     second_token = second_login.json()["access_token"]
     status_payload = client.get("/api/v1/datasets/status", headers=auth(second_token)).json()
-    assert status_payload["has_data"] is False and status_payload["record_count"] == 0 and status_payload["history"] == []
-    assert client.get("/api/v1/files", headers=auth(second_token)).json()["count"] == 0
-    assert client.get("/api/v1/ai/conversations", headers=auth(second_token)).json() == []
-    assert client.get(f"/api/v1/files/{report_id}/view", headers=auth(second_token)).status_code == 404
-    assert client.get("/api/v1/dashboard/summary", headers=auth(second_token)).json()["revenue"] == 0.0
-
-    file_b = b"Date,Revenue,Orders,Cancelled,Region,Product,Customer\n2026-08-02,777,7,0,South,File B Product,File B Customer\n"
-    imported_b = client.post("/api/v1/datasets/imports", headers={**auth(second_token), "X-Filename": "file-b.csv", "X-Import-Mode": "initial", "Content-Type": "text/csv"}, content=file_b)
-    assert imported_b.status_code == 202
-    summary_b = client.get("/api/v1/dashboard/summary", headers=auth(second_token)).json()
-    assert summary_b["revenue"] == 777.0
-    assert all(item["label"] != "File A Product" for item in summary_b["top_products"])
+    assert status_payload["has_data"] is True and status_payload["record_count"] == 1
+    assert status_payload["history"][0]["status"] == "completed"
+    assert client.get("/api/v1/files", headers=auth(second_token)).json()["count"] >= 2
+    assert client.get("/api/v1/ai/conversations", headers=auth(second_token)).json()
+    assert client.get(f"/api/v1/files/{report_id}/view", headers=auth(second_token)).status_code == 200
+    assert client.get("/api/v1/dashboard/summary", headers=auth(second_token)).json()["revenue"] == 111.0
 
 
 def test_sentiment_risk_and_natural_language_are_dataset_grounded(tenant_app):
@@ -372,7 +369,7 @@ def test_sentiment_risk_and_natural_language_are_dataset_grounded(tenant_app):
         b"2026-08-03,400,10,2,South,Sentinel Core,Acme,2,Slow and unreliable\n"
         b"2026-08-04,200,10,3,South,Sentinel Edge,Beta,1,Very bad experience\n"
     )
-    imported = client.post("/api/v1/datasets/imports", headers={**auth(token), "X-Filename": "risk-negative.csv", "X-Import-Mode": "initial", "Content-Type": "text/csv"}, content=data)
+    imported = client.post("/api/v1/datasets/imports", headers={**auth(token), "X-Filename": "risk-negative.csv", "X-Import-Mode": "replace", "Content-Type": "text/csv"}, content=data)
     assert imported.status_code == 202
     dashboard = client.get("/api/v1/dashboard/summary", headers=auth(token)).json()
     assert dashboard["sentiment_available"] is True

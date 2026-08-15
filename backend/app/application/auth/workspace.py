@@ -38,19 +38,21 @@ def clear_temporary_workspace(db: Session, organization_id: UUID) -> list[Path]:
     return paths
 
 
-def start_fresh_workspace_session(db: Session, organization_id: UUID, user_id: UUID) -> None:
-    """Invalidate older logins and guarantee that a new login starts with no active data."""
-    paths = clear_temporary_workspace(db, organization_id)
+def rotate_user_sessions(db: Session, organization_id: UUID, user_id: UUID) -> None:
+    """Invalidate older login tokens without deleting organization-owned data."""
     db.execute(
         update(AuthSession)
         .where(AuthSession.organization_id == organization_id, AuthSession.user_id == user_id, AuthSession.revoked_at.is_(None))
         .values(revoked_at=datetime.now(UTC))
     )
+    db.flush()
+
+
+def revoke_session(db: Session, jti: str) -> None:
+    """Revoke only the session being signed out; permanent tenant data is preserved."""
+    db.execute(
+        update(AuthSession)
+        .where(AuthSession.jti == jti, AuthSession.revoked_at.is_(None))
+        .values(revoked_at=datetime.now(UTC))
+    )
     db.commit()
-    for path in paths:
-        try:
-            path.unlink(missing_ok=True)
-        except OSError:
-            # Database authorization is already removed; an orphaned file is inaccessible
-            # and can be reclaimed by storage maintenance without breaking sign-out.
-            continue

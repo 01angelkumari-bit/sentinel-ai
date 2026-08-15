@@ -8,7 +8,7 @@ from app.api.v1.schemas.auth import EmailRequest, LoginRequest, MemberCreateRequ
 from app.application.auth.email_service import EmailConfigurationError, EmailDeliveryError, EmailDomainError
 from app.application.auth.otp_service import OtpService
 from app.application.auth.service import AuthenticationError, EmailAlreadyRegistered, authenticate, create_access_token, create_organization_member
-from app.application.auth.workspace import start_fresh_workspace_session
+from app.application.auth.workspace import revoke_session
 from app.core.config import get_settings
 from app.domain.users.models import User
 from app.infrastructure.database import get_db
@@ -39,7 +39,7 @@ def verify_registration(payload: OtpVerifyRequest, db: Session = Depends(get_db)
 def login(payload: LoginRequest, db: Session = Depends(get_db)) -> TokenResponse:
     try: user=authenticate(db,email=str(payload.email),password=payload.password)
     except AuthenticationError: raise HTTPException(status_code=401,detail="Invalid email or password",headers={"WWW-Authenticate":"Bearer"})
-    token=create_access_token(db,user,remember=payload.remember,reset_workspace=True);db.commit();return TokenResponse(access_token=token)
+    token=create_access_token(db,user,remember=payload.remember,rotate_sessions=True);db.commit();return TokenResponse(access_token=token)
 
 
 @router.post("/otp-login/request", response_model=MessageResponse, status_code=status.HTTP_202_ACCEPTED)
@@ -72,8 +72,8 @@ def reset_password(payload: PasswordResetRequest, db: Session = Depends(get_db))
 
 @router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)
 def logout(credentials: HTTPAuthorizationCredentials = Depends(security), user: User = Depends(current_user), db: Session = Depends(get_db)) -> None:
-    jwt.decode(credentials.credentials,get_settings().jwt_secret_key,algorithms=[get_settings().jwt_algorithm])
-    start_fresh_workspace_session(db, user.organization_id, user.id)
+    claims=jwt.decode(credentials.credentials,get_settings().jwt_secret_key,algorithms=[get_settings().jwt_algorithm])
+    revoke_session(db, str(claims["jti"]))
 
 
 @router.get("/me", response_model=UserResponse)

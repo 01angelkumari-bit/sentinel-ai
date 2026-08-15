@@ -80,7 +80,7 @@ class OtpService:
         challenge.consumed_at=_now();return challenge
 
     def verify_login(self,email:str,code:str,remember:bool)->str:
-        challenge=self._verify(email,"login",code);user=self.db.get(User,challenge.user_id);token=create_access_token(self.db,user,remember=remember,reset_workspace=True);self.db.commit();return token
+        challenge=self._verify(email,"login",code);user=self.db.get(User,challenge.user_id);token=create_access_token(self.db,user,remember=remember,rotate_sessions=True);self.db.commit();return token
 
     def verify_password_reset(self,email:str,code:str)->str:
         challenge=self._verify(email,"password_reset",code);raw=secrets.token_urlsafe(48);challenge.reset_token_hash=hashlib.sha256(raw.encode()).hexdigest();challenge.reset_token_expires_at=_now()+timedelta(minutes=10);self.db.commit();return raw
