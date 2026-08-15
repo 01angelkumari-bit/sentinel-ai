@@ -6,7 +6,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 from app.core.config import get_settings
 from app.domain.users.models import AuthSession, Organization, User
-from app.application.auth.workspace import start_fresh_workspace_session
+from app.application.auth.workspace import rotate_user_sessions
 
 password_hasher = PasswordHash.recommended()
 class AuthenticationError(Exception): pass
@@ -32,9 +32,9 @@ def authenticate(db: Session, *, email: str, password: str) -> User:
     user = db.scalar(select(User).where(User.email == email.lower()))
     if not user or not password_hasher.verify(password, user.password_hash): raise AuthenticationError()
     return user
-def create_access_token(db: Session, user: User, *, remember: bool = False, reset_workspace: bool = False) -> str:
-    if reset_workspace:
-        start_fresh_workspace_session(db, user.organization_id, user.id)
+def create_access_token(db: Session, user: User, *, remember: bool = False, rotate_sessions: bool = False) -> str:
+    if rotate_sessions:
+        rotate_user_sessions(db, user.organization_id, user.id)
     settings = get_settings(); expires = datetime.now(UTC) + (timedelta(days=7) if remember else timedelta(minutes=settings.access_token_expire_minutes)); jti = uuid4().hex
     db.add(AuthSession(user_id=user.id, organization_id=user.organization_id, jti=jti, expires_at=expires))
     return jwt.encode({"sub": str(user.id), "org": str(user.organization_id), "role": user.role, "jti": jti, "exp": expires, "iat": datetime.now(UTC)}, settings.jwt_secret_key, algorithm=settings.jwt_algorithm)
