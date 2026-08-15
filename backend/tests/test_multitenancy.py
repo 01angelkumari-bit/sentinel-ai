@@ -137,6 +137,13 @@ def test_uploads_and_direct_file_urls_reject_cross_tenant_access(tenant_app):
     assert imported.status_code == 202
     dataset = client.get("/api/v1/datasets/status", headers=auth(tokens["a"])).json()
     assert dataset["has_data"] is True and dataset["history"][0]["status"] == "completed"
+    session_iterator = app.dependency_overrides[get_db]()
+    db = next(session_iterator)
+    try:
+        imported_customer = db.query(Customer).filter(Customer.company_name == "Private Customer A").one()
+        assert len(imported_customer.customer_number) <= Customer.__table__.c.customer_number.type.length
+    finally:
+        session_iterator.close()
     assert client.get("/api/v1/dashboard/summary", headers=auth(tokens["a"])).json()["revenue"] == 300.0
     assert client.get("/api/v1/dashboard/summary", headers=auth(tokens["b"])).json()["revenue"] == 900.0
 
