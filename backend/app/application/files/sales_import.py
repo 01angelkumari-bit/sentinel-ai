@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import io
+import logging
 from datetime import date
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
@@ -15,6 +16,7 @@ import pandas as pd
 from app.domain.business.models import Customer, Department, Employee, FinanceAccount, FinanceTransaction, InventoryMovement, InventoryStock, Product, ProductCategory, ProductSupplier, Report, SalesOrder, SalesOrderItem, Supplier, SupportTicket, Warehouse
 
 SALES_COLUMNS = {"Date", "Revenue", "Orders", "Cancelled", "Region", "Product", "Customer"}
+logger = logging.getLogger(__name__)
 
 
 def normalize_sales_file(filename: str, data: bytes) -> tuple[bytes, int, list[dict[str, str]]]:
@@ -106,6 +108,10 @@ class SalesCsvImporter:
             self.db.rollback(); raise
         except Exception as exc:
             self.db.rollback()
+            logger.exception(
+                "Sales CSV import failed for organization %s",
+                self.organization_id,
+            )
             raise HTTPException(status_code=422, detail="Sales CSV could not be imported safely") from exc
 
     def _defaults(self) -> tuple[ProductCategory, Department, Employee]:
@@ -144,7 +150,9 @@ class SalesCsvImporter:
             raise HTTPException(status_code=422, detail=f"Customer and Product are required on CSV line {line}")
         customer = self.customers.get(customer_name)
         if not customer:
-            token = uuid4().hex[:12]
+            # customer_number is VARCHAR(24): CSV- + 10-char tenant prefix +
+            # separator + 9-char random token exactly fits the database column.
+            token = uuid4().hex[:9]
             customer = Customer(organization_id=self.organization_id, customer_number=f"CSV-{self.prefix}-{token}", company_name=customer_name[:200], industry="Imported", email=f"customer-{self.prefix}-{token}@import.sentinel", country="Unknown", region=region[:80], status="active")
             self.db.add(customer)
             self.customers[customer_name] = customer
