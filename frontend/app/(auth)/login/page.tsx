@@ -47,15 +47,16 @@ function LoginPageContent() {
     if (!session.ok)
       throw new Error("Your secure session could not be created.");
     performance.mark("sentinel-dashboard-transition-start");
-    router.replace("/onboarding?select=1");
-    router.refresh();
+    window.location.replace("/dashboard");
   }
-  async function passwordLogin(form: FormData) {
+  async function passwordLogin(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     if (submissionInFlight.current) return;
     submissionInFlight.current = true;
     performance.mark("sentinel-auth-submit");
     setLoading(true);
     setError("");
+    const form = new FormData(event.currentTarget);
     const loginEmail = String(form.get("email") ?? "").trim();
     const keep = form.get("remember") === "on";
     setRemember(keep);
@@ -196,7 +197,7 @@ function LoginPageContent() {
   return (
     <Auth3DShell mode="login">
       {mode === "password" ? (
-        <form action={passwordLogin} className="auth-form-enter">
+        <form onSubmit={passwordLogin} className="auth-form-enter">
           <div className="auth-panel-badge">
             <LockKeyhole size={14} /> SECURE ACCESS
           </div>
