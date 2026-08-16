@@ -31,6 +31,9 @@ class MemberCreateRequest(BaseModel):
 class TokenResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
+    user: dict[str, str] | None = None
+    organization: dict[str, str] | None = None
+    role: str | None = None
 class UserResponse(BaseModel):
     id: UUID
     email: EmailStr

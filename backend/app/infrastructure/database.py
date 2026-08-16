@@ -7,9 +7,26 @@ from app.core.config import get_settings
 database_url = get_settings().database_url
 if database_url == "sqlite:///./sentinel.db":
     database_url = f"sqlite:///{(Path(__file__).resolve().parents[2] / 'sentinel.db').as_posix()}"
-engine_options: dict[str, object] = {"pool_pre_ping": True}
+settings = get_settings()
+engine_options: dict[str, object] = {
+    "pool_pre_ping": True,
+    "pool_recycle": settings.database_pool_recycle_seconds,
+}
 if database_url.startswith("sqlite"):
-    engine_options["connect_args"] = {"check_same_thread": False, "timeout": 30}
+    engine_options.update({
+        "connect_args": {"check_same_thread": False, "timeout": settings.database_connect_timeout_seconds},
+    })
+else:
+    engine_options.update({
+        "pool_size": settings.database_pool_size,
+        "max_overflow": settings.database_max_overflow,
+        "pool_timeout": settings.database_pool_timeout_seconds,
+        "pool_use_lifo": True,
+        "connect_args": {
+            "connect_timeout": settings.database_connect_timeout_seconds,
+            "application_name": "sentinel-api",
+        },
+    })
 engine = create_engine(database_url, **engine_options)
 if database_url.startswith("sqlite"):
     @event.listens_for(engine, "connect")
@@ -17,7 +34,7 @@ if database_url.startswith("sqlite"):
         cursor = dbapi_connection.cursor()
         cursor.execute("PRAGMA journal_mode=WAL")
         cursor.execute("PRAGMA synchronous=NORMAL")
-        cursor.execute("PRAGMA busy_timeout=30000")
+        cursor.execute(f"PRAGMA busy_timeout={settings.database_connect_timeout_seconds * 1000}")
         cursor.execute("PRAGMA foreign_keys=ON")
         cursor.close()
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)

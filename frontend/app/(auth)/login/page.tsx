@@ -1,18 +1,420 @@
 "use client";
-import { ArrowLeft,ArrowRight,Check,KeyRound,LockKeyhole,Mail } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  Eye,
+  EyeOff,
+  KeyRound,
+  LockKeyhole,
+  Mail,
+} from "lucide-react";
 import Link from "next/link";
-import { useRouter,useSearchParams } from "next/navigation";
-import { FormEvent,Suspense,useEffect,useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { FormEvent, Suspense, useEffect, useRef, useState } from "react";
 import { Auth3DShell } from "@/components/auth/auth-3d-shell";
-import { apiFetch,fetchWithTimeout } from "@/lib/auth";
-type Mode="password"|"otp-request"|"otp-verify"|"reset-request"|"reset-verify"|"reset-new";
-function LoginPageContent(){const router=useRouter(),searchParams=useSearchParams();const[error,setError]=useState(""),[message,setMessage]=useState(""),[loading,setLoading]=useState(false),[mode,setMode]=useState<Mode>("password"),[email,setEmail]=useState(""),[remember,setRemember]=useState(false),[resetToken,setResetToken]=useState("");
-useEffect(()=>{router.prefetch("/dashboard");router.prefetch("/onboarding")},[router]);
-async function createSession(accessToken:string,keep:boolean){const session=await fetchWithTimeout("/api/auth/session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({accessToken,remember:keep})});if(!session.ok)throw new Error("Your secure session could not be created.");router.replace("/onboarding?select=1");router.refresh()}
-async function passwordLogin(form:FormData){setLoading(true);setError("");const loginEmail=String(form.get("email")??"").trim();const keep=form.get("remember")==="on";setRemember(keep);try{const response=await apiFetch("/auth/login",{method:"POST",body:JSON.stringify({email:loginEmail,password:form.get("password"),remember:keep})});const result=await response.json() as {access_token?:string;detail?:string};if(!response.ok||!result.access_token)throw new Error(result.detail??"Unable to sign in.");await createSession(result.access_token,keep)}catch(cause){setError(cause instanceof Error?cause.message:"Unable to sign in.");setLoading(false)}}
-async function requestCode(event:FormEvent<HTMLFormElement>){event.preventDefault();setLoading(true);setError("");const form=new FormData(event.currentTarget),value=String(form.get("email")??"").trim(),keep=form.get("remember")==="on";setEmail(value);setRemember(keep);const endpoint=mode==="otp-request"?"/auth/otp-login/request":"/auth/password/request-otp";try{const response=await apiFetch(endpoint,{method:"POST",body:JSON.stringify({email:value})});const result=await response.json() as {detail?:string;message?:string};if(!response.ok)throw new Error(result.detail??"Unable to send verification code.");setMessage(result.message??"");setMode(mode==="otp-request"?"otp-verify":"reset-verify")}catch(cause){setError(cause instanceof Error?cause.message:"Unable to send verification code.")}finally{setLoading(false)}}
-async function verifyCode(event:FormEvent<HTMLFormElement>){event.preventDefault();setLoading(true);setError("");const otp=String(new FormData(event.currentTarget).get("otp")??"").trim().toUpperCase();const endpoint=mode==="otp-verify"?"/auth/otp-login/verify":"/auth/password/verify-otp";try{const response=await apiFetch(endpoint,{method:"POST",body:JSON.stringify({email,otp,remember})});const result=await response.json() as {detail?:string;access_token?:string;reset_token?:string};if(!response.ok)throw new Error(result.detail??"Verification failed.");if(mode==="otp-verify"&&result.access_token)await createSession(result.access_token,remember);else if(result.reset_token){setResetToken(result.reset_token);setMode("reset-new")}else throw new Error("Verification response was incomplete.")}catch(cause){setError(cause instanceof Error?cause.message:"Verification failed.");setLoading(false)}}
-async function resetPassword(event:FormEvent<HTMLFormElement>){event.preventDefault();const form=new FormData(event.currentTarget),password=String(form.get("password")??""),confirm=String(form.get("confirmPassword")??"");if(password!==confirm){setError("Passwords do not match.");return}setLoading(true);setError("");try{const response=await apiFetch("/auth/password/reset",{method:"POST",body:JSON.stringify({reset_token:resetToken,new_password:password})});const result=await response.json() as {detail?:string;message?:string};if(!response.ok)throw new Error(result.detail??"Password reset failed.");setMessage(result.message??"");setMode("password")}catch(cause){setError(cause instanceof Error?cause.message:"Password reset failed.")}finally{setLoading(false)}}
-const back=()=>{setMode("password");setError("");setMessage("")};
-return <Auth3DShell mode="login">{mode==="password"?<form action={passwordLogin} className="auth-form-enter"><div className="auth-panel-badge"><LockKeyhole size={14}/> SECURE ACCESS</div><h2>Welcome back</h2><p className="auth-panel-copy">Use your password or request a real email OTP.</p>{searchParams.get("registered")==="1"&&<p role="status" className="auth-notice auth-notice-success"><Check size={15}/>Email verified and account created. Sign in now.</p>}{message&&<p role="status" className="auth-notice auth-notice-success">{message}</p>}<div className="auth-field-stack"><label>Work email<input required name="email" type="email" autoComplete="email" className="auth-3d-input" placeholder="you@company.com"/></label><label>Password<input required name="password" type="password" autoComplete="current-password" minLength={8} className="auth-3d-input" placeholder="Enter your password"/></label></div><div className="auth-form-options"><label className="auth-checkbox"><input name="remember" type="checkbox"/><span><Check size={11}/></span>Remember me</label><button type="button" onClick={()=>setMode("reset-request")}>Forgot password?</button></div>{error&&<p role="alert" className="auth-notice auth-notice-error">{error}</p>}<button disabled={loading} className="auth-primary-button">{loading?"AUTHENTICATING…":"LOGIN"}<ArrowRight size={17}/></button><button type="button" onClick={()=>setMode("otp-request")} className="mt-4 flex w-full items-center justify-center gap-2 text-xs text-cyan-300"><Mail size={14}/>Sign in with email OTP</button><p className="auth-switch-copy">New to Sentinel? <Link href="/register">Create an account</Link></p></form>:mode==="otp-request"||mode==="reset-request"?<form onSubmit={requestCode} className="auth-form-enter"><button type="button" onClick={back} className="auth-panel-badge"><ArrowLeft size={14}/> BACK TO LOGIN</button><h2>{mode==="otp-request"?"Email OTP login":"Reset password"}</h2><p className="auth-panel-copy">Enter your registered real email address. If the account exists, Sentinel will send a short-lived code through configured SMTP.</p><div className="auth-field-stack"><label>Work email<input required name="email" type="email" autoComplete="email" className="auth-3d-input" placeholder="you@company.com"/></label>{mode==="otp-request"&&<label className="auth-checkbox"><input name="remember" type="checkbox"/><span><Check size={11}/></span>Remember me</label>}</div>{error&&<p role="alert" className="auth-notice auth-notice-error">{error}</p>}<button disabled={loading} className="auth-primary-button">{loading?"SENDING…":"SEND VERIFICATION CODE"}<ArrowRight size={17}/></button></form>:mode==="otp-verify"||mode==="reset-verify"?<form onSubmit={verifyCode} className="auth-form-enter"><button type="button" onClick={back} className="auth-panel-badge"><ArrowLeft size={14}/> CANCEL</button><h2>Enter verification code</h2><p className="auth-panel-copy">Enter the six-character letter-and-number code sent to {email}.</p>{message&&<p role="status" className="auth-notice auth-notice-success">{message}</p>}<div className="auth-field-stack"><label>Verification code<input required name="otp" autoComplete="one-time-code" minLength={6} maxLength={6} pattern="[A-Za-z0-9]{6}" className="auth-3d-input uppercase tracking-[.35em]" placeholder="A7K29P"/></label></div>{error&&<p role="alert" className="auth-notice auth-notice-error">{error}</p>}<button disabled={loading} className="auth-primary-button">{loading?"VERIFYING…":"VERIFY CODE"}<ArrowRight size={17}/></button></form>:<form onSubmit={resetPassword} className="auth-form-enter"><div className="auth-panel-badge"><KeyRound size={14}/> NEW PASSWORD</div><h2>Secure your account</h2><div className="auth-field-stack"><label>New password<input required name="password" type="password" minLength={8} autoComplete="new-password" className="auth-3d-input"/></label><label>Confirm password<input required name="confirmPassword" type="password" minLength={8} autoComplete="new-password" className="auth-3d-input"/></label></div>{error&&<p role="alert" className="auth-notice auth-notice-error">{error}</p>}<button disabled={loading} className="auth-primary-button">RESET PASSWORD<ArrowRight size={17}/></button></form>}</Auth3DShell>}
-export default function LoginPage(){return <Suspense fallback={<main className="grid min-h-screen place-items-center bg-[#030610] text-cyan-300">INITIALIZING SECURE ACCESS…</main>}><LoginPageContent/></Suspense>}
+import { apiFetch, authenticationError, fetchWithTimeout, warmAuthenticationApi } from "@/lib/auth";
+type Mode =
+  | "password"
+  | "otp-request"
+  | "otp-verify"
+  | "reset-request"
+  | "reset-verify"
+  | "reset-new";
+function LoginPageContent() {
+  const submissionInFlight = useRef(false);
+  const router = useRouter(),
+    searchParams = useSearchParams();
+  const [error, setError] = useState(""),
+    [message, setMessage] = useState(""),
+    [loading, setLoading] = useState(false),
+    [mode, setMode] = useState<Mode>("password"),
+    [email, setEmail] = useState(""),
+    [remember, setRemember] = useState(false),
+    [resetToken, setResetToken] = useState(""),
+    [showPassword, setShowPassword] = useState(false);
+  useEffect(() => {
+    router.prefetch("/dashboard");
+    router.prefetch("/onboarding");
+    warmAuthenticationApi();
+  }, [router]);
+  async function createSession(accessToken: string, keep: boolean) {
+    const session = await fetchWithTimeout("/api/auth/session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ accessToken, remember: keep }),
+    });
+    if (!session.ok)
+      throw new Error("Your secure session could not be created.");
+    performance.mark("sentinel-dashboard-transition-start");
+    router.replace("/onboarding?select=1");
+    router.refresh();
+  }
+  async function passwordLogin(form: FormData) {
+    if (submissionInFlight.current) return;
+    submissionInFlight.current = true;
+    performance.mark("sentinel-auth-submit");
+    setLoading(true);
+    setError("");
+    const loginEmail = String(form.get("email") ?? "").trim();
+    const keep = form.get("remember") === "on";
+    setRemember(keep);
+    try {
+      const response = await apiFetch("/auth/login", {
+        method: "POST",
+        body: JSON.stringify({
+          email: loginEmail,
+          password: form.get("password"),
+          remember: keep,
+        }),
+      });
+      const result = (await response.json()) as {
+        access_token?: string;
+        detail?: string;
+      };
+      if (!response.ok || !result.access_token)
+        throw new Error(authenticationError(response.status, result.detail));
+      performance.mark("sentinel-auth-response");
+      performance.measure("sentinel-auth-api", "sentinel-auth-submit", "sentinel-auth-response");
+      await createSession(result.access_token, keep);
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Unable to sign in.");
+      setLoading(false);
+      submissionInFlight.current = false;
+    }
+  }
+  async function requestCode(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setLoading(true);
+    setError("");
+    const form = new FormData(event.currentTarget),
+      value = String(form.get("email") ?? "").trim(),
+      keep = form.get("remember") === "on";
+    setEmail(value);
+    setRemember(keep);
+    const endpoint =
+      mode === "otp-request"
+        ? "/auth/otp-login/request"
+        : "/auth/password/request-otp";
+    try {
+      const response = await apiFetch(endpoint, {
+        method: "POST",
+        body: JSON.stringify({ email: value }),
+      });
+      const result = (await response.json()) as {
+        detail?: string;
+        message?: string;
+      };
+      if (!response.ok)
+        throw new Error(result.detail ?? "Unable to send verification code.");
+      setMessage(result.message ?? "");
+      setMode(mode === "otp-request" ? "otp-verify" : "reset-verify");
+    } catch (cause) {
+      setError(
+        cause instanceof Error
+          ? cause.message
+          : "Unable to send verification code.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+  async function verifyCode(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setLoading(true);
+    setError("");
+    const otp = String(new FormData(event.currentTarget).get("otp") ?? "")
+      .trim()
+      .toUpperCase();
+    const endpoint =
+      mode === "otp-verify"
+        ? "/auth/otp-login/verify"
+        : "/auth/password/verify-otp";
+    try {
+      const response = await apiFetch(endpoint, {
+        method: "POST",
+        body: JSON.stringify({ email, otp, remember }),
+      });
+      const result = (await response.json()) as {
+        detail?: string;
+        access_token?: string;
+        reset_token?: string;
+      };
+      if (!response.ok)
+        throw new Error(result.detail ?? "Verification failed.");
+      if (mode === "otp-verify" && result.access_token)
+        await createSession(result.access_token, remember);
+      else if (result.reset_token) {
+        setResetToken(result.reset_token);
+        setMode("reset-new");
+      } else throw new Error("Verification response was incomplete.");
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : "Verification failed.");
+      setLoading(false);
+    }
+  }
+  async function resetPassword(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget),
+      password = String(form.get("password") ?? ""),
+      confirm = String(form.get("confirmPassword") ?? "");
+    if (password !== confirm) {
+      setError("Passwords do not match.");
+      return;
+    }
+    setLoading(true);
+    setError("");
+    try {
+      const response = await apiFetch("/auth/password/reset", {
+        method: "POST",
+        body: JSON.stringify({
+          reset_token: resetToken,
+          new_password: password,
+        }),
+      });
+      const result = (await response.json()) as {
+        detail?: string;
+        message?: string;
+      };
+      if (!response.ok)
+        throw new Error(result.detail ?? "Password reset failed.");
+      setMessage(result.message ?? "");
+      setMode("password");
+    } catch (cause) {
+      setError(
+        cause instanceof Error ? cause.message : "Password reset failed.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+  const back = () => {
+    setMode("password");
+    setError("");
+    setMessage("");
+  };
+  return (
+    <Auth3DShell mode="login">
+      {mode === "password" ? (
+        <form action={passwordLogin} className="auth-form-enter">
+          <div className="auth-panel-badge">
+            <LockKeyhole size={14} /> SECURE ACCESS
+          </div>
+          <h2>Welcome back</h2>
+          <p className="auth-panel-copy">
+            Use your password or request a real email OTP.
+          </p>
+          {searchParams.get("registered") === "1" && (
+            <p role="status" className="auth-notice auth-notice-success">
+              <Check size={15} />
+              Email verified and account created. Sign in now.
+            </p>
+          )}
+          {message && (
+            <p role="status" className="auth-notice auth-notice-success">
+              {message}
+            </p>
+          )}
+          <div className="auth-field-stack">
+            <label>
+              Work email
+              <input
+                required
+                name="email"
+                type="email"
+                autoComplete="email"
+                className="auth-3d-input"
+                placeholder="you@company.com"
+              />
+            </label>
+            <label>
+              Password
+              <span className="auth-password-field">
+                <input
+                  required
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  autoComplete="current-password"
+                  minLength={8}
+                  className="auth-3d-input"
+                  placeholder="Enter your password"
+                />
+                <button type="button" className="auth-password-toggle" aria-label={showPassword ? "Hide password" : "Show password"} onClick={() => setShowPassword(value => !value)}>
+                  {showPassword ? <EyeOff size={17}/> : <Eye size={17}/>}
+                </button>
+              </span>
+            </label>
+          </div>
+          <div className="auth-form-options">
+            <label className="auth-checkbox">
+              <input name="remember" type="checkbox" />
+              <span>
+                <Check size={11} />
+              </span>
+              Remember me
+            </label>
+            <button type="button" onClick={() => setMode("reset-request")}>
+              Forgot password?
+            </button>
+          </div>
+          {error && (
+            <p role="alert" className="auth-notice auth-notice-error">
+              {error}
+            </p>
+          )}
+          <button disabled={loading} className="auth-primary-button">
+            {loading ? "SIGNING IN…" : "LOGIN"}
+            <ArrowRight size={17} />
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode("otp-request")}
+            className="mt-4 flex w-full items-center justify-center gap-2 text-xs text-cyan-300"
+          >
+            <Mail size={14} />
+            Sign in with email OTP
+          </button>
+          <p className="auth-switch-copy">
+            New to Sentinel? <Link href="/register">Create an account</Link>
+          </p>
+        </form>
+      ) : mode === "otp-request" || mode === "reset-request" ? (
+        <form onSubmit={requestCode} className="auth-form-enter">
+          <button type="button" onClick={back} className="auth-panel-badge">
+            <ArrowLeft size={14} /> BACK TO LOGIN
+          </button>
+          <h2>
+            {mode === "otp-request" ? "Email OTP login" : "Reset password"}
+          </h2>
+          <p className="auth-panel-copy">
+            Enter your registered real email address. If the account exists,
+            Sentinel will send a short-lived code through configured SMTP.
+          </p>
+          <div className="auth-field-stack">
+            <label>
+              Work email
+              <input
+                required
+                name="email"
+                type="email"
+                autoComplete="email"
+                className="auth-3d-input"
+                placeholder="you@company.com"
+              />
+            </label>
+            {mode === "otp-request" && (
+              <label className="auth-checkbox">
+                <input name="remember" type="checkbox" />
+                <span>
+                  <Check size={11} />
+                </span>
+                Remember me
+              </label>
+            )}
+          </div>
+          {error && (
+            <p role="alert" className="auth-notice auth-notice-error">
+              {error}
+            </p>
+          )}
+          <button disabled={loading} className="auth-primary-button">
+            {loading ? "SENDING…" : "SEND VERIFICATION CODE"}
+            <ArrowRight size={17} />
+          </button>
+        </form>
+      ) : mode === "otp-verify" || mode === "reset-verify" ? (
+        <form onSubmit={verifyCode} className="auth-form-enter">
+          <button type="button" onClick={back} className="auth-panel-badge">
+            <ArrowLeft size={14} /> CANCEL
+          </button>
+          <h2>Enter verification code</h2>
+          <p className="auth-panel-copy">
+            Enter the six-character letter-and-number code sent to {email}.
+          </p>
+          {message && (
+            <p role="status" className="auth-notice auth-notice-success">
+              {message}
+            </p>
+          )}
+          <div className="auth-field-stack">
+            <label>
+              Verification code
+              <input
+                required
+                name="otp"
+                autoComplete="one-time-code"
+                minLength={6}
+                maxLength={6}
+                pattern="[A-Za-z0-9]{6}"
+                className="auth-3d-input uppercase tracking-[.35em]"
+                placeholder="A7K29P"
+              />
+            </label>
+          </div>
+          {error && (
+            <p role="alert" className="auth-notice auth-notice-error">
+              {error}
+            </p>
+          )}
+          <button disabled={loading} className="auth-primary-button">
+            {loading ? "VERIFYING…" : "VERIFY CODE"}
+            <ArrowRight size={17} />
+          </button>
+        </form>
+      ) : (
+        <form onSubmit={resetPassword} className="auth-form-enter">
+          <div className="auth-panel-badge">
+            <KeyRound size={14} /> NEW PASSWORD
+          </div>
+          <h2>Secure your account</h2>
+          <div className="auth-field-stack">
+            <label>
+              New password
+              <input
+                required
+                name="password"
+                type="password"
+                minLength={8}
+                autoComplete="new-password"
+                className="auth-3d-input"
+              />
+            </label>
+            <label>
+              Confirm password
+              <input
+                required
+                name="confirmPassword"
+                type="password"
+                minLength={8}
+                autoComplete="new-password"
+                className="auth-3d-input"
+              />
+            </label>
+          </div>
+          {error && (
+            <p role="alert" className="auth-notice auth-notice-error">
+              {error}
+            </p>
+          )}
+          <button disabled={loading} className="auth-primary-button">
+            RESET PASSWORD
+            <ArrowRight size={17} />
+          </button>
+        </form>
+      )}
+    </Auth3DShell>
+  );
+}
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="grid min-h-screen place-items-center bg-[#030610] text-cyan-300">
+          INITIALIZING SECURE ACCESS…
+        </main>
+      }
+    >
+      <LoginPageContent />
+    </Suspense>
+  );
+}

@@ -3,6 +3,8 @@ from __future__ import annotations
 import smtplib
 import ssl
 import base64
+import logging
+from concurrent.futures import ThreadPoolExecutor
 from email.message import EmailMessage
 
 import dns.exception
@@ -15,6 +17,10 @@ from app.core.config import get_settings
 class EmailConfigurationError(RuntimeError): pass
 class EmailDeliveryError(RuntimeError): pass
 class EmailDomainError(ValueError): pass
+
+
+logger = logging.getLogger("sentinel.email")
+_delivery_pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix="sentinel-email")
 
 
 def validate_mx_domain(email: str) -> None:
@@ -41,6 +47,9 @@ class SmtpEmailService:
         elif not self.settings.smtp_host:
             raise EmailConfigurationError("SMTP delivery is not configured")
 
+    def ensure_configured(self) -> None:
+        self._configured()
+
     def _send_gmail_api(self, message: EmailMessage) -> None:
         try:
             token_response = requests.post(
@@ -51,7 +60,7 @@ class SmtpEmailService:
                     "refresh_token": self.settings.google_refresh_token,
                     "grant_type": "refresh_token",
                 },
-                timeout=15,
+                timeout=self.settings.email_delivery_timeout_seconds,
             )
             token_response.raise_for_status()
             access_token = token_response.json()["access_token"]
@@ -60,7 +69,7 @@ class SmtpEmailService:
                 "https://gmail.googleapis.com/gmail/v1/users/me/messages/send",
                 headers={"Authorization": f"Bearer {access_token}"},
                 json={"raw": raw_message},
-                timeout=15,
+                timeout=self.settings.email_delivery_timeout_seconds,
             )
             send_response.raise_for_status()
         except (KeyError, ValueError, requests.RequestException) as exc:
@@ -79,7 +88,8 @@ class SmtpEmailService:
             return
         try:
             context = ssl.create_default_context()
-            client_connection = smtplib.SMTP_SSL(self.settings.smtp_host, self.settings.smtp_port, timeout=15, context=context) if self.settings.smtp_use_ssl else smtplib.SMTP(self.settings.smtp_host, self.settings.smtp_port, timeout=15)
+            timeout = self.settings.email_delivery_timeout_seconds
+            client_connection = smtplib.SMTP_SSL(self.settings.smtp_host, self.settings.smtp_port, timeout=timeout, context=context) if self.settings.smtp_use_ssl else smtplib.SMTP(self.settings.smtp_host, self.settings.smtp_port, timeout=timeout)
             with client_connection as client:
                 if not self.settings.smtp_use_ssl:
                     client.ehlo()
@@ -88,3 +98,20 @@ class SmtpEmailService:
                 client.send_message(message)
         except (OSError, smtplib.SMTPException) as exc:
             raise EmailDeliveryError("Verification email delivery failed") from exc
+
+
+def dispatch_otp(recipient: str, code: str, purpose: str) -> None:
+    """Validate configuration now, then keep external DNS/email I/O off the request path."""
+    service = SmtpEmailService()
+    service.ensure_configured()
+
+    def deliver() -> None:
+        try:
+            validate_mx_domain(recipient)
+            service.send_otp(recipient, code, purpose)
+            logger.info("OTP_DELIVERY_END purpose=%s status=sent", purpose)
+        except Exception:
+            logger.exception("OTP_DELIVERY_END purpose=%s status=failed", purpose)
+
+    logger.info("OTP_DELIVERY_QUEUED purpose=%s", purpose)
+    _delivery_pool.submit(deliver)

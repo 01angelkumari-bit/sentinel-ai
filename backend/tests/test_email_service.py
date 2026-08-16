@@ -31,6 +31,7 @@ def gmail_settings() -> SimpleNamespace:
         google_client_secret="client-secret",
         google_refresh_token="refresh-token",
         otp_expire_minutes=10,
+        email_delivery_timeout_seconds=8,
     )
 
 
