@@ -45,7 +45,9 @@ def _process_import(job_id: UUID, organization_id: UUID, relative_path: str, ori
         storage_root = configured if configured.is_absolute() else backend_root / configured
         path = (storage_root / relative_path).resolve()
         try:
-            data, _, _ = normalize_sales_file(original_name, path.read_bytes())
+            data, total_rows, _ = normalize_sales_file(original_name, path.read_bytes())
+            job.total_rows = total_rows
+            db.commit()
             def progress(processed: int, total: int) -> None:
                 with PROGRESS_LOCK:
                     IMPORT_PROGRESS[job_id] = (processed, total)
@@ -70,6 +72,13 @@ def dataset_status(user: User = Depends(current_user), db: Session = Depends(get
     active = next((item for item in history if item.status in {"queued", "processing"}), None)
     return DatasetStatusResponse(has_data=count > 0, record_count=count, active_import=active, history=history)
 
+
+@router.get("/presence")
+def dataset_presence(user: User = Depends(current_user), db: Session = Depends(get_db)) -> dict[str, bool]:
+    """Cheap route guard; full history and counts load only on onboarding."""
+    has_data = db.scalar(select(SalesOrder.id).where(SalesOrder.organization_id == user.organization_id).limit(1)) is not None
+    return {"has_data": has_data}
+
 @router.post("/imports", response_model=DatasetImportResponse, status_code=status.HTTP_202_ACCEPTED)
 async def create_dataset_import(background: BackgroundTasks, request: Request, x_filename: str = Header(..., min_length=1, max_length=255), x_import_mode: Literal["initial", "append", "replace"] = Header("initial"), user: User = Depends(require_role("employee")), db: Session = Depends(get_db)) -> DatasetImportResponse:
     suffix = Path(x_filename).suffix.lower()
@@ -78,8 +87,7 @@ async def create_dataset_import(background: BackgroundTasks, request: Request, x
     data = await request.body()
     if len(data) > get_settings().max_upload_bytes:
         raise HTTPException(status_code=413, detail="File exceeds the configured upload limit")
-    _, total_rows, _ = normalize_sales_file(x_filename, data)
-    existing = int(db.scalar(select(func.count()).select_from(SalesOrder).where(SalesOrder.organization_id == user.organization_id)) or 0)
+    existing = db.scalar(select(SalesOrder.id).where(SalesOrder.organization_id == user.organization_id).limit(1)) is not None
     if existing and x_import_mode == "initial":
         raise HTTPException(status_code=409, detail="A dataset already exists. Choose append or replace.")
     active = db.scalar(select(DatasetImport.id).where(DatasetImport.organization_id == user.organization_id, DatasetImport.status.in_(["queued", "processing"])))
@@ -87,10 +95,10 @@ async def create_dataset_import(background: BackgroundTasks, request: Request, x
         raise HTTPException(status_code=409, detail="Another dataset import is already running")
     content_type = "text/csv" if suffix == ".csv" else "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     asset = FileService(db).save_upload(user.id, user.organization_id, x_filename, content_type, data)
-    job = DatasetImport(organization_id=user.organization_id, uploaded_by_id=user.id, file_asset_id=asset.id, mode=x_import_mode, status="queued", total_rows=total_rows)
+    job = DatasetImport(organization_id=user.organization_id, uploaded_by_id=user.id, file_asset_id=asset.id, mode=x_import_mode, status="queued", total_rows=0)
     db.add(job); db.commit(); db.refresh(job)
     with PROGRESS_LOCK:
-        IMPORT_PROGRESS[job.id] = (0, total_rows)
+        IMPORT_PROGRESS[job.id] = (0, 0)
     background.add_task(_process_import, job.id, user.organization_id, asset.relative_path, asset.original_name, x_import_mode, db.get_bind())
     return _response(job, asset.original_name)
 

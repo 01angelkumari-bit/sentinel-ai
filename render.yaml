@@ -14,6 +14,16 @@ services:
         value: 3.12.7
       - key: DATABASE_URL
         sync: false
+      - key: DATABASE_POOL_SIZE
+        value: 5
+      - key: DATABASE_MAX_OVERFLOW
+        value: 5
+      - key: DATABASE_POOL_TIMEOUT_SECONDS
+        value: 5
+      - key: DATABASE_POOL_RECYCLE_SECONDS
+        value: 300
+      - key: DATABASE_CONNECT_TIMEOUT_SECONDS
+        value: 5
       - key: JWT_SECRET_KEY
         generateValue: true
       - key: JWT_ALGORITHM

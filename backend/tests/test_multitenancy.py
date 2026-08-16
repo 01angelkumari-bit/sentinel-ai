@@ -21,6 +21,13 @@ from app.infrastructure.database import Base, get_db
 from app.main import app
 
 
+@pytest.fixture(autouse=True)
+def deterministic_email_delivery(monkeypatch):
+    monkeypatch.setattr("app.application.auth.email_service.SmtpEmailService.ensure_configured", lambda _: None)
+    monkeypatch.setattr("app.application.auth.email_service.validate_mx_domain", lambda _: None)
+    monkeypatch.setattr("app.application.auth.email_service._delivery_pool.submit", lambda function: function())
+
+
 @pytest.fixture()
 def tenant_app(tmp_path):
     engine = create_engine("sqlite://", connect_args={"check_same_thread": False}, poolclass=StaticPool)
@@ -78,7 +85,6 @@ def test_dashboards_and_graphs_are_tenant_isolated(tenant_app):
 def test_registration_creates_a_new_owner_and_organization(tenant_app, monkeypatch):
     client, _, _ = tenant_app
     delivered = {}
-    monkeypatch.setattr("app.application.auth.otp_service.validate_mx_domain", lambda _: None)
     monkeypatch.setattr("app.application.auth.email_service.SmtpEmailService.send_otp", lambda _, email, code, purpose: delivered.__setitem__(email, code))
     organizations = []
     for suffix in ("a", "b"):
@@ -87,7 +93,7 @@ def test_registration_creates_a_new_owner_and_organization(tenant_app, monkeypat
         assert requested.status_code == 202 and "otp" not in requested.text.lower()
         verified = client.post("/api/v1/auth/register/verify-otp", json={"email": email, "otp": delivered[email]})
         assert verified.status_code == 201 and verified.json()["role"] == "owner"
-        organizations.append(verified.json()["organization_id"])
+        organizations.append(verified.json()["organization"]["id"])
     assert organizations[0] != organizations[1]
 
 
@@ -354,6 +360,32 @@ def test_returning_login_preserves_tenant_workspace(tenant_app):
     assert client.get("/api/v1/ai/conversations", headers=auth(second_token)).json()
     assert client.get(f"/api/v1/files/{report_id}/view", headers=auth(second_token)).status_code == 200
     assert client.get("/api/v1/dashboard/summary", headers=auth(second_token)).json()["revenue"] == 111.0
+
+
+def test_login_is_minimal_timed_and_keeps_other_sessions_valid(tenant_app):
+    client, tokens, _ = tenant_app
+    member = client.post(
+        "/api/v1/auth/members",
+        headers=auth(tokens["a"]),
+        json={"email": "fast-login@example.com", "full_name": "Fast Login", "password": "FastLogin123!", "role": "viewer"},
+    )
+    assert member.status_code == 201
+    first = client.post("/api/v1/auth/login", json={"email": "fast-login@example.com", "password": "FastLogin123!"})
+    second = client.post("/api/v1/auth/login", json={"email": "fast-login@example.com", "password": "FastLogin123!", "remember": True})
+    assert first.status_code == second.status_code == 200
+    payload = second.json()
+    assert set(payload) == {"access_token", "token_type", "user", "organization", "role"}
+    assert payload["user"]["email"] == "fast-login@example.com" and payload["role"] == "viewer"
+    assert "db_query;dur=" in second.headers["server-timing"]
+    assert "password_verify;dur=" in second.headers["server-timing"]
+    assert client.get("/api/v1/auth/me", headers=auth(first.json()["access_token"])).status_code == 200
+    assert client.get("/api/v1/auth/me", headers=auth(second.json()["access_token"])).status_code == 200
+
+
+def test_health_and_readiness_are_separate(tenant_app):
+    client, _, _ = tenant_app
+    assert client.get("/health").json() == {"status": "ok"}
+    assert client.get("/ready").json() == {"status": "ready", "database": "ok"}
 
 
 def test_sentiment_risk_and_natural_language_are_dataset_grounded(tenant_app):

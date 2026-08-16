@@ -38,7 +38,8 @@ if (-not $backendReady) {
 }
 
 $frontendReady = $false
-for ($attempt = 1; $attempt -le 12; $attempt++) {
+for ($attempt = 1; $attempt -le 30; $attempt++) {
+    if ($frontendProcess.HasExited) { break }
     try {
         $response = Invoke-WebRequest -Uri 'http://localhost:3000/login' -UseBasicParsing -TimeoutSec 5
         if ($response.StatusCode -eq 200) { $frontendReady = $true; break }

@@ -3,7 +3,7 @@ from uuid import UUID
 import jwt
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 from sqlalchemy import select, text
 from app.core.config import get_settings
 from app.domain.users.models import AuthSession, User
@@ -16,12 +16,23 @@ def current_user(credentials: HTTPAuthorizationCredentials | None = Depends(secu
     try:
         claims = jwt.decode(credentials.credentials, settings.jwt_secret_key, algorithms=[settings.jwt_algorithm])
         subject, token_org, jti = claims["sub"], claims["org"], claims["jti"]
+        user_id, organization_id = UUID(subject), UUID(token_org)
     except (jwt.PyJWTError, KeyError): raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid or expired access token", headers={"WWW-Authenticate": "Bearer"})
-    session = db.scalar(select(AuthSession).where(AuthSession.jti == jti, AuthSession.revoked_at.is_(None)))
-    expires = session.expires_at.replace(tzinfo=UTC) if session and session.expires_at.tzinfo is None else session.expires_at if session else datetime.min.replace(tzinfo=UTC)
-    if not session or expires <= datetime.now(UTC): raise HTTPException(status_code=401, detail="Session expired or revoked")
-    user = db.get(User, UUID(subject))
-    if not user or str(user.organization_id) != token_org or session.user_id != user.id or str(session.organization_id) != token_org: raise HTTPException(status_code=401, detail="Account or organization not found")
+    except (TypeError, ValueError): raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid or expired access token", headers={"WWW-Authenticate": "Bearer"})
+    user = db.scalar(
+        select(User)
+        .join(AuthSession, AuthSession.user_id == User.id)
+        .options(joinedload(User.organization))
+        .where(
+            User.id == user_id,
+            User.organization_id == organization_id,
+            AuthSession.jti == jti,
+            AuthSession.organization_id == organization_id,
+            AuthSession.revoked_at.is_(None),
+            AuthSession.expires_at > datetime.now(UTC),
+        )
+    )
+    if not user: raise HTTPException(status_code=401, detail="Session expired, revoked, or unavailable")
     if db.bind is not None and db.bind.dialect.name == "postgresql":
         db.execute(text("SELECT set_config('app.current_organization', :organization_id, true)"), {"organization_id": token_org})
     return user

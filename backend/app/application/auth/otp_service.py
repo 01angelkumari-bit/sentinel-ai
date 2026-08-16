@@ -4,14 +4,16 @@ import hashlib
 import hmac
 import secrets
 import string
+from time import perf_counter
 from datetime import UTC, datetime, timedelta
 
 from fastapi import HTTPException, status
 from sqlalchemy import func, select, update
 from sqlalchemy.orm import Session
 
-from app.application.auth.email_service import SmtpEmailService, validate_mx_domain
+from app.application.auth.email_service import SmtpEmailService, dispatch_otp
 from app.application.auth.service import EmailAlreadyRegistered, create_access_token, password_hasher
+from app.application.auth.workspace import rotate_user_sessions
 from app.core.config import get_settings
 from app.domain.users.models import OtpChallenge, Organization, PendingRegistration, User
 
@@ -38,18 +40,26 @@ class OtpService:
         count = self.db.scalar(select(func.count()).select_from(OtpChallenge).where(OtpChallenge.email == email, OtpChallenge.purpose == purpose, OtpChallenge.created_at >= since)) or 0
         if count >= self.settings.otp_hourly_limit: raise HTTPException(status_code=429, detail="Too many verification requests. Try again later.")
 
-    def request_registration(self, *, email: str, full_name: str, organization_name: str, password: str) -> dict[str, str]:
-        normalized = email.lower(); validate_mx_domain(normalized)
+    def request_registration(self, *, email: str, full_name: str, organization_name: str, password: str, timings: dict[str, float] | None = None) -> dict[str, str]:
+        normalized = email.lower(); started=perf_counter(); self.email.ensure_configured()
+        if timings is not None: timings["email_config_ms"]=(perf_counter()-started)*1000
+        started=perf_counter()
         if self.db.scalar(select(User.id).where(User.email == normalized)): raise EmailAlreadyRegistered()
         existing = self.db.scalar(select(PendingRegistration).where(PendingRegistration.email == normalized))
+        if timings is not None: timings["db_query_ms"]=(perf_counter()-started)*1000
         now = _now()
         if existing and (now - _aware(existing.last_sent_at)).total_seconds() < self.settings.otp_resend_cooldown_seconds: raise HTTPException(status_code=429, detail="Wait before requesting another verification code.")
+        started=perf_counter();encoded_password=password_hasher.hash(password)
+        if timings is not None: timings["password_hash_ms"]=(perf_counter()-started)*1000
         code = _code(); expires = now + timedelta(minutes=self.settings.otp_expire_minutes)
-        self.email.send_otp(normalized, code, "registration")
         if existing:
-            existing.full_name=full_name.strip();existing.organization_name=organization_name.strip();existing.password_hash=password_hasher.hash(password);existing.otp_hash=_otp_hash(normalized,"registration",code);existing.expires_at=expires;existing.attempts=0;existing.last_sent_at=now
-        else:self.db.add(PendingRegistration(email=normalized,full_name=full_name.strip(),organization_name=organization_name.strip(),password_hash=password_hasher.hash(password),otp_hash=_otp_hash(normalized,"registration",code),expires_at=expires,attempts=0,last_sent_at=now))
-        self.db.commit();return {"message":"A verification code was sent to your email address."}
+            existing.full_name=full_name.strip();existing.organization_name=organization_name.strip();existing.password_hash=encoded_password;existing.otp_hash=_otp_hash(normalized,"registration",code);existing.expires_at=expires;existing.attempts=0;existing.last_sent_at=now
+        else:self.db.add(PendingRegistration(email=normalized,full_name=full_name.strip(),organization_name=organization_name.strip(),password_hash=encoded_password,otp_hash=_otp_hash(normalized,"registration",code),expires_at=expires,attempts=0,last_sent_at=now))
+        started=perf_counter();self.db.commit()
+        if timings is not None: timings["commit_ms"]=(perf_counter()-started)*1000
+        started=perf_counter();dispatch_otp(normalized,code,"registration")
+        if timings is not None: timings["email_queue_ms"]=(perf_counter()-started)*1000
+        return {"message":"A verification code is being sent to your email address."}
 
     def verify_registration(self, email: str, code: str) -> User:
         normalized=email.lower();pending=self.db.scalar(select(PendingRegistration).where(PendingRegistration.email==normalized))
@@ -64,11 +74,12 @@ class OtpService:
     def request_user_otp(self, email: str, purpose: str) -> dict[str, str]:
         normalized=email.lower();user=self.db.scalar(select(User).where(User.email==normalized))
         if not user:return _generic()
+        self.email.ensure_configured()
         self._hourly_limit(normalized,purpose);latest=self.db.scalar(select(OtpChallenge).where(OtpChallenge.email==normalized,OtpChallenge.purpose==purpose).order_by(OtpChallenge.created_at.desc()))
         if latest and (_now()-_aware(latest.created_at)).total_seconds()<self.settings.otp_resend_cooldown_seconds: raise HTTPException(status_code=429,detail="Wait before requesting another verification code.")
         self.db.execute(update(OtpChallenge).where(OtpChallenge.email==normalized,OtpChallenge.purpose==purpose,OtpChallenge.consumed_at.is_(None)).values(consumed_at=_now()))
         code=_code();challenge=OtpChallenge(user_id=user.id,organization_id=user.organization_id,email=normalized,purpose=purpose,otp_hash=_otp_hash(normalized,purpose,code),expires_at=_now()+timedelta(minutes=self.settings.otp_expire_minutes),attempts=0)
-        self.email.send_otp(normalized,code,purpose);self.db.add(challenge);self.db.commit();return _generic()
+        self.db.add(challenge);self.db.commit();dispatch_otp(normalized,code,purpose);return _generic()
 
     def _verify(self,email:str,purpose:str,code:str)->OtpChallenge:
         normalized=email.lower();challenge=self.db.scalar(select(OtpChallenge).where(OtpChallenge.email==normalized,OtpChallenge.purpose==purpose,OtpChallenge.consumed_at.is_(None)).order_by(OtpChallenge.created_at.desc()))
@@ -79,8 +90,8 @@ class OtpService:
             self.db.commit();raise HTTPException(status_code=400,detail="The verification code is invalid or expired.")
         challenge.consumed_at=_now();return challenge
 
-    def verify_login(self,email:str,code:str,remember:bool)->str:
-        challenge=self._verify(email,"login",code);user=self.db.get(User,challenge.user_id);token=create_access_token(self.db,user,remember=remember,rotate_sessions=True);self.db.commit();return token
+    def verify_login(self,email:str,code:str,remember:bool)->tuple[str,User]:
+        challenge=self._verify(email,"login",code);user=self.db.get(User,challenge.user_id);token=create_access_token(self.db,user,remember=remember);self.db.commit();self.db.refresh(user,attribute_names=["organization"]);return token,user
 
     def verify_password_reset(self,email:str,code:str)->str:
         challenge=self._verify(email,"password_reset",code);raw=secrets.token_urlsafe(48);challenge.reset_token_hash=hashlib.sha256(raw.encode()).hexdigest();challenge.reset_token_expires_at=_now()+timedelta(minutes=10);self.db.commit();return raw
@@ -88,4 +99,4 @@ class OtpService:
     def reset_password(self,reset_token:str,new_password:str)->None:
         digest=hashlib.sha256(reset_token.encode()).hexdigest();challenge=self.db.scalar(select(OtpChallenge).where(OtpChallenge.reset_token_hash==digest))
         if not challenge or not challenge.reset_token_expires_at or _aware(challenge.reset_token_expires_at)<=_now():raise HTTPException(status_code=400,detail="The password reset authorization is invalid or expired.")
-        user=self.db.get(User,challenge.user_id);user.password_hash=password_hasher.hash(new_password);challenge.reset_token_hash=None;challenge.reset_token_expires_at=None;self.db.commit()
+        user=self.db.get(User,challenge.user_id);user.password_hash=password_hasher.hash(new_password);challenge.reset_token_hash=None;challenge.reset_token_expires_at=None;rotate_user_sessions(self.db,user.organization_id,user.id);self.db.commit()
