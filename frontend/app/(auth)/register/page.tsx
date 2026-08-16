@@ -20,10 +20,12 @@ export default function RegisterPage() {
     router.prefetch("/onboarding");
     warmAuthenticationApi();
   }, [router]);
-  async function requestOtp(form: FormData) {
+  async function requestOtp(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     if (submissionInFlight.current) return;
     submissionInFlight.current = true;
     setError("");
+    const form = new FormData(event.currentTarget);
     const password = String(form.get("password") ?? ""),
       confirmPassword = String(form.get("confirmPassword") ?? "");
     if (password !== confirmPassword) {
@@ -95,8 +97,7 @@ export default function RegisterPage() {
       });
       if (!session.ok)
         throw new Error("Your secure session could not be created.");
-      router.replace("/onboarding?select=1");
-      router.refresh();
+      window.location.replace("/onboarding");
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Verification failed.");
       setLoading(false);
@@ -129,7 +130,7 @@ export default function RegisterPage() {
   return (
     <Auth3DShell mode="register">
       {step === "details" ? (
-        <form action={requestOtp} className="auth-form-enter">
+        <form onSubmit={requestOtp} className="auth-form-enter">
           <div className="auth-panel-badge">
             <ShieldCheck size={14} /> CREATE IDENTITY
           </div>
