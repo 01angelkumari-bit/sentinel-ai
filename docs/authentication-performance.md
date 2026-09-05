@@ -13,7 +13,7 @@ Dashboard analytics, file parsing, AI workflows, reports, and PDFs are not execu
 ## Operational endpoints
 
 - `GET /health` checks only that the API process is responsive.
-- `GET /ready` verifies that the API can query PostgreSQL.
+- `GET /ready` verifies that the API can query PostgreSQL and that email delivery credentials are configured.
 
 Successful login responses expose a `Server-Timing` header with database, password verification, session/JWT, commit, and total durations. Backend logs include a request ID and `AUTH_REQUEST_START` / `AUTH_REQUEST_END` events. Requests slower than `AUTH_SLOW_REQUEST_MS` are logged as warnings.
 

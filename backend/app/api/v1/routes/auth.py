@@ -7,7 +7,7 @@ from fastapi.security import HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
 
 from app.api.dependencies import current_user, require_role, security
-from app.api.v1.schemas.auth import EmailRequest, LoginRequest, MemberCreateRequest, MessageResponse, OtpVerifyRequest, PasswordOtpResponse, PasswordResetRequest, RegisterRequest, TokenResponse, UserResponse
+from app.api.v1.schemas.auth import EmailRequest, LoginRequest, MemberCreateRequest, MessageResponse, OtpVerifyRequest, PasswordOtpResponse, PasswordResetRequest, RegisterRequest, RegistrationChallengeResponse, RegistrationOtpVerifyRequest, RegistrationResendRequest, TokenResponse, UserResponse
 from app.application.auth.email_service import EmailConfigurationError, EmailDeliveryError, EmailDomainError
 from app.application.auth.otp_service import OtpService
 from app.application.auth.service import AuthenticationError, EmailAlreadyRegistered, authenticate, create_access_token, create_organization_member
@@ -41,7 +41,7 @@ def _email_failure(exc: Exception) -> HTTPException:
     return HTTPException(status_code=503, detail="Verification email could not be delivered. Check the email service configuration and try again.")
 
 
-@router.post("/register", response_model=MessageResponse, status_code=status.HTTP_202_ACCEPTED, summary="Queue a real registration OTP")
+@router.post("/register", response_model=RegistrationChallengeResponse, status_code=status.HTTP_202_ACCEPTED, summary="Send a registration verification code")
 def register(payload: RegisterRequest, response: Response, db: Session = Depends(get_db)) -> dict:
     started=perf_counter();timings:dict[str,float]={}
     try: result=OtpService(db).request_registration(email=str(payload.email), full_name=payload.full_name, organization_name=payload.organization_name or f"{payload.full_name}'s Organization", password=payload.password,timings=timings)
@@ -51,9 +51,18 @@ def register(payload: RegisterRequest, response: Response, db: Session = Depends
     return result
 
 
+@router.post("/register/resend", response_model=RegistrationChallengeResponse, status_code=status.HTTP_202_ACCEPTED)
+def resend_registration(payload: RegistrationResendRequest, response: Response, db: Session = Depends(get_db)) -> dict:
+    started=perf_counter();timings:dict[str,float]={}
+    try: result=OtpService(db).resend_registration(payload.challenge_id,timings=timings)
+    except (EmailConfigurationError, EmailDeliveryError, EmailDomainError) as exc: raise _email_failure(exc)
+    _record_timing(response,"REGISTER_RESEND_END",started,timings)
+    return result
+
+
 @router.post("/register/verify-otp", response_model=TokenResponse, status_code=status.HTTP_201_CREATED)
-def verify_registration(payload: OtpVerifyRequest, db: Session = Depends(get_db)) -> TokenResponse:
-    try: user = OtpService(db).verify_registration(str(payload.email), payload.otp)
+def verify_registration(payload: RegistrationOtpVerifyRequest, db: Session = Depends(get_db)) -> TokenResponse:
+    try: user = OtpService(db).verify_registration(payload.challenge_id, payload.otp)
     except EmailAlreadyRegistered: raise HTTPException(status_code=409, detail="An account with this email already exists")
     token=create_access_token(db,user);db.commit();return _token_response(token,user)
 

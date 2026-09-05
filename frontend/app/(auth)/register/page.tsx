@@ -2,24 +2,47 @@
 import { ArrowLeft, ArrowRight, CheckCircle2, Eye, EyeOff, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { Auth3DShell } from "@/components/auth/auth-3d-shell";
 import { apiFetch, authenticationError, fetchWithTimeout, warmAuthenticationApi } from "@/lib/auth";
 
 export default function RegisterPage() {
   const submissionInFlight = useRef(false);
+  const otpForm = useRef<HTMLFormElement>(null);
+  const lastSubmittedOtp = useRef("");
   const router = useRouter();
   const [error, setError] = useState(""),
     [message, setMessage] = useState(""),
     [loading, setLoading] = useState(false),
     [step, setStep] = useState<"details" | "otp">("details"),
     [email, setEmail] = useState(""),
-    [registration, setRegistration] = useState<Record<string, string>>({}),
+    [challengeId, setChallengeId] = useState(""),
+    [otp, setOtp] = useState(""),
+    [resendIn, setResendIn] = useState(0),
     [showPasswords, setShowPasswords] = useState(false);
   useEffect(() => {
     router.prefetch("/onboarding");
     warmAuthenticationApi();
   }, [router]);
+  useEffect(() => {
+    if (step !== "otp" || resendIn <= 0) return;
+    const timer = window.setInterval(
+      () => setResendIn((seconds) => Math.max(0, seconds - 1)),
+      1_000,
+    );
+    return () => window.clearInterval(timer);
+  }, [step, resendIn]);
+  useEffect(() => {
+    if (
+      step === "otp" &&
+      otp.length === 6 &&
+      otp !== lastSubmittedOtp.current &&
+      !loading
+    ) {
+      lastSubmittedOtp.current = otp;
+      otpForm.current?.requestSubmit();
+    }
+  }, [loading, otp, step]);
   async function requestOtp(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (submissionInFlight.current) return;
@@ -30,6 +53,7 @@ export default function RegisterPage() {
       confirmPassword = String(form.get("confirmPassword") ?? "");
     if (password !== confirmPassword) {
       setError("Passwords do not match. Please confirm your password.");
+      submissionInFlight.current = false;
       return;
     }
     const payload = {
@@ -45,15 +69,20 @@ export default function RegisterPage() {
         body: JSON.stringify(payload),
       });
       const result = (await response.json()) as {
+        challenge_id?: string;
         detail?: string;
+        expires_in_seconds?: number;
         message?: string;
+        resend_after_seconds?: number;
       };
-      if (!response.ok)
+      if (!response.ok || !result.challenge_id)
         throw new Error(authenticationError(response.status, result.detail));
       setEmail(payload.email);
-      setRegistration(payload);
+      setChallengeId(result.challenge_id);
+      setOtp("");
+      setResendIn(result.resend_after_seconds ?? 60);
       setMessage(
-        result.message ?? "Check your email for the verification code.",
+        result.message ?? "Verification code sent. Check your inbox.",
       );
       setStep("otp");
     } catch (cause) {
@@ -73,13 +102,16 @@ export default function RegisterPage() {
     submissionInFlight.current = true;
     setLoading(true);
     setError("");
-    const otp = String(new FormData(event.currentTarget).get("otp") ?? "")
-      .trim()
-      .toUpperCase();
+    if (otp.length !== 6) {
+      setError("Enter the complete six-character verification code.");
+      setLoading(false);
+      submissionInFlight.current = false;
+      return;
+    }
     try {
       const response = await apiFetch("/auth/register/verify-otp", {
         method: "POST",
-        body: JSON.stringify({ email, otp }),
+        body: JSON.stringify({ challenge_id: challengeId, otp }),
       });
       const result = (await response.json()) as {
         access_token?: string;
@@ -105,27 +137,50 @@ export default function RegisterPage() {
     }
   }
   async function resend() {
+    if (loading || submissionInFlight.current || resendIn > 0) return;
+    submissionInFlight.current = true;
     setLoading(true);
     setError("");
     try {
-      const response = await apiFetch("/auth/register", {
+      const response = await apiFetch("/auth/register/resend", {
         method: "POST",
-        body: JSON.stringify(registration),
+        body: JSON.stringify({ challenge_id: challengeId }),
       });
       const result = (await response.json()) as {
         detail?: string;
         message?: string;
+        resend_after_seconds?: number;
       };
       if (!response.ok)
-        throw new Error(result.detail ?? "Code could not be resent.");
-      setMessage(result.message ?? "");
+        throw new Error(authenticationError(response.status, result.detail));
+      setOtp("");
+      lastSubmittedOtp.current = "";
+      setResendIn(result.resend_after_seconds ?? 60);
+      setMessage(result.message ?? "A new verification code was sent.");
     } catch (cause) {
       setError(
         cause instanceof Error ? cause.message : "Code could not be resent.",
       );
     } finally {
       setLoading(false);
+      submissionInFlight.current = false;
     }
+  }
+  function updateOtp(event: ChangeEvent<HTMLInputElement>) {
+    const value = event.currentTarget.value
+      .toUpperCase()
+      .replace(/[^A-Z0-9]/g, "")
+      .slice(0, 6);
+    setOtp(value);
+    setError("");
+  }
+  function changeEmail() {
+    setStep("details");
+    setChallengeId("");
+    setOtp("");
+    setMessage("");
+    setError("");
+    lastSubmittedOtp.current = "";
   }
   return (
     <Auth3DShell mode="register">
@@ -216,10 +271,10 @@ export default function RegisterPage() {
           </p>
         </form>
       ) : (
-        <form onSubmit={verifyOtp} className="auth-form-enter">
+        <form ref={otpForm} onSubmit={verifyOtp} className="auth-form-enter">
           <button
             type="button"
-            onClick={() => setStep("details")}
+            onClick={changeEmail}
             className="auth-panel-badge"
           >
             <ArrowLeft size={14} /> CHANGE EMAIL
@@ -228,7 +283,7 @@ export default function RegisterPage() {
           <p className="auth-panel-copy">
             Enter the six-character code sent to{" "}
             <strong className="text-white">{email}</strong>. The code contains
-            letters and numbers and expires shortly.
+            letters and numbers and expires in 10 minutes.
           </p>
           {message && (
             <p role="status" className="auth-notice auth-notice-success">
@@ -243,9 +298,12 @@ export default function RegisterPage() {
                 name="otp"
                 inputMode="text"
                 autoComplete="one-time-code"
+                autoFocus
                 minLength={6}
                 maxLength={6}
                 pattern="[A-Za-z0-9]{6}"
+                value={otp}
+                onChange={updateOtp}
                 className="auth-3d-input uppercase tracking-[.35em]"
                 placeholder="A7K29P"
               />
@@ -257,16 +315,18 @@ export default function RegisterPage() {
             </p>
           )}
           <button disabled={loading} className="auth-primary-button">
-            {loading ? "VERIFYING…" : "CREATE ACCOUNT"}
+            {loading ? "VERIFYING CODE…" : "VERIFY & CREATE ACCOUNT"}
             <ArrowRight size={17} />
           </button>
           <button
             type="button"
-            disabled={loading}
+            disabled={loading || resendIn > 0}
             onClick={() => void resend()}
             className="mt-4 w-full text-center text-xs text-cyan-300 disabled:opacity-50"
           >
-            Resend verification code
+            {resendIn > 0
+              ? `Resend available in ${resendIn}s`
+              : "Resend verification code"}
           </button>
         </form>
       )}

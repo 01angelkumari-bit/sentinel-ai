@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     access_token_expire_minutes: int = 30
     cors_origins: str = "http://localhost:3000"
+    cors_origin_regex: str = ""
     storage_root: str = "storage"
     max_upload_bytes: int = 10 * 1024 * 1024
     ai_provider: str = "local_hf"

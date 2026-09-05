@@ -2,22 +2,25 @@ from __future__ import annotations
 
 import hashlib
 import hmac
+import logging
 import secrets
 import string
 from time import perf_counter
 from datetime import UTC, datetime, timedelta
+from uuid import UUID
 
 from fastapi import HTTPException, status
 from sqlalchemy import func, select, update
 from sqlalchemy.orm import Session
 
-from app.application.auth.email_service import SmtpEmailService, dispatch_otp
+from app.application.auth.email_service import SmtpEmailService
 from app.application.auth.service import EmailAlreadyRegistered, create_access_token, password_hasher
 from app.application.auth.workspace import rotate_user_sessions
 from app.core.config import get_settings
 from app.domain.users.models import OtpChallenge, Organization, PendingRegistration, User
 
 ALPHABET = string.ascii_uppercase + string.digits
+logger = logging.getLogger("sentinel.email")
 
 
 def _now() -> datetime: return datetime.now(UTC)
@@ -40,6 +43,25 @@ class OtpService:
         count = self.db.scalar(select(func.count()).select_from(OtpChallenge).where(OtpChallenge.email == email, OtpChallenge.purpose == purpose, OtpChallenge.created_at >= since)) or 0
         if count >= self.settings.otp_hourly_limit: raise HTTPException(status_code=429, detail="Too many verification requests. Try again later.")
 
+    def _deliver(self, recipient: str, code: str, purpose: str, timings: dict[str, float] | None = None) -> None:
+        started = perf_counter()
+        try:
+            self.email.send_otp(recipient, code, purpose)
+        except Exception:
+            logger.exception("OTP_DELIVERY_END purpose=%s status=failed duration_ms=%.2f",purpose,(perf_counter()-started)*1000)
+            raise
+        finally:
+            if timings is not None: timings["email_delivery_ms"] = (perf_counter() - started) * 1000
+        logger.info("OTP_DELIVERY_END purpose=%s status=sent duration_ms=%.2f",purpose,(perf_counter()-started)*1000)
+
+    def _registration_response(self, pending: PendingRegistration) -> dict[str, str | int | UUID]:
+        return {
+            "message": "Verification code sent. Check your inbox and spam folder.",
+            "challenge_id": pending.id,
+            "expires_in_seconds": self.settings.otp_expire_minutes * 60,
+            "resend_after_seconds": self.settings.otp_resend_cooldown_seconds,
+        }
+
     def request_registration(self, *, email: str, full_name: str, organization_name: str, password: str, timings: dict[str, float] | None = None) -> dict[str, str]:
         normalized = email.lower(); started=perf_counter(); self.email.ensure_configured()
         if timings is not None: timings["email_config_ms"]=(perf_counter()-started)*1000
@@ -52,34 +74,55 @@ class OtpService:
         started=perf_counter();encoded_password=password_hasher.hash(password)
         if timings is not None: timings["password_hash_ms"]=(perf_counter()-started)*1000
         code = _code(); expires = now + timedelta(minutes=self.settings.otp_expire_minutes)
+        retryable_sent_at = now - timedelta(seconds=self.settings.otp_resend_cooldown_seconds)
         if existing:
-            existing.full_name=full_name.strip();existing.organization_name=organization_name.strip();existing.password_hash=encoded_password;existing.otp_hash=_otp_hash(normalized,"registration",code);existing.expires_at=expires;existing.attempts=0;existing.last_sent_at=now
-        else:self.db.add(PendingRegistration(email=normalized,full_name=full_name.strip(),organization_name=organization_name.strip(),password_hash=encoded_password,otp_hash=_otp_hash(normalized,"registration",code),expires_at=expires,attempts=0,last_sent_at=now))
+            existing.full_name=full_name.strip();existing.organization_name=organization_name.strip();existing.password_hash=encoded_password;existing.otp_hash=_otp_hash(normalized,"registration",code);existing.expires_at=expires;existing.attempts=0
+            pending=existing
+        else:
+            pending=PendingRegistration(email=normalized,full_name=full_name.strip(),organization_name=organization_name.strip(),password_hash=encoded_password,otp_hash=_otp_hash(normalized,"registration",code),expires_at=expires,attempts=0,last_sent_at=retryable_sent_at)
+            self.db.add(pending)
         started=perf_counter();self.db.commit()
         if timings is not None: timings["commit_ms"]=(perf_counter()-started)*1000
-        started=perf_counter();dispatch_otp(normalized,code,"registration")
-        if timings is not None: timings["email_queue_ms"]=(perf_counter()-started)*1000
-        return {"message":"A verification code is being sent to your email address."}
+        self.db.refresh(pending)
+        self._deliver(normalized,code,"registration",timings)
+        pending.last_sent_at=_now();self.db.commit()
+        return self._registration_response(pending)
 
-    def verify_registration(self, email: str, code: str) -> User:
-        normalized=email.lower();pending=self.db.scalar(select(PendingRegistration).where(PendingRegistration.email==normalized))
+    def resend_registration(self, challenge_id: UUID, timings: dict[str, float] | None = None) -> dict[str, str | int | UUID]:
+        pending=self.db.get(PendingRegistration,challenge_id)
+        if not pending: raise HTTPException(status_code=400,detail="This registration has expired. Start again with your email address.")
+        now=_now()
+        remaining=self.settings.otp_resend_cooldown_seconds-(now-_aware(pending.last_sent_at)).total_seconds()
+        if remaining>0: raise HTTPException(status_code=429,detail=f"Wait {max(1, int(remaining))} seconds before requesting another code.")
+        code=_code();pending.otp_hash=_otp_hash(pending.email,"registration",code);pending.expires_at=now+timedelta(minutes=self.settings.otp_expire_minutes);pending.attempts=0
+        self.db.commit()
+        self._deliver(pending.email,code,"registration",timings)
+        pending.last_sent_at=_now();self.db.commit()
+        return self._registration_response(pending)
+
+    def verify_registration(self, challenge_id: UUID, code: str) -> User:
+        pending=self.db.get(PendingRegistration,challenge_id)
         if not pending or _aware(pending.expires_at)<=_now(): raise HTTPException(status_code=400,detail="The verification code is invalid or expired.")
         if pending.attempts>=self.settings.otp_max_attempts: raise HTTPException(status_code=429,detail="Too many verification attempts. Request a new code.")
         pending.attempts+=1
-        if not hmac.compare_digest(pending.otp_hash,_otp_hash(normalized,"registration",code)):
+        if not hmac.compare_digest(pending.otp_hash,_otp_hash(pending.email,"registration",code)):
             self.db.commit();raise HTTPException(status_code=400,detail="The verification code is invalid or expired.")
-        if self.db.scalar(select(User.id).where(User.email==normalized)): self.db.delete(pending);self.db.commit();raise EmailAlreadyRegistered()
-        organization=Organization(name=pending.organization_name);self.db.add(organization);self.db.flush();user=User(organization_id=organization.id,email=normalized,full_name=pending.full_name,password_hash=pending.password_hash,role="owner");self.db.add(user);self.db.delete(pending);self.db.commit();self.db.refresh(user);self.db.refresh(user,attribute_names=["organization"]);return user
+        if self.db.scalar(select(User.id).where(User.email==pending.email)): self.db.delete(pending);self.db.commit();raise EmailAlreadyRegistered()
+        organization=Organization(name=pending.organization_name);self.db.add(organization);self.db.flush();user=User(organization_id=organization.id,email=pending.email,full_name=pending.full_name,password_hash=pending.password_hash,role="owner");self.db.add(user);self.db.delete(pending);self.db.commit();self.db.refresh(user);self.db.refresh(user,attribute_names=["organization"]);return user
 
     def request_user_otp(self, email: str, purpose: str) -> dict[str, str]:
         normalized=email.lower();user=self.db.scalar(select(User).where(User.email==normalized))
         if not user:return _generic()
         self.email.ensure_configured()
-        self._hourly_limit(normalized,purpose);latest=self.db.scalar(select(OtpChallenge).where(OtpChallenge.email==normalized,OtpChallenge.purpose==purpose).order_by(OtpChallenge.created_at.desc()))
+        self._hourly_limit(normalized,purpose);latest=self.db.scalar(select(OtpChallenge).where(OtpChallenge.email==normalized,OtpChallenge.purpose==purpose,OtpChallenge.consumed_at.is_(None)).order_by(OtpChallenge.created_at.desc()))
         if latest and (_now()-_aware(latest.created_at)).total_seconds()<self.settings.otp_resend_cooldown_seconds: raise HTTPException(status_code=429,detail="Wait before requesting another verification code.")
         self.db.execute(update(OtpChallenge).where(OtpChallenge.email==normalized,OtpChallenge.purpose==purpose,OtpChallenge.consumed_at.is_(None)).values(consumed_at=_now()))
         code=_code();challenge=OtpChallenge(user_id=user.id,organization_id=user.organization_id,email=normalized,purpose=purpose,otp_hash=_otp_hash(normalized,purpose,code),expires_at=_now()+timedelta(minutes=self.settings.otp_expire_minutes),attempts=0)
-        self.db.add(challenge);self.db.commit();dispatch_otp(normalized,code,purpose);return _generic()
+        self.db.add(challenge);self.db.commit()
+        try:self._deliver(normalized,code,purpose)
+        except Exception:
+            self.db.delete(challenge);self.db.commit();raise
+        return _generic()
 
     def _verify(self,email:str,purpose:str,code:str)->OtpChallenge:
         normalized=email.lower();challenge=self.db.scalar(select(OtpChallenge).where(OtpChallenge.email==normalized,OtpChallenge.purpose==purpose,OtpChallenge.consumed_at.is_(None)).order_by(OtpChallenge.created_at.desc()))

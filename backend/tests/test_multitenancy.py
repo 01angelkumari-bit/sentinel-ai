@@ -25,7 +25,6 @@ from app.main import app
 def deterministic_email_delivery(monkeypatch):
     monkeypatch.setattr("app.application.auth.email_service.SmtpEmailService.ensure_configured", lambda _: None)
     monkeypatch.setattr("app.application.auth.email_service.validate_mx_domain", lambda _: None)
-    monkeypatch.setattr("app.application.auth.email_service._delivery_pool.submit", lambda function: function())
 
 
 @pytest.fixture()
@@ -91,10 +90,53 @@ def test_registration_creates_a_new_owner_and_organization(tenant_app, monkeypat
         email = f"new-{suffix}@example.com"
         requested = client.post("/api/v1/auth/register", json={"email": email, "full_name": f"New {suffix}", "organization_name": f"New Company {suffix}", "password": "SecurePass123!"})
         assert requested.status_code == 202 and "otp" not in requested.text.lower()
-        verified = client.post("/api/v1/auth/register/verify-otp", json={"email": email, "otp": delivered[email]})
+        challenge_id = requested.json()["challenge_id"]
+        verified = client.post("/api/v1/auth/register/verify-otp", json={"challenge_id": challenge_id, "otp": delivered[email]})
         assert verified.status_code == 201 and verified.json()["role"] == "owner"
         organizations.append(verified.json()["organization"]["id"])
     assert organizations[0] != organizations[1]
+
+
+def test_registration_only_advances_after_email_delivery_and_can_retry(tenant_app, monkeypatch):
+    client, _, _ = tenant_app
+    payload = {"email": "delivery@example.com", "full_name": "Delivery Test", "organization_name": "Delivery Company", "password": "SecurePass123!"}
+
+    def fail_delivery(*_args):
+        from app.application.auth.email_service import EmailDeliveryError
+        raise EmailDeliveryError("provider unavailable")
+
+    monkeypatch.setattr("app.application.auth.email_service.SmtpEmailService.send_otp", fail_delivery)
+    failed = client.post("/api/v1/auth/register", json=payload)
+    assert failed.status_code == 503
+
+    delivered = {}
+    monkeypatch.setattr("app.application.auth.email_service.SmtpEmailService.send_otp", lambda _, email, code, purpose: delivered.__setitem__(email, code))
+    retried = client.post("/api/v1/auth/register", json=payload)
+    assert retried.status_code == 202
+    assert retried.json()["challenge_id"]
+    assert delivered["delivery@example.com"]
+
+
+def test_registration_resend_uses_challenge_id_and_invalidates_old_code(tenant_app, monkeypatch):
+    client, _, _ = tenant_app
+    delivered = []
+    monkeypatch.setattr("app.application.auth.email_service.SmtpEmailService.send_otp", lambda _, email, code, purpose: delivered.append(code))
+    settings = get_settings()
+    original_cooldown = settings.otp_resend_cooldown_seconds
+    settings.otp_resend_cooldown_seconds = 0
+    try:
+        requested = client.post("/api/v1/auth/register", json={"email": "resend@example.com", "full_name": "Resend Test", "organization_name": "Resend Company", "password": "SecurePass123!"})
+        challenge_id = requested.json()["challenge_id"]
+        resent = client.post("/api/v1/auth/register/resend", json={"challenge_id": challenge_id})
+        assert resent.status_code == 202
+        assert resent.json()["challenge_id"] == challenge_id
+        assert len(delivered) == 2 and delivered[0] != delivered[1]
+        old_code = client.post("/api/v1/auth/register/verify-otp", json={"challenge_id": challenge_id, "otp": delivered[0]})
+        assert old_code.status_code == 400
+        verified = client.post("/api/v1/auth/register/verify-otp", json={"challenge_id": challenge_id, "otp": delivered[1]})
+        assert verified.status_code == 201
+    finally:
+        settings.otp_resend_cooldown_seconds = original_cooldown
 
 
 def test_paginated_apis_and_analytics_are_tenant_isolated(tenant_app):
@@ -385,7 +427,7 @@ def test_login_is_minimal_timed_and_keeps_other_sessions_valid(tenant_app):
 def test_health_and_readiness_are_separate(tenant_app):
     client, _, _ = tenant_app
     assert client.get("/health").json() == {"status": "ok"}
-    assert client.get("/ready").json() == {"status": "ready", "database": "ok"}
+    assert client.get("/ready").json() == {"status": "ready", "database": "ok", "email": "configured"}
 
 
 def test_sentiment_risk_and_natural_language_are_dataset_grounded(tenant_app):
