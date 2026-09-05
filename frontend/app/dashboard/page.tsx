@@ -16,7 +16,10 @@ const compactCurrency = (value:number) => new Intl.NumberFormat("en-US",{style:"
 
 export default async function Dashboard() {
   const token=(await cookies()).get("sentinel_access_token")?.value;
-  const apiUrl=process.env.API_INTERNAL_URL ?? process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000/api/v1";
+  const apiUrl=process.env.API_INTERNAL_URL ?? process.env.NEXT_PUBLIC_API_URL ??
+    (process.env.NODE_ENV === "production"
+      ? "https://sentinel-bi-01angelkumari-api.onrender.com/api/v1"
+      : "http://localhost:8000/api/v1");
   const headers={Authorization:`Bearer ${token}`};
   const [userResponse,datasetResponse]=await Promise.all([fetch(`${apiUrl}/auth/me`,{headers,cache:"no-store"}),fetch(`${apiUrl}/datasets/presence`,{headers,cache:"no-store"})]);
   if(!userResponse.ok) redirect("/login?expired=1");

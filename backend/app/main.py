@@ -5,6 +5,7 @@ from uuid import uuid4
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.v1.router import router as api_router
+from app.application.auth.email_service import EmailConfigurationError, SmtpEmailService
 from app.core.config import get_settings
 from app.infrastructure.database import get_db
 from sqlalchemy import text
@@ -12,7 +13,7 @@ from sqlalchemy.orm import Session
 from fastapi import Depends
 app = FastAPI(title="Sentinel AI API", version="1.0.0")
 origins = [origin.strip() for origin in get_settings().cors_origins.split(",") if origin.strip()]
-app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=True, allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"], allow_headers=["Authorization", "Content-Type", "X-Filename", "X-Import-Mode"])
+app.add_middleware(CORSMiddleware, allow_origins=origins, allow_origin_regex=get_settings().cors_origin_regex or None, allow_credentials=True, allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"], allow_headers=["Authorization", "Content-Type", "X-Filename", "X-Import-Mode"])
 app.include_router(api_router, prefix="/api/v1")
 
 performance_logger = logging.getLogger("sentinel.performance")
@@ -42,4 +43,8 @@ def ready(db: Session = Depends(get_db)) -> dict[str, str]:
         db.execute(text("SELECT 1"))
     except Exception as exc:
         raise HTTPException(status_code=503, detail="Database is unavailable") from exc
-    return {"status": "ready", "database": "ok"}
+    try:
+        SmtpEmailService().ensure_configured()
+    except EmailConfigurationError as exc:
+        raise HTTPException(status_code=503, detail="Email delivery is not configured") from exc
+    return {"status": "ready", "database": "ok", "email": "configured"}

@@ -1,4 +1,7 @@
-const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000/api/v1";
+const apiUrl = process.env.NEXT_PUBLIC_API_URL ??
+  (process.env.NODE_ENV === "production"
+    ? "https://sentinel-bi-01angelkumari-api.onrender.com/api/v1"
+    : "http://localhost:8000/api/v1");
 const apiOrigin = apiUrl.replace(/\/api\/v1\/?$/, "");
 
 export async function fetchWithTimeout(input: RequestInfo | URL, init: RequestInit = {}, timeoutMs = 20_000) {
@@ -10,6 +13,9 @@ export async function fetchWithTimeout(input: RequestInfo | URL, init: RequestIn
   } catch (error) {
     if (error instanceof DOMException && error.name === "AbortError") {
       throw new Error("The server took too long to respond. Please try again.");
+    }
+    if (error instanceof TypeError) {
+      throw new Error("Unable to connect to the authentication service. Check your connection and try again.");
     }
     throw error;
   } finally {

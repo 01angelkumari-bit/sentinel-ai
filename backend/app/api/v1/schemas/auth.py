@@ -12,6 +12,16 @@ class LoginRequest(BaseModel):
     remember: bool = False
 class EmailRequest(BaseModel):
     email: EmailStr
+class RegistrationChallengeResponse(BaseModel):
+    message: str
+    challenge_id: UUID
+    expires_in_seconds: int
+    resend_after_seconds: int
+class RegistrationOtpVerifyRequest(BaseModel):
+    challenge_id: UUID
+    otp: str = Field(pattern=r"^[A-Za-z0-9]{6}$")
+class RegistrationResendRequest(BaseModel):
+    challenge_id: UUID
 class OtpVerifyRequest(BaseModel):
     email: EmailStr
     otp: str = Field(pattern=r"^[A-Za-z0-9]{6}$")

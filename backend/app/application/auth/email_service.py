@@ -3,9 +3,10 @@ from __future__ import annotations
 import smtplib
 import ssl
 import base64
-import logging
-from concurrent.futures import ThreadPoolExecutor
+import hashlib
 from email.message import EmailMessage
+from threading import Lock
+from time import monotonic
 
 import dns.exception
 import dns.resolver
@@ -19,8 +20,8 @@ class EmailDeliveryError(RuntimeError): pass
 class EmailDomainError(ValueError): pass
 
 
-logger = logging.getLogger("sentinel.email")
-_delivery_pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix="sentinel-email")
+_gmail_token_lock = Lock()
+_gmail_token_cache: dict[str, str | float] = {"key": "", "token": "", "expires_at": 0.0}
 
 
 def validate_mx_domain(email: str) -> None:
@@ -50,8 +51,17 @@ class SmtpEmailService:
     def ensure_configured(self) -> None:
         self._configured()
 
-    def _send_gmail_api(self, message: EmailMessage) -> None:
-        try:
+    def _gmail_access_token(self) -> str:
+        cache_key = hashlib.sha256(
+            f"{self.settings.google_client_id}:{self.settings.google_refresh_token}".encode()
+        ).hexdigest()
+        with _gmail_token_lock:
+            if (
+                _gmail_token_cache["key"] == cache_key
+                and _gmail_token_cache["token"]
+                and monotonic() < float(_gmail_token_cache["expires_at"])
+            ):
+                return str(_gmail_token_cache["token"])
             token_response = requests.post(
                 "https://oauth2.googleapis.com/token",
                 data={
@@ -63,7 +73,19 @@ class SmtpEmailService:
                 timeout=self.settings.email_delivery_timeout_seconds,
             )
             token_response.raise_for_status()
-            access_token = token_response.json()["access_token"]
+            payload = token_response.json()
+            access_token = str(payload["access_token"])
+            expires_in = max(120, int(payload.get("expires_in", 3600)))
+            _gmail_token_cache.update(
+                key=cache_key,
+                token=access_token,
+                expires_at=monotonic() + expires_in - 60,
+            )
+            return access_token
+
+    def _send_gmail_api(self, message: EmailMessage) -> None:
+        try:
+            access_token = self._gmail_access_token()
             raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode("ascii").rstrip("=")
             send_response = requests.post(
                 "https://gmail.googleapis.com/gmail/v1/users/me/messages/send",
@@ -98,20 +120,3 @@ class SmtpEmailService:
                 client.send_message(message)
         except (OSError, smtplib.SMTPException) as exc:
             raise EmailDeliveryError("Verification email delivery failed") from exc
-
-
-def dispatch_otp(recipient: str, code: str, purpose: str) -> None:
-    """Validate configuration now, then keep external DNS/email I/O off the request path."""
-    service = SmtpEmailService()
-    service.ensure_configured()
-
-    def deliver() -> None:
-        try:
-            validate_mx_domain(recipient)
-            service.send_otp(recipient, code, purpose)
-            logger.info("OTP_DELIVERY_END purpose=%s status=sent", purpose)
-        except Exception:
-            logger.exception("OTP_DELIVERY_END purpose=%s status=failed", purpose)
-
-    logger.info("OTP_DELIVERY_QUEUED purpose=%s", purpose)
-    _delivery_pool.submit(deliver)
