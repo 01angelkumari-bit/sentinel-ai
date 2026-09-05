@@ -5,6 +5,8 @@ from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 from app.core.config import get_settings
 
 database_url = get_settings().database_url
+if database_url.startswith("postgresql://"):
+    database_url = database_url.replace("postgresql://", "postgresql+psycopg://", 1)
 if database_url == "sqlite:///./sentinel.db":
     database_url = f"sqlite:///{(Path(__file__).resolve().parents[2] / 'sentinel.db').as_posix()}"
 settings = get_settings()

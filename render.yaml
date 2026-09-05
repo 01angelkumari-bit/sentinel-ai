@@ -1,3 +1,10 @@
+databases:
+  - name: sentinel-bi-database
+    plan: free
+    region: singapore
+    databaseName: sentinel
+    user: sentinel
+
 services:
   - type: web
     name: sentinel-bi-01angelkumari-api
@@ -13,7 +20,9 @@ services:
       - key: PYTHON_VERSION
         value: 3.12.7
       - key: DATABASE_URL
-        sync: false
+        fromDatabase:
+          name: sentinel-bi-database
+          property: connectionString
       - key: DATABASE_POOL_SIZE
         value: 5
       - key: DATABASE_MAX_OVERFLOW
@@ -50,11 +59,5 @@ services:
         sync: false
       - key: GOOGLE_REFRESH_TOKEN
         sync: false
-      - key: SMTP_PORT
-        value: 587
-      - key: SMTP_USE_TLS
-        value: true
-      - key: SMTP_USE_SSL
-        value: false
       - key: EMAIL_FROM
         sync: false
