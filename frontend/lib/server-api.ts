@@ -1,11 +1,11 @@
 import "server-only";
 import { cookies, headers } from "next/headers";
 
-// The hosted Sentinel experience is deliberately upload-first: a visitor
-// reaches onboarding immediately and the backend provisions its workspace.
-// NODE_ENV is embedded during the Vercel build, unlike build-only public env
-// values that are not available dynamically inside route handlers.
-const localUploadMode = process.env.NODE_ENV === "production" || process.env.LOCAL_DEMO_MODE === "1" || process.env.NEXT_PUBLIC_LOCAL_DEMO_MODE === "1";
+// This deployment is deliberately upload-first: a visitor reaches onboarding
+// immediately and the backend provisions its shared workspace. Keeping this
+// explicit avoids Vercel runtime environment differences re-enabling a login
+// requirement inside the server-side API proxy.
+const localUploadMode = true;
 
 export async function authorizedBackendFetch(path: string, init: RequestInit = {}) {
   const token = (await cookies()).get("sentinel_access_token")?.value;
