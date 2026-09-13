@@ -1,9 +1,13 @@
 import "server-only";
 import { cookies } from "next/headers";
 
+// Keep this at module scope so Next.js can embed the public build setting in
+// the server route bundle as well as in middleware. Vercel does not expose
+// build-only NEXT_PUBLIC variables dynamically to a running route handler.
+const localUploadMode = process.env.LOCAL_DEMO_MODE === "1" || process.env.NEXT_PUBLIC_LOCAL_DEMO_MODE === "1";
+
 export async function authorizedBackendFetch(path: string, init: RequestInit = {}) {
   const token = (await cookies()).get("sentinel_access_token")?.value;
-  const localUploadMode = process.env.LOCAL_DEMO_MODE === "1" || process.env.NEXT_PUBLIC_LOCAL_DEMO_MODE === "1";
   if (!token && !localUploadMode) return null;
   const apiUrl = process.env.API_INTERNAL_URL ?? process.env.NEXT_PUBLIC_API_URL ??
     (process.env.NODE_ENV === "production"
