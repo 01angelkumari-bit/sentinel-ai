@@ -43,6 +43,8 @@ def ready(db: Session = Depends(get_db)) -> dict[str, str]:
         db.execute(text("SELECT 1"))
     except Exception as exc:
         raise HTTPException(status_code=503, detail="Database is unavailable") from exc
+    if get_settings().local_demo_mode:
+        return {"status": "ready", "database": "ok", "email": "not_required"}
     try:
         SmtpEmailService().ensure_configured()
     except EmailConfigurationError as exc:

@@ -5,6 +5,7 @@ import { useState } from "react";
 export function SignOutButton() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const localUploadMode = process.env.NEXT_PUBLIC_LOCAL_DEMO_MODE === "1";
 
   async function clearBrowserWorkspace() {
     localStorage.clear();
@@ -35,5 +36,6 @@ export function SignOutButton() {
     }
   }
 
+  if (localUploadMode) return <Button className="inline-flex h-10 rounded-xl border-slate-800 bg-slate-900/70 px-3 text-xs text-slate-300 hover:bg-slate-800" variant="outline" onClick={() => router.push("/onboarding?manage=1")}>Manage data</Button>;
   return <Button disabled={loading} className="inline-flex h-10 rounded-xl border-slate-800 bg-slate-900/70 px-3 text-xs text-slate-300 hover:bg-slate-800" variant="outline" onClick={signOut}>{loading ? "Signing out..." : "Sign out"}</Button>;
 }

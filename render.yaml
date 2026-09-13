@@ -39,8 +39,8 @@ services:
         value: HS256
       - key: ACCESS_TOKEN_EXPIRE_MINUTES
         value: 30
-      - key: CORS_ORIGINS
-        sync: false
+      - key: LOCAL_DEMO_MODE
+        value: true
       - key: CORS_ORIGIN_REGEX
         value: '^https://sentinel-[a-z0-9]+-01angelkumari-1896s-projects\.vercel\.app$'
       - key: STORAGE_ROOT
@@ -51,13 +51,3 @@ services:
         value: deterministic
       - key: AI_BASE_URL
         value: ""
-      - key: EMAIL_PROVIDER
-        value: gmail_api
-      - key: GOOGLE_CLIENT_ID
-        sync: false
-      - key: GOOGLE_CLIENT_SECRET
-        sync: false
-      - key: GOOGLE_REFRESH_TOKEN
-        sync: false
-      - key: EMAIL_FROM
-        sync: false

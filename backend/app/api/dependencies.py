@@ -8,9 +8,15 @@ from sqlalchemy import select, text
 from app.core.config import get_settings
 from app.domain.users.models import AuthSession, User
 from app.infrastructure.database import get_db
+from app.application.auth.local_workspace import get_or_create_local_workspace_user
 security = HTTPBearer(auto_error=False)
 def current_user(credentials: HTTPAuthorizationCredentials | None = Depends(security), db: Session = Depends(get_db)) -> User:
     settings = get_settings()
+    if settings.local_demo_mode:
+        user = get_or_create_local_workspace_user(db)
+        if db.bind is not None and db.bind.dialect.name == "postgresql":
+            db.execute(text("SELECT set_config('app.current_organization', :organization_id, true)"), {"organization_id": str(user.organization_id)})
+        return user
     if credentials is None:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Authentication required", headers={"WWW-Authenticate": "Bearer"})
     try:

@@ -36,6 +36,9 @@ class Settings(BaseSettings):
     otp_hourly_limit: int = 5
     email_delivery_timeout_seconds: int = 8
     auth_slow_request_ms: int = 1000
+    # Local upload-first mode is intentionally opt-in.  It creates one isolated
+    # local workspace for the desktop launcher without weakening deployed auth.
+    local_demo_mode: bool = False
     model_config = SettingsConfigDict(env_file=".env", case_sensitive=False, extra="ignore")
 
 @lru_cache
