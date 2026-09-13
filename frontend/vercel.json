@@ -4,6 +4,7 @@
   "buildCommand": "npm run build",
   "installCommand": "npm ci",
   "env": {
-    "NEXT_PUBLIC_LOCAL_DEMO_MODE": "1"
+    "NEXT_PUBLIC_LOCAL_DEMO_MODE": "1",
+    "NEXT_PUBLIC_API_URL": "https://sentinel-bi-01angelkumari-api.onrender.com/api/v1"
   }
 }
