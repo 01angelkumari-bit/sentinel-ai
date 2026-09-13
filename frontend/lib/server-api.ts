@@ -1,12 +1,13 @@
 import "server-only";
 import { cookies } from "next/headers";
 
+const UPLOAD_WORKSPACE_API_URL = "https://sentinel-bi-01angelkumari-api.onrender.com/api/v1";
+
 export async function authorizedBackendFetch(path: string, init: RequestInit = {}) {
   const token = (await cookies()).get("sentinel_access_token")?.value;
-  const apiUrl = process.env.API_INTERNAL_URL ?? process.env.NEXT_PUBLIC_API_URL ??
-    (process.env.NODE_ENV === "production"
-      ? "https://sentinel-bi-01angelkumari-api.onrender.com/api/v1"
-      : "http://localhost:8000/api/v1");
+  // This hosted upload workspace must not inherit stale project-level Vercel
+  // variables left over from the retired login deployment.
+  const apiUrl = UPLOAD_WORKSPACE_API_URL;
   return fetch(`${apiUrl}${path}`, {
     ...init,
     headers: { ...init.headers, ...(token ? { Authorization: `Bearer ${token}` } : {}) },
