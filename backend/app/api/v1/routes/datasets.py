@@ -31,7 +31,7 @@ def _response(job: DatasetImport, file_name: str) -> DatasetImportResponse:
 
 def _tenant_context(db: Session, organization_id: UUID) -> None:
     if db.bind is not None and db.bind.dialect.name == "postgresql":
-        db.execute(text("SELECT set_config('app.current_organization', :organization_id, true)"), {"organization_id": str(organization_id)})
+        db.execute(text("SELECT set_config('app.current_organization', :organization_id, false)"), {"organization_id": str(organization_id)})
 
 def _process_import(job_id: UUID, organization_id: UUID, relative_path: str, original_name: str, mode: str, bind) -> None:
     with Session(bind=bind) as db:

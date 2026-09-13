@@ -15,7 +15,7 @@ def current_user(credentials: HTTPAuthorizationCredentials | None = Depends(secu
     if settings.local_demo_mode:
         user = get_or_create_local_workspace_user(db)
         if db.bind is not None and db.bind.dialect.name == "postgresql":
-            db.execute(text("SELECT set_config('app.current_organization', :organization_id, true)"), {"organization_id": str(user.organization_id)})
+            db.execute(text("SELECT set_config('app.current_organization', :organization_id, false)"), {"organization_id": str(user.organization_id)})
         return user
     if credentials is None:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Authentication required", headers={"WWW-Authenticate": "Bearer"})
@@ -40,7 +40,7 @@ def current_user(credentials: HTTPAuthorizationCredentials | None = Depends(secu
     )
     if not user: raise HTTPException(status_code=401, detail="Session expired, revoked, or unavailable")
     if db.bind is not None and db.bind.dialect.name == "postgresql":
-        db.execute(text("SELECT set_config('app.current_organization', :organization_id, true)"), {"organization_id": token_org})
+        db.execute(text("SELECT set_config('app.current_organization', :organization_id, false)"), {"organization_id": token_org})
     return user
 
 ROLE_LEVEL = {"viewer": 0, "employee": 1, "manager": 2, "admin": 3, "owner": 4}
