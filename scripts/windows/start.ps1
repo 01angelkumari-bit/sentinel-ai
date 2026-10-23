@@ -6,8 +6,8 @@ $projectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 $runtimeDir = Join-Path $projectRoot '.sentinel'
 . (Join-Path $PSScriptRoot 'Import-SentinelEnv.ps1')
 Import-SentinelEnv -Path (Join-Path $projectRoot '.env')
-$env:LOCAL_DEMO_MODE = 'true'
-$env:NEXT_PUBLIC_LOCAL_DEMO_MODE = '1'
+$env:LOCAL_DEMO_MODE = 'false'
+$env:NEXT_PUBLIC_LOCAL_DEMO_MODE = '0'
 
 if (-not $SkipSetup) { & (Join-Path $PSScriptRoot 'setup.ps1') }
 New-Item -ItemType Directory -Path $runtimeDir -Force | Out-Null

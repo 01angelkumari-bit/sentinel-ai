@@ -69,22 +69,21 @@ export default function RegisterPage() {
         body: JSON.stringify(payload),
       });
       const result = (await response.json()) as {
+        access_token?: string;
         challenge_id?: string;
         detail?: string;
         expires_in_seconds?: number;
         message?: string;
         resend_after_seconds?: number;
       };
-      if (!response.ok || !result.challenge_id)
+      if (!response.ok || !result.access_token)
         throw new Error(authenticationError(response.status, result.detail));
-      setEmail(payload.email);
-      setChallengeId(result.challenge_id);
-      setOtp("");
-      setResendIn(result.resend_after_seconds ?? 60);
-      setMessage(
-        result.message ?? "Verification code sent. Check your inbox.",
-      );
-      setStep("otp");
+      const session = await fetchWithTimeout("/api/auth/session", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ accessToken: result.access_token, remember: false }),
+      });
+      if (!session.ok) throw new Error("Your secure session could not be created.");
+      window.location.replace("/onboarding");
     } catch (cause) {
       setError(
         cause instanceof Error
@@ -191,7 +190,7 @@ export default function RegisterPage() {
           </div>
           <h2>Create workspace</h2>
           <p className="auth-panel-copy">
-            Verify your real email before your isolated workspace is created.
+            Create an isolated workspace and begin uploading data immediately.
           </p>
           <div className="auth-register-grid">
             <label>
@@ -254,8 +253,7 @@ export default function RegisterPage() {
             </label>
           </div>
           <div className="auth-password-hint">
-            <CheckCircle2 size={14} />A letter-and-number OTP will be delivered
-            through configured SMTP
+            <CheckCircle2 size={14} />Your dashboard stays private to this organization.
           </div>
           {error && (
             <p role="alert" className="auth-notice auth-notice-error">
@@ -263,7 +261,7 @@ export default function RegisterPage() {
             </p>
           )}
           <button disabled={loading} className="auth-primary-button">
-            {loading ? "SENDING SECURE CODE…" : "VERIFY EMAIL"}
+            {loading ? "CREATING ACCOUNT…" : "CREATE ACCOUNT"}
             <ArrowRight size={17} />
           </button>
           <p className="auth-switch-copy">

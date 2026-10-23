@@ -203,7 +203,7 @@ function LoginPageContent() {
           </div>
           <h2>Welcome back</h2>
           <p className="auth-panel-copy">
-            Use your password or request a real email OTP.
+            Sign in to your secure organization workspace.
           </p>
           {searchParams.get("registered") === "1" && (
             <p role="status" className="auth-notice auth-notice-success">
@@ -266,14 +266,6 @@ function LoginPageContent() {
           <button disabled={loading} className="auth-primary-button">
             {loading ? "SIGNING IN…" : "LOGIN"}
             <ArrowRight size={17} />
-          </button>
-          <button
-            type="button"
-            onClick={() => setMode("otp-request")}
-            className="mt-4 flex w-full items-center justify-center gap-2 text-xs text-cyan-300"
-          >
-            <Mail size={14} />
-            Sign in with email OTP
           </button>
           <p className="auth-switch-copy">
             New to Sentinel? <Link href="/register">Create an account</Link>

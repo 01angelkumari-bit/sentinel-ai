@@ -16,10 +16,11 @@ const compactCurrency = (value:number) => new Intl.NumberFormat("en-US",{style:"
 
 export default async function Dashboard() {
   const token=(await cookies()).get("sentinel_access_token")?.value;
-  const apiUrl="https://sentinel-bi-01angelkumari-api.onrender.com/api/v1";
-  const headers: Record<string,string>=token ? {Authorization:`Bearer ${token}`} : {};
+  if (!token) redirect("/login?expired=1");
+  const apiUrl=process.env.API_INTERNAL_URL ?? process.env.NEXT_PUBLIC_API_URL ?? (process.env.NODE_ENV === "production" ? "https://sentinel-bi-01angelkumari-api.onrender.com/api/v1" : "http://localhost:8000/api/v1");
+  const headers: Record<string,string>={Authorization:`Bearer ${token}`};
   const [userResponse,datasetResponse]=await Promise.all([fetch(`${apiUrl}/auth/me`,{headers,cache:"no-store"}),fetch(`${apiUrl}/datasets/presence`,{headers,cache:"no-store"})]);
-  if(!userResponse.ok) redirect("/onboarding");
+  if(!userResponse.ok) redirect("/login?expired=1");
   if(!datasetResponse.ok) throw new Error("Dataset status is unavailable");
   if(!(await datasetResponse.json() as {has_data:boolean}).has_data) redirect("/onboarding");
   const user=await userResponse.json() as {full_name:string;email:string};
@@ -32,13 +33,13 @@ export default async function Dashboard() {
   </main></DashboardProvider>;
 }
 
-async function DashboardAnalytics({apiUrl,token}:{apiUrl:string;token?:string}) {
-  const headers: Record<string,string>=token ? {Authorization:`Bearer ${token}`} : {};
+async function DashboardAnalytics({apiUrl,token}:{apiUrl:string;token:string}) {
+  const headers: Record<string,string>={Authorization:`Bearer ${token}`};
   const response=await fetch(`${apiUrl}/dashboard/summary`,{headers,cache:"no-store"});
   if(!response.ok) throw new Error("Dashboard analytics are unavailable");
   const summary=await response.json() as DashboardSummary;
   const margin=summary.revenue?Math.round(summary.profit/summary.revenue*100):0; const revenueTrend=summary.revenue_overview.map(item=>item.value); const supportTrend=revenueTrend.map((value,index)=>Math.max(0,Math.round(value/(index+1))));
-  return <div className="p-3 sm:p-4"><div className="mx-auto max-w-[1600px]"><div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5"><MetricCard label="Total Revenue" value={compactCurrency(summary.revenue)} detail="8.6%" icon="revenue" color="#22c55e" trend={revenueTrend} positive/><MetricCard label="Gross Profit" value={compactCurrency(summary.profit)} detail={`${margin}% margin`} icon="profit" color="#8b5cf6" trend={revenueTrend.map(value=>value*.44)} positive/><MetricCard label="Active Employees" value={summary.employees.toLocaleString()} detail="3.6%" icon="employees" color="#3b82f6" trend={[182,184,184,187,188,190,194]} positive/><MetricCard label="Open Support Tickets" value={summary.open_tickets.toLocaleString()} detail="4.2%" icon="support" color="#f59e0b" trend={supportTrend} positive={false}/><MetricCard label="Cash Balance" value={compactCurrency(summary.cash_balance)} detail="6.4%" icon="cash" color="#84cc16" trend={revenueTrend.map((value,index)=>value*(.88+index/100))} positive/></div><DashboardCharts data={summary}/><DataSourceCoverage counts={summary.source_counts}/><footer className="mt-3 flex flex-col justify-between gap-2 border-t border-slate-800/70 py-4 text-[10px] text-slate-600 sm:flex-row"><span>Sentinel AI · Enterprise intelligence command center</span><span>Shared upload workspace · Do not upload confidential data</span></footer></div></div>;
+  return <div className="p-3 sm:p-4"><div className="mx-auto max-w-[1600px]"><div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5"><MetricCard label="Total Revenue" value={compactCurrency(summary.revenue)} detail="8.6%" icon="revenue" color="#22c55e" trend={revenueTrend} positive/><MetricCard label="Gross Profit" value={compactCurrency(summary.profit)} detail={`${margin}% margin`} icon="profit" color="#8b5cf6" trend={revenueTrend.map(value=>value*.44)} positive/><MetricCard label="Active Employees" value={summary.employees.toLocaleString()} detail="3.6%" icon="employees" color="#3b82f6" trend={[182,184,184,187,188,190,194]} positive/><MetricCard label="Open Support Tickets" value={summary.open_tickets.toLocaleString()} detail="4.2%" icon="support" color="#f59e0b" trend={supportTrend} positive={false}/><MetricCard label="Cash Balance" value={compactCurrency(summary.cash_balance)} detail="6.4%" icon="cash" color="#84cc16" trend={revenueTrend.map((value,index)=>value*(.88+index/100))} positive/></div><DashboardCharts data={summary}/><DataSourceCoverage counts={summary.source_counts}/><footer className="mt-3 flex flex-col justify-between gap-2 border-t border-slate-800/70 py-4 text-[10px] text-slate-600 sm:flex-row"><span>Sentinel AI · Enterprise intelligence command center</span><span>Organization-private data workspace</span></footer></div></div>;
 }
 
 function DashboardSkeleton(){return <div aria-label="Loading dashboard analytics" className="p-3 sm:p-4"><div className="mx-auto max-w-[1600px] animate-pulse"><div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">{Array.from({length:5},(_,index)=><div key={index} className="h-32 rounded-2xl border border-slate-800 bg-slate-900/70"/>)}</div><div className="mt-3 grid gap-3 lg:grid-cols-2"><div className="h-80 rounded-2xl border border-slate-800 bg-slate-900/60"/><div className="h-80 rounded-2xl border border-slate-800 bg-slate-900/60"/></div></div></div>}

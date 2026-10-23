@@ -5,7 +5,6 @@ from uuid import uuid4
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.v1.router import router as api_router
-from app.application.auth.email_service import EmailConfigurationError, SmtpEmailService
 from app.core.config import get_settings
 from app.infrastructure.database import get_db
 from sqlalchemy import text
@@ -43,10 +42,4 @@ def ready(db: Session = Depends(get_db)) -> dict[str, str]:
         db.execute(text("SELECT 1"))
     except Exception as exc:
         raise HTTPException(status_code=503, detail="Database is unavailable") from exc
-    if get_settings().local_demo_mode:
-        return {"status": "ready", "database": "ok", "email": "not_required"}
-    try:
-        SmtpEmailService().ensure_configured()
-    except EmailConfigurationError as exc:
-        raise HTTPException(status_code=503, detail="Email delivery is not configured") from exc
-    return {"status": "ready", "database": "ok", "email": "configured"}
+    return {"status": "ready", "database": "ok"}
